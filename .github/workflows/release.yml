@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out Git repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Install Java and Maven
         uses: actions/setup-java@v1
         with:
@@ -24,3 +24,9 @@ jobs:
           echo $RELEASE_VERSION
           echo ${{ steps.vars.outputs.tag }}
           mvn -B versions:set -DnewVersion=${{ steps.vars.outputs.tag }} -DgenerateBackupPoms=false
+      - name: Commit change
+        run: |
+          git config --global user.name 'Glassait'
+          git config --global user.email 'tendzinroffler@gmail.com'
+          git commit -am "Update pom.xml to ${{ steps.vars.outputs.tag }}"
+          git push
