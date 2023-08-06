@@ -1,0 +1,19 @@
+name: Update release version
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+      - name: Install Java and Maven
+        uses: actions/setup-java@v1
+        with:
+          java-version: 20
+      - if: github.event.release
+        name: Update version in pom.xml
+        run: mvn -B versions:set -DnewVersion=${{ girhub.event.release.tag_name }} -DgenerateBackupPoms=false
