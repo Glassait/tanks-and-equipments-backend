@@ -17,8 +17,7 @@ jobs:
       - name: Set output
         id: vars
         run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
-      - if: github.event.release
-        name: Update version in pom.xml
+      - name: Update version in pom.xml
         env:
           RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
         run: |
