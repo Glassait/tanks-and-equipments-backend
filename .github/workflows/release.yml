@@ -1,8 +1,8 @@
 name: Update release version
 on:
-  release:
-    types:
-      - created
+  push:
+    tags:
+      - "*.*.*"
 
 jobs:
   update:
@@ -14,6 +14,14 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 20
+      - name: Set output
+        id: vars
+        run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
       - if: github.event.release
         name: Update version in pom.xml
-        run: mvn -B versions:set -DnewVersion=${{ github.event.release.tag_name }} -DgenerateBackupPoms=false
+        env:
+          RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
+        run: |
+          echo $RELEASE_VERSION
+          echo ${{ steps.vars.outputs.tag }}
+          mvn -B versions:set -DnewVersion=${{ steps.vars.outputs.tag }} -DgenerateBackupPoms=false
