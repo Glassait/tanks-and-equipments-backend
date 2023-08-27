@@ -1,5 +1,6 @@
 package com.glassait.lchp.controllers;
 
+import com.glassait.lchp.abstracts.membre.Membre;
 import com.glassait.lchp.services.MembreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +13,7 @@ public class MemberController {
     private MembreService membreService;
 
     @GetMapping
-    public boolean isClanMember(@PathVariable("account_id") String accountId) {
-        return membreService.isClanMember(Integer.parseInt(accountId)).isPresent();
+    public Membre isClanMember(@PathVariable("account_id") String accountId) {
+        return membreService.isClanMember(Integer.parseInt(accountId)).map(Membre::new).orElse(null);
     }
 }

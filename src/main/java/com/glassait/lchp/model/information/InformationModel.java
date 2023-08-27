@@ -16,7 +16,7 @@ public class InformationModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "text")
+    @Column(name = "text", length = 520)
     private String text;
 
     @Column(name = "url")
