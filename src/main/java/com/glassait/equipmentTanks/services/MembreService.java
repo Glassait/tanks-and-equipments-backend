@@ -1,10 +1,10 @@
 package com.glassait.equipmentTanks.services;
 
+import com.glassait.equipmentTanks.abstracts.GlassaitLogger;
 import com.glassait.equipmentTanks.abstracts.membre.Member;
 import com.glassait.equipmentTanks.abstracts.membre.Members;
 import com.glassait.equipmentTanks.model.membre.MemberModel;
 import com.glassait.equipmentTanks.repositories.MembreRepository;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,17 +13,37 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class MembreService {
-    @NonNull
-    private MembreRepository membreRepository;
-    @NonNull
-    private WotService wotService;
+public class MembreService extends GlassaitLogger {
+    /**
+     * Beginning of the log sentence
+     */
+    private static final String START_LOG = "The account n°: ";
 
-    public Optional<MemberModel> isClanMember(int accountId) {
-        return membreRepository.findById(accountId);
+    /**
+     * The instance of the member repository
+     */
+    private final MembreRepository membreRepository;
+    /**
+     * The instance of the wot service
+     */
+    private final WotService wotService;
+
+    /**
+     * Find the user by is account id
+     *
+     * @param accountId The account id of the user
+     * @return An optional with the result of the search
+     */
+    public Optional<MemberModel> findById(int accountId) {
+        return this.membreRepository.findById(accountId);
     }
 
-    public boolean updateMembers() {
+    /**
+     * Update the member database with the data get from Wargaming
+     *
+     * @return true
+     */
+    public String updateMembers() {
         Members fromWot = this.wotService.getClanMembers();
         Members fromDB = new Members(this.getAll());
 
@@ -32,11 +52,11 @@ public class MembreService {
             if (list.size() == 1) {
                 Member memberFromDB = list.get(0);
                 if (!memberFromDB.getRole().equals(member.getRole())) {
-                    System.out.println(member.getAccount_id() + " need to update the role from " + memberFromDB.getRole() + " to " + member.getRole());
+                    super.logDebug(member.getAccount_id() + " need to update the role from " + memberFromDB.getRole() + " to " + member.getRole());
                     this.updateMember(new MemberModel(memberFromDB.getAccount_id(), member.getRole()));
                 }
             } else {
-                System.out.println(member.getAccount_id() + " is outside the database");
+                super.logDebug(member.getAccount_id() + " is outside the database");
                 this.addMember(new MemberModel(member.getAccount_id(), member.getRole()));
             }
         });
@@ -44,31 +64,51 @@ public class MembreService {
         fromDB.getMembers().forEach(member -> {
             List<Member> list = fromWot.getMembers().stream().filter(member1 -> member.getAccount_id() == member1.getAccount_id()).toList();
             if (list.isEmpty()) {
-                System.out.println(member.getAccount_id() + " has leaved the clan");
+                super.logDebug(member.getAccount_id() + " has leaved the clan");
                 this.deleteMember(new MemberModel(member.getAccount_id(), member.getRole()));
             }
         });
 
-        return true;
+        return "Database updated";
     }
 
-    public List<MemberModel> getAll() {
-        return membreRepository.findAll();
+    /**
+     * Get all the members in the database
+     *
+     * @return The list of all the members in the database
+     */
+    private List<MemberModel> getAll() {
+        return this.membreRepository.findAll();
     }
 
-    public void updateMember(MemberModel memberModel) {
+    /**
+     * Update the member in the database
+     *
+     * @param memberModel The new data of the user to update
+     */
+    private void updateMember(MemberModel memberModel) {
         this.membreRepository.saveAndFlush(memberModel);
-        System.out.println("The account n°: " + memberModel.getAccountId() + " as been updated");
+        super.logDebug(START_LOG + memberModel.getAccountId() + " as been updated");
     }
 
-    public void deleteMember(MemberModel memberModel) {
+    /**
+     * Delete the user of the database
+     *
+     * @param memberModel The user to delete
+     */
+    private void deleteMember(MemberModel memberModel) {
         this.membreRepository.delete(memberModel);
         this.membreRepository.flush();
-        System.out.println("The account n°: " + memberModel.getAccountId() + " as been deleted");
+        super.logDebug(START_LOG + memberModel.getAccountId() + " as been deleted");
     }
 
-    public void addMember(MemberModel memberModel) {
+    /**
+     * Add the user to the database
+     *
+     * @param memberModel The user to add
+     */
+    private void addMember(MemberModel memberModel) {
         this.membreRepository.saveAndFlush(memberModel);
-        System.out.println("The account n°: " + memberModel.getAccountId() + " as been added");
+        super.logDebug(START_LOG + memberModel.getAccountId() + " as been added");
     }
 }
