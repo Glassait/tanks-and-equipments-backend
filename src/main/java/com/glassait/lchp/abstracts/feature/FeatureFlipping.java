@@ -7,7 +7,7 @@ import java.util.List;
 
 @Getter
 public class FeatureFlipping {
-    private final boolean clanWar;
+    private final Boolean clanWar;
 
     public FeatureFlipping(List<FeatureModel> featureModel) {
         this.clanWar = featureModel.get(0).getActivated() == 1;
