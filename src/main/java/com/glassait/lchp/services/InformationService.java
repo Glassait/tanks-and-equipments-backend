@@ -1,21 +1,21 @@
 package com.glassait.lchp.services;
 
 import com.glassait.lchp.abstracts.information.Information;
-import com.glassait.lchp.model.information.InformationModel;
 import com.glassait.lchp.repositories.InformationRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
+@RequiredArgsConstructor
 public class InformationService {
-    @Autowired
-    private InformationRepository informationRepository;
+    private final InformationRepository informationRepository;
 
+    /**
+     * Get the last information
+     *
+     * @return The las information store in the
+     */
     public Information getLastInformation() {
-        List<InformationModel> informationModels = informationRepository.findAll();
-
-        return new Information(informationModels.get(informationModels.size() - 1));
+        return new Information(informationRepository.getLastInformation());
     }
 }

@@ -10,6 +10,6 @@ public class Information {
 
     public Information(InformationModel informationModel) {
         this.text = informationModel.getText();
-        this.lien = new InformationLink(informationModel.getUrl(), informationModel.getTextUrl());
+        this.lien = informationModel.getUrl() != null ? new InformationLink(informationModel.getUrl(), informationModel.getTextUrl()) : null;
     }
 }
