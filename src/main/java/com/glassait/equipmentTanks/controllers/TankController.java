@@ -1,34 +1,42 @@
 package com.glassait.equipmentTanks.controllers;
 
+import com.glassait.equipmentTanks.abstracts.GlassaitLogger;
 import com.glassait.equipmentTanks.abstracts.tankData.Tank;
 import com.glassait.equipmentTanks.services.TankService;
-import com.glassait.equipmentTanks.services.WotService;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * This controller manage the api for the tanks
+ */
 @CrossOrigin("*")
-@RequestMapping(value = "api/tanks/{access_token}")
 @RestController
 @RequiredArgsConstructor
-public class TankController {
-    @NonNull
-    private TankService tankService;
-    @NonNull
-    private WotService wotService;
+public class TankController extends GlassaitLogger {
+    /**
+     * The instance of the tank service
+     */
+    private final TankService tankService;
 
-    @GetMapping
-    public List<Tank> getStudents(@PathVariable("access_token") String accessToken) {
-        if (wotService.checkAccessToken(accessToken)) {
-            return tankService.getTanks();
-        }
-        System.out.println("Token : `" + accessToken + "` is invalid or has expire");
-        return null;
+    /**
+     * Fetch all the tanks from the service
+     *
+     * @param accessToken The wot access token of the user
+     * @return The list of the tanks if the access token is valide, else a 401 error
+     */
+    @GetMapping(value = "api/tanks")
+    @PreAuthorize("wotService.checkAccessToken(accessToken)")
+    public ResponseEntity<List<Tank>> getTanks(@RequestParam(name = "access_token") String accessToken) {
+        super.logDebug("The access token {" + accessToken + "} is valide");
+        return new ResponseEntity<>(this.tankService.getTanks(), HttpStatus.OK);
     }
 }
+
