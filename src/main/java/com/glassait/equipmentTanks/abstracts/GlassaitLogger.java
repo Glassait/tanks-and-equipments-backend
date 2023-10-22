@@ -3,28 +3,25 @@ package com.glassait.equipmentTanks.abstracts;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * Class that manage the log
- */
 public abstract class GlassaitLogger {
     /**
-     * Instance of the logger
+     * The instance of the logger
      */
     private final Logger logger = LoggerFactory.getLogger(GlassaitLogger.class);
 
     /**
      * Log an error
      *
-     * @param message The error to log
+     * @param error The message of the error
      */
-    protected void logError(String message) {
-        this.logger.error("ERROR -> " + message);
+    protected void logError(String error) {
+        this.logger.error("ERROR -> " + error);
     }
 
     /**
-     * Lof a debug
+     * Log a debug
      *
-     * @param message The debug to log
+     * @param message The debug message
      */
     protected void logDebug(String message) {
         this.logger.debug("DEBUG -> " + message);

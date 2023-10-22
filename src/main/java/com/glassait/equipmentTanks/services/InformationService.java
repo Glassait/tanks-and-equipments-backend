@@ -1,23 +1,27 @@
 package com.glassait.equipmentTanks.services;
 
 import com.glassait.equipmentTanks.abstracts.information.Information;
-import com.glassait.equipmentTanks.model.information.InformationModel;
 import com.glassait.equipmentTanks.repositories.InformationRepository;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
+/**
+ * This service manage the interaction between the controller and the repository
+ */
 @Service
 @RequiredArgsConstructor
 public class InformationService {
-    @NonNull
-    private InformationRepository informationRepository;
+    /**
+     * The instance of the information repository
+     */
+    private final InformationRepository informationRepository;
 
+    /**
+     * Get the last information
+     *
+     * @return The las information store in the
+     */
     public Information getLastInformation() {
-        List<InformationModel> informationModels = informationRepository.findAll();
-
-        return new Information(informationModels.get(informationModels.size() - 1));
+        return new Information(informationRepository.getLastInformation());
     }
 }
