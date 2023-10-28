@@ -1,12 +1,12 @@
-package com.glassait.lchp.abstracts.tankData;
+package com.glassait.lchp.abstracts.tank_data;
 
 import com.glassait.lchp.model.tank.FieldsModel;
 import lombok.Getter;
 
 @Getter
 public class Field {
-    public FieldDetail left;
-    public FieldDetail right;
+    private final FieldDetail left;
+    private final FieldDetail right;
 
     public Field(FieldsModel fieldsModel) {
         this.left = new FieldDetail(fieldsModel.getLeftName(), fieldsModel.getLeftImage(), fieldsModel.getLeftActive() == 1);

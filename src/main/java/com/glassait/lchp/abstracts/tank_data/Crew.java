@@ -1,13 +1,13 @@
-package com.glassait.lchp.abstracts.tankData;
+package com.glassait.lchp.abstracts.tank_data;
 
 import com.glassait.lchp.model.tank.CrewModel;
 import lombok.Getter;
 
 @Getter
 public class Crew {
-    private final String[] crew;
+    private final String[] crews;
 
     public Crew(CrewModel crewModel) {
-        this.crew = crewModel.getCrew().split(",");
+        this.crews = crewModel.getCrew().split(",");
     }
 }

@@ -7,11 +7,11 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public class Member {
-    private String role;
-    private int account_id;
+    private final String role;
+    private final int accountId;
 
     public Member(MemberModel memberModel) {
         this.role = memberModel.getRole();
-        this.account_id = memberModel.getAccountId();
+        this.accountId = memberModel.getAccountId();
     }
 }

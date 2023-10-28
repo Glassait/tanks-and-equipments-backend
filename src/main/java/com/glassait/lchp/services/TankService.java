@@ -1,6 +1,6 @@
 package com.glassait.lchp.services;
 
-import com.glassait.lchp.abstracts.tankData.Tank;
+import com.glassait.lchp.abstracts.tank_data.Tank;
 import com.glassait.lchp.model.tank.TankModel;
 import com.glassait.lchp.repositories.TankRepository;
 import lombok.RequiredArgsConstructor;

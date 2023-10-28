@@ -28,7 +28,6 @@ public class MemberController extends GlassaitLogger {
     @RequestMapping(value = "api/member/update")
     public ResponseEntity<String> updateClanMember(@RequestParam(name = "access_token") String accessToken) {
         if (this.wotService.checkAccessToken(accessToken)) {
-            super.logDebug("The access token {" + accessToken + "} is valide");
             return new ResponseEntity<>(this.membreService.updateMembers(), HttpStatus.OK);
         }
         super.logError("The access token {" + accessToken + "} is not valide or the user is not a member of the clan");

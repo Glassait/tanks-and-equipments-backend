@@ -1,4 +1,4 @@
-package com.glassait.lchp.abstracts.tankData;
+package com.glassait.lchp.abstracts.tank_data;
 
 import com.glassait.lchp.model.tank.TankModel;
 import lombok.Getter;

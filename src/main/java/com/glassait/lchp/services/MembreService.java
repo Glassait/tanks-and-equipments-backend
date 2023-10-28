@@ -38,25 +38,25 @@ public class MembreService extends GlassaitLogger {
         Members fromWot = this.wotService.getClanMembers();
         Members fromDB = new Members(this.getAll());
 
-        fromWot.getMembers().forEach(member -> {
-            List<Member> list = fromDB.getMembers().stream().filter(member1 -> member.getAccount_id() == member1.getAccount_id()).toList();
+        fromWot.getMemberList().forEach(member -> {
+            List<Member> list = fromDB.getMemberList().stream().filter(member1 -> member.getAccountId() == member1.getAccountId()).toList();
             if (list.size() == 1) {
                 Member memberFromDB = list.get(0);
                 if (!memberFromDB.getRole().equals(member.getRole())) {
-                    super.logDebug(member.getAccount_id() + " need to update the role from " + memberFromDB.getRole() + " to " + member.getRole());
-                    this.updateMember(new MemberModel(memberFromDB.getAccount_id(), member.getRole()));
+                    super.logDebug(member.getAccountId() + " need to update the role from " + memberFromDB.getRole() + " to " + member.getRole());
+                    this.updateMember(new MemberModel(memberFromDB.getAccountId(), member.getRole()));
                 }
             } else {
-                super.logDebug(member.getAccount_id() + " is outside the database");
-                this.addMember(new MemberModel(member.getAccount_id(), member.getRole()));
+                super.logDebug(member.getAccountId() + " is outside the database");
+                this.addMember(new MemberModel(member.getAccountId(), member.getRole()));
             }
         });
 
-        fromDB.getMembers().forEach(member -> {
-            List<Member> list = fromWot.getMembers().stream().filter(member1 -> member.getAccount_id() == member1.getAccount_id()).toList();
+        fromDB.getMemberList().forEach(member -> {
+            List<Member> list = fromWot.getMemberList().stream().filter(member1 -> member.getAccountId() == member1.getAccountId()).toList();
             if (list.isEmpty()) {
-                super.logDebug(member.getAccount_id() + " has leaved the clan");
-                this.deleteMember(new MemberModel(member.getAccount_id(), member.getRole()));
+                super.logDebug(member.getAccountId() + " has leaved the clan");
+                this.deleteMember(new MemberModel(member.getAccountId(), member.getRole()));
             }
         });
 

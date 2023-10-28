@@ -1,15 +1,13 @@
-package com.glassait.lchp.abstracts.tankData;
+package com.glassait.lchp.abstracts.tank_data;
 
 import com.glassait.lchp.model.tank.ShellModel;
 import lombok.Getter;
 
 @Getter
 public class Shell {
-    public String name;
-
-    public int amount;
-
-    public boolean premium;
+    private final String name;
+    private final int amount;
+    private final boolean premium;
 
     public Shell(ShellModel shellModel) {
         this.name = shellModel.getName();

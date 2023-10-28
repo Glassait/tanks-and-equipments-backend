@@ -1,13 +1,12 @@
-package com.glassait.lchp.abstracts.tankData;
+package com.glassait.lchp.abstracts.tank_data;
 
 import com.glassait.lchp.model.tank.FieldsModel;
 import lombok.Getter;
 
 @Getter
 public class Fields {
-    public int level;
-
-    public Field field;
+    private final int level;
+    private final Field field;
 
     public Fields(FieldsModel fieldsModel) {
         this.level = fieldsModel.getLevel();
