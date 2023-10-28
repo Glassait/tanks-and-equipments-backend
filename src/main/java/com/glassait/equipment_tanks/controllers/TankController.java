@@ -34,7 +34,7 @@ public class TankController {
      * @return The list of the tanks if the access token is valide, else a 401 error
      */
     @GetMapping(value = "api/tanks")
-    @PreAuthorize("wotService.checkAccessToken(accessToken)")
+    @PreAuthorize("accessToken != null && !accessToken.isEmpty() && wotService.checkAccessToken(accessToken)")
     public ResponseEntity<List<Tank>> getTanks(@RequestParam(name = "access_token") String accessToken) {
         log.warn("The access token {" + accessToken + "} is valide");
         return new ResponseEntity<>(this.tankService.getTanks(), HttpStatus.OK);
