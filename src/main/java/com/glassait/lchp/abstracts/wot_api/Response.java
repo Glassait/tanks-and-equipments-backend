@@ -1,9 +1,11 @@
-package com.glassait.lchp.abstracts.wotApi;
+package com.glassait.lchp.abstracts.wot_api;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.util.Map;
 
+@AllArgsConstructor
 @Getter
 public class Response {
     private String status;

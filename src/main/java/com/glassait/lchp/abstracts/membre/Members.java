@@ -8,10 +8,10 @@ import java.util.List;
 
 @Getter
 public class Members {
-    private final List<Member> members;
+    private final List<Member> memberList;
 
     public Members(List<MemberModel> memberModels) {
-        this.members = new ArrayList<>();
-        memberModels.forEach(memberModel -> this.members.add(new Member(memberModel)));
+        this.memberList = new ArrayList<>();
+        memberModels.forEach(memberModel -> this.memberList.add(new Member(memberModel)));
     }
 }
