@@ -1,22 +1,23 @@
 package com.glassait.equipment_tanks.controllers;
 
-import com.glassait.equipment_tanks.abstracts.GlassaitLogger;
 import com.glassait.equipment_tanks.abstracts.membre.Member;
 import com.glassait.equipment_tanks.services.MembreService;
 import com.glassait.equipment_tanks.services.WotService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin("*")
 @RestController
+@Slf4j
 @RequiredArgsConstructor
-public class MemberController extends GlassaitLogger {
+public class MemberController {
     /**
      * Instance of the member service
      */
@@ -32,7 +33,7 @@ public class MemberController extends GlassaitLogger {
      * @param accountId The account id of the user
      * @return The member if found, else null
      */
-    @RequestMapping(value = "api/member")
+    @GetMapping(value = "api/member")
     public ResponseEntity<Member> isClanMember(@RequestParam("account_id") Integer accountId) {
         Member member = membreService.findById(accountId).map(Member::new).orElse(null);
         return new ResponseEntity<>(member, HttpStatus.OK);
@@ -49,7 +50,7 @@ public class MemberController extends GlassaitLogger {
         if (this.wotService.checkAccessToken(accessToken)) {
             return new ResponseEntity<>(this.membreService.updateMembers(), HttpStatus.OK);
         }
-        super.logError("The access token {" + accessToken + "} is not valide or the user is not a member of the clan");
+        log.warn("The access token {" + accessToken + "} is not valide or the user is not a member of the clan");
         return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
     }
 }

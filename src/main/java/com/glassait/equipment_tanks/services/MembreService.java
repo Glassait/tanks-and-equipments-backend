@@ -1,19 +1,20 @@
 package com.glassait.equipment_tanks.services;
 
-import com.glassait.equipment_tanks.abstracts.GlassaitLogger;
 import com.glassait.equipment_tanks.abstracts.membre.Member;
 import com.glassait.equipment_tanks.abstracts.membre.Members;
 import com.glassait.equipment_tanks.model.membre.MemberModel;
 import com.glassait.equipment_tanks.repositories.MembreRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
-public class MembreService extends GlassaitLogger {
+public class MembreService {
     /**
      * Beginning of the log sentence
      */
@@ -52,11 +53,11 @@ public class MembreService extends GlassaitLogger {
             if (list.size() == 1) {
                 Member memberFromDB = list.get(0);
                 if (!memberFromDB.getRole().equals(member.getRole())) {
-                    super.logDebug(member.getAccountId() + " need to update the role from " + memberFromDB.getRole() + " to " + member.getRole());
+                    log.debug(member.getAccountId() + " need to update the role from " + memberFromDB.getRole() + " to " + member.getRole());
                     this.updateMember(new MemberModel(memberFromDB.getAccountId(), member.getRole()));
                 }
             } else {
-                super.logDebug(member.getAccountId() + " is outside the database");
+                log.debug(member.getAccountId() + " is outside the database");
                 this.addMember(new MemberModel(member.getAccountId(), member.getRole()));
             }
         });
@@ -64,7 +65,7 @@ public class MembreService extends GlassaitLogger {
         fromDB.getMemberList().forEach(member -> {
             List<Member> list = fromWot.getMemberList().stream().filter(member1 -> member.getAccountId() == member1.getAccountId()).toList();
             if (list.isEmpty()) {
-                super.logDebug(member.getAccountId() + " has leaved the clan");
+                log.debug(member.getAccountId() + " has leaved the clan");
                 this.deleteMember(new MemberModel(member.getAccountId(), member.getRole()));
             }
         });
@@ -88,7 +89,7 @@ public class MembreService extends GlassaitLogger {
      */
     private void updateMember(MemberModel memberModel) {
         this.membreRepository.saveAndFlush(memberModel);
-        super.logDebug(START_LOG + memberModel.getAccountId() + " as been updated");
+        log.debug(START_LOG + memberModel.getAccountId() + " as been updated");
     }
 
     /**
@@ -99,7 +100,7 @@ public class MembreService extends GlassaitLogger {
     private void deleteMember(MemberModel memberModel) {
         this.membreRepository.delete(memberModel);
         this.membreRepository.flush();
-        super.logDebug(START_LOG + memberModel.getAccountId() + " as been deleted");
+        log.debug(START_LOG + memberModel.getAccountId() + " as been deleted");
     }
 
     /**
@@ -109,6 +110,6 @@ public class MembreService extends GlassaitLogger {
      */
     private void addMember(MemberModel memberModel) {
         this.membreRepository.saveAndFlush(memberModel);
-        super.logDebug(START_LOG + memberModel.getAccountId() + " as been added");
+        log.debug(START_LOG + memberModel.getAccountId() + " as been added");
     }
 }
