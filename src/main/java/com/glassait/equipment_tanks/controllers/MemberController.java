@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,7 +44,7 @@ public class MemberController extends GlassaitLogger {
      * @param accessToken The wot access token of the user
      * @return A string if the access token in valide, else a 401 error
      */
-    @RequestMapping(value = "api/member/update")
+    @PostMapping(value = "api/member/update")
     public ResponseEntity<String> updateClanMember(@RequestParam(name = "access_token") String accessToken) {
         if (this.wotService.checkAccessToken(accessToken)) {
             return new ResponseEntity<>(this.membreService.updateMembers(), HttpStatus.OK);
