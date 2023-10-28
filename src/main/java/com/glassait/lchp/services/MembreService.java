@@ -103,9 +103,4 @@ public class MembreService {
         this.membreRepository.saveAndFlush(memberModel);
         log.debug(START_LOG + memberModel.getAccountId() + " as been added");
     }
-
-    public void test() {
-        System.out.println("THIS IS MAYBE A TEST");
-        log.debug("THIS IS A TEST");
-    }
 }
