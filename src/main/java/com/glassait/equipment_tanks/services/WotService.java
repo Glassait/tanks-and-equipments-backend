@@ -1,7 +1,8 @@
 package com.glassait.equipment_tanks.services;
 
+import com.glassait.equipment_tanks.abstracts.GlassaitLogger;
 import com.glassait.equipment_tanks.abstracts.membre.Members;
-import com.glassait.equipment_tanks.abstracts.wotApi.Response;
+import com.glassait.equipment_tanks.abstracts.wot_api.Response;
 import com.google.gson.Gson;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 @Service
-public class WotService {
+public class WotService extends GlassaitLogger {
 
     private static String formatWoTApiUrl(String url) {
         return String.format("%s%s", "https://api.worldoftanks.eu/wot", url.replace("clanId", "500312605"));
@@ -48,13 +49,13 @@ public class WotService {
 
             int status = httpURLConnection.getResponseCode();
             if (status != 200) {
-                System.err.println("The request to wot api failed for getting all clan members with status : " + status);
+                super.logError("The request to wot api failed for getting all clan members with status : " + status);
                 return null;
             }
 
             return new Gson().fromJson(convertURLConnectionToResponse(httpURLConnection).getData().get("500179430").toString(), Members.class);
         } catch (URISyntaxException | IOException e) {
-            System.err.println("The request to wot api failed with error: \n" + e);
+            super.logError("The request to wot api failed with error: \n" + e);
             throw new RuntimeException(e);
         }
     }
@@ -65,13 +66,13 @@ public class WotService {
 
             int status = httpURLConnection.getResponseCode();
             if (status != 200) {
-                System.err.println("The request to wot api failed for accessToken: `" + accessToken + "` with status : " + status);
+                super.logError("The request to wot api failed with the given accessToken with status : " + status);
                 return false;
             }
 
             return !convertURLConnectionToResponse(httpURLConnection).getStatus().equals("error");
         } catch (URISyntaxException | IOException e) {
-            System.err.println("The request to wot api failed with error: \n" + e);
+            super.logError("The request to wot api failed with error: \n" + e);
             return false;
         }
     }

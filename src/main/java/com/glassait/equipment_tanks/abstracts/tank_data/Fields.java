@@ -1,13 +1,12 @@
-package com.glassait.equipment_tanks.abstracts.tankData;
+package com.glassait.equipment_tanks.abstracts.tank_data;
 
 import com.glassait.equipment_tanks.model.tank.FieldsModel;
 import lombok.Getter;
 
 @Getter
 public class Fields {
-    public int level;
-
-    public Field field;
+    private final int level;
+    private final Field field;
 
     public Fields(FieldsModel fieldsModel) {
         this.level = fieldsModel.getLevel();

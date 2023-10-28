@@ -34,7 +34,6 @@ public class FeatureController extends GlassaitLogger {
     @GetMapping(value = "api/feature")
     public ResponseEntity<FeatureFlipping> getAll(@RequestParam(name = "access_token") String accessToken) {
         if (this.wotService.checkAccessToken(accessToken)) {
-            super.logDebug("The access token {" + accessToken + "} is valide");
             return new ResponseEntity<>(this.featureService.getAll(), HttpStatus.OK);
         }
         super.logError("The access token {" + accessToken + "} is not valide or the user is not a member of the clan");

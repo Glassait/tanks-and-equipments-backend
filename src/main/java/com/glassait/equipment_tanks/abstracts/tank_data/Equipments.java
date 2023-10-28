@@ -1,4 +1,4 @@
-package com.glassait.equipment_tanks.abstracts.tankData;
+package com.glassait.equipment_tanks.abstracts.tank_data;
 
 import com.glassait.equipment_tanks.model.tank.EquipmentModel;
 import lombok.Getter;
@@ -8,9 +8,8 @@ import java.util.List;
 
 @Getter
 public class Equipments {
-    public List<EquipmentDetail> first;
-
-    public List<EquipmentDetail> second;
+    private final List<EquipmentDetail> first;
+    private final List<EquipmentDetail> second;
 
     public Equipments(List<EquipmentModel> equipmentModelFirst, List<EquipmentModel> equipmentModelSecond) {
         this.first = new ArrayList<>();

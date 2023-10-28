@@ -15,7 +15,7 @@ public abstract class GlassaitLogger {
      * @param error The message of the error
      */
     protected void logError(String error) {
-        this.logger.error("ERROR -> " + error);
+        this.logger.error("ERROR -> {}", error);
     }
 
     /**
@@ -24,6 +24,6 @@ public abstract class GlassaitLogger {
      * @param message The debug message
      */
     protected void logDebug(String message) {
-        this.logger.debug("DEBUG -> " + message);
+        this.logger.debug("DEBUG -> {}", message);
     }
 }

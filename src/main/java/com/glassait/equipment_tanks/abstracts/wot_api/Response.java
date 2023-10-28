@@ -1,9 +1,11 @@
-package com.glassait.equipment_tanks.abstracts.wotApi;
+package com.glassait.equipment_tanks.abstracts.wot_api;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.util.Map;
 
+@AllArgsConstructor
 @Getter
 public class Response {
     private String status;

@@ -1,4 +1,4 @@
-package com.glassait.equipment_tanks.abstracts.wotApi;
+package com.glassait.equipment_tanks.abstracts.wot_api;
 
 import lombok.Getter;
 

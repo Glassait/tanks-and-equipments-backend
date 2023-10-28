@@ -1,13 +1,13 @@
-package com.glassait.equipment_tanks.abstracts.tankData;
+package com.glassait.equipment_tanks.abstracts.tank_data;
 
 import com.glassait.equipment_tanks.model.tank.CrewModel;
 import lombok.Getter;
 
 @Getter
 public class Crew {
-    private final String[] crew;
+    private final String[] crews;
 
     public Crew(CrewModel crewModel) {
-        this.crew = crewModel.getCrew().split(",");
+        this.crews = crewModel.getCrew().split(",");
     }
 }

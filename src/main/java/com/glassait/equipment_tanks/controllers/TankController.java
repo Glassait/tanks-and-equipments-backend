@@ -1,7 +1,7 @@
 package com.glassait.equipment_tanks.controllers;
 
 import com.glassait.equipment_tanks.abstracts.GlassaitLogger;
-import com.glassait.equipment_tanks.abstracts.tankData.Tank;
+import com.glassait.equipment_tanks.abstracts.tank_data.Tank;
 import com.glassait.equipment_tanks.services.TankService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
