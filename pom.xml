@@ -10,9 +10,9 @@
     </parent>
 
     <groupId>com.glassait</groupId>
-    <artifactId>equipmentTanks</artifactId>
+    <artifactId>equipment_tanks</artifactId>
     <version>0.0.1</version>
-    <name>equipmentTanks</name>
+    <name>equipment_tanks</name>
     <description>Backend for equipmentTanks web site</description>
 
     <properties>

@@ -1,7 +1,7 @@
 package com.glassait.equipment_tanks.controllers;
 
-import com.glassait.equipment_tanks.abstracts.membre.Member;
-import com.glassait.equipment_tanks.services.MembreService;
+import com.glassait.equipment_tanks.abstracts.member.Member;
+import com.glassait.equipment_tanks.services.MemberService;
 import com.glassait.equipment_tanks.services.WotService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +21,7 @@ public class MemberController {
     /**
      * Instance of the member service
      */
-    private final MembreService membreService;
+    private final MemberService memberService;
     /**
      * Instance of the wot service
      */
@@ -35,7 +35,9 @@ public class MemberController {
      */
     @GetMapping(value = "api/member")
     public ResponseEntity<Member> isClanMember(@RequestParam("account_id") Integer accountId) {
-        Member member = membreService.findById(accountId).map(Member::new).orElse(null);
+        Member member = memberService.findById(accountId)
+                                     .map(Member::new)
+                                     .orElse(null);
         return new ResponseEntity<>(member, HttpStatus.OK);
     }
 
@@ -48,7 +50,7 @@ public class MemberController {
     @PostMapping(value = "api/member/update")
     public ResponseEntity<String> updateClanMember(@RequestParam(name = "access_token") String accessToken) {
         if (accessToken != null && !accessToken.isEmpty() && this.wotService.checkAccessToken(accessToken)) {
-            return new ResponseEntity<>(this.membreService.updateMembers(), HttpStatus.OK);
+            return new ResponseEntity<>(this.memberService.updateMembers(), HttpStatus.OK);
         }
         log.warn("The access token {" + accessToken + "} is not valide or the user is not a member of the clan");
         return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);

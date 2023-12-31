@@ -1,15 +1,15 @@
 package com.glassait.equipment_tanks;
 
 import com.glassait.equipment_tanks.config.DataSourceConfigProperties;
+import com.glassait.equipment_tanks.config.GlassaitConfigProperties;
+import com.glassait.equipment_tanks.config.SecurityConfigProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 
 @SpringBootApplication
-@EnableConfigurationProperties(DataSourceConfigProperties.class)
-@EnableMethodSecurity
+@EnableConfigurationProperties({ DataSourceConfigProperties.class, SecurityConfigProperties.class, GlassaitConfigProperties.class })
 @Slf4j
 public class GlassaitApplication {
     public static void main(String[] args) {

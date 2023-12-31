@@ -1,6 +1,6 @@
-package com.glassait.equipment_tanks.abstracts.membre;
+package com.glassait.equipment_tanks.abstracts.member;
 
-import com.glassait.equipment_tanks.model.membre.MemberModel;
+import com.glassait.equipment_tanks.model.member.MemberModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -8,10 +8,10 @@ import lombok.Getter;
 @Getter
 public class Member {
     private final String role;
-    private final int accountId;
+    private final int account_id; // NOSONAR
 
     public Member(MemberModel memberModel) {
         this.role = memberModel.getRole();
-        this.accountId = memberModel.getAccountId();
+        this.account_id = memberModel.getAccountId();
     }
 }

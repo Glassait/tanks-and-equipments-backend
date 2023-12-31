@@ -1,4 +1,4 @@
-package com.glassait.equipment_tanks.model.membre;
+package com.glassait.equipment_tanks.model.member;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "membres")
+@Table(name = "members")
 public class MemberModel {
     @Id
     @Column(name = "account_id", nullable = false, unique = true, updatable = false)

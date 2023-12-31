@@ -1,9 +1,9 @@
 package com.glassait.equipment_tanks.services;
 
-import com.glassait.equipment_tanks.abstracts.membre.Member;
-import com.glassait.equipment_tanks.abstracts.membre.Members;
-import com.glassait.equipment_tanks.model.membre.MemberModel;
-import com.glassait.equipment_tanks.repositories.MembreRepository;
+import com.glassait.equipment_tanks.abstracts.member.Member;
+import com.glassait.equipment_tanks.abstracts.member.Members;
+import com.glassait.equipment_tanks.model.member.MemberModel;
+import com.glassait.equipment_tanks.repositories.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import java.util.Optional;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class MembreService {
+public class MemberService {
     /**
      * Beginning of the log sentence
      */
@@ -23,7 +23,7 @@ public class MembreService {
     /**
      * The instance of the member repository
      */
-    private final MembreRepository membreRepository;
+    private final MemberRepository memberRepository;
     /**
      * The instance of the wot service
      */
@@ -36,7 +36,7 @@ public class MembreService {
      * @return An optional with the result of the search
      */
     public Optional<MemberModel> findById(int accountId) {
-        return this.membreRepository.findById(accountId);
+        return this.memberRepository.findById(accountId);
     }
 
     /**
@@ -48,25 +48,25 @@ public class MembreService {
         Members fromWot = this.wotService.getClanMembers();
         Members fromDB = new Members(this.getAll());
 
-        fromWot.getMemberList().forEach(member -> {
-            List<Member> list = fromDB.getMemberList().stream().filter(member1 -> member.getAccountId() == member1.getAccountId()).toList();
+        fromWot.getMembers().forEach(member -> {
+            List<Member> list = fromDB.getMembers().stream().filter(member1 -> member.getAccount_id() == member1.getAccount_id()).toList();
             if (list.size() == 1) {
                 Member memberFromDB = list.get(0);
                 if (!memberFromDB.getRole().equals(member.getRole())) {
-                    log.debug(member.getAccountId() + " need to update the role from " + memberFromDB.getRole() + " to " + member.getRole());
-                    this.updateMember(new MemberModel(memberFromDB.getAccountId(), member.getRole()));
+                    log.debug(member.getAccount_id() + " need to update the role from " + memberFromDB.getRole() + " to " + member.getRole());
+                    this.updateMember(new MemberModel(memberFromDB.getAccount_id(), member.getRole()));
                 }
             } else {
-                log.debug(member.getAccountId() + " is outside the database");
-                this.addMember(new MemberModel(member.getAccountId(), member.getRole()));
+                log.debug(member.getAccount_id() + " is outside the database");
+                this.addMember(new MemberModel(member.getAccount_id(), member.getRole()));
             }
         });
 
-        fromDB.getMemberList().forEach(member -> {
-            List<Member> list = fromWot.getMemberList().stream().filter(member1 -> member.getAccountId() == member1.getAccountId()).toList();
+        fromDB.getMembers().forEach(member -> {
+            List<Member> list = fromWot.getMembers().stream().filter(member1 -> member.getAccount_id() == member1.getAccount_id()).toList();
             if (list.isEmpty()) {
-                log.debug(member.getAccountId() + " has leaved the clan");
-                this.deleteMember(new MemberModel(member.getAccountId(), member.getRole()));
+                log.debug(member.getAccount_id() + " has leaved the clan");
+                this.deleteMember(new MemberModel(member.getAccount_id(), member.getRole()));
             }
         });
 
@@ -79,7 +79,7 @@ public class MembreService {
      * @return The list of all the members in the database
      */
     private List<MemberModel> getAll() {
-        return this.membreRepository.findAll();
+        return this.memberRepository.findAll();
     }
 
     /**
@@ -88,7 +88,7 @@ public class MembreService {
      * @param memberModel The new data of the user to update
      */
     private void updateMember(MemberModel memberModel) {
-        this.membreRepository.saveAndFlush(memberModel);
+        this.memberRepository.saveAndFlush(memberModel);
         log.debug(START_LOG + memberModel.getAccountId() + " as been updated");
     }
 
@@ -98,8 +98,8 @@ public class MembreService {
      * @param memberModel The user to delete
      */
     private void deleteMember(MemberModel memberModel) {
-        this.membreRepository.delete(memberModel);
-        this.membreRepository.flush();
+        this.memberRepository.delete(memberModel);
+        this.memberRepository.flush();
         log.debug(START_LOG + memberModel.getAccountId() + " as been deleted");
     }
 
@@ -109,7 +109,7 @@ public class MembreService {
      * @param memberModel The user to add
      */
     private void addMember(MemberModel memberModel) {
-        this.membreRepository.saveAndFlush(memberModel);
+        this.memberRepository.saveAndFlush(memberModel);
         log.debug(START_LOG + memberModel.getAccountId() + " as been added");
     }
 }
