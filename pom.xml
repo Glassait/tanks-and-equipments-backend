@@ -10,10 +10,10 @@
     </parent>
 
     <groupId>com.glassait</groupId>
-    <artifactId>lchp</artifactId>
+    <artifactId>equipmentTanks</artifactId>
     <version>0.0.1</version>
-    <name>lchp</name>
-    <description>LCHP web site</description>
+    <name>equipmentTanks</name>
+    <description>Backend for equipmentTanks web site</description>
 
     <properties>
         <java.version>20</java.version>
