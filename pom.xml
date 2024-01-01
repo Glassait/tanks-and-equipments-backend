@@ -10,10 +10,10 @@
     </parent>
 
     <groupId>com.glassait</groupId>
-    <artifactId>lchp</artifactId>
+    <artifactId>equipment_tanks</artifactId>
     <version>0.0.1</version>
-    <name>lchp</name>
-    <description>LCHP web site</description>
+    <name>equipment_tanks</name>
+    <description>Backend for equipmentTanks web site</description>
 
     <properties>
         <java.version>20</java.version>
@@ -40,11 +40,16 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
         <dependency>
@@ -63,6 +68,12 @@
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
