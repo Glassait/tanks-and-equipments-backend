@@ -49,9 +49,10 @@ public class MemberController {
      */
     @PostMapping(value = "api/member/update")
     public ResponseEntity<String> updateClanMember(@RequestParam(name = "access_token") String accessToken) {
-        if (accessToken != null && !accessToken.isEmpty() && this.wotService.checkAccessToken(accessToken)) {
+        if (this.wotService.checkAccessToken(accessToken)) {
             return new ResponseEntity<>(this.memberService.updateMembers(), HttpStatus.OK);
         }
+
         log.warn("The access token {" + accessToken + "} is not valide or the user is not a member of the clan");
         return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
     }

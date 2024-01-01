@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Controller that manage the api for the information of the website
+ * This class is the controller that manages the api for the information of the website
  */
 @CrossOrigin("*")
 @RestController
@@ -21,25 +21,26 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class InformationController {
     /**
-     * The instance of the information service
+     * The service that manages the information of the website
      */
     private final InformationService informationService;
     /**
-     * The instance of the wot service
+     * The service that manages the wot api
      */
     private final WotService wotService;
 
     /**
-     * Api to get the last information of the website
+     * This method is the api to get the last information of the website
      *
      * @param accessToken The wot access token of the user
      * @return The last information if the access token is good, else a 401 error
      */
     @GetMapping(value = "api/information")
     public ResponseEntity<Information> getInformation(@RequestParam(name = "access_token") String accessToken) {
-        if (accessToken != null && !accessToken.isEmpty() && this.wotService.checkAccessToken(accessToken)) {
+        if (this.wotService.checkAccessToken(accessToken)) {
             return new ResponseEntity<>(this.informationService.getLastInformation(), HttpStatus.OK);
         }
+
         log.warn("The access token {" + accessToken + "} is not valide or the user is not a member of the clan");
         return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
     }

@@ -16,19 +16,43 @@ import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+/**
+ * Service class for interacting with the World of Tanks API.
+ */
 @Service
 @Slf4j
 @RequiredArgsConstructor
 public class WotService {
+    /**
+     * The clan ID of the clan to retrieve information about.
+     */
     @Value("${glassait.clanID}")
-    private static final String CLAN_ID = "500312605";
-    private static final String WOT_API_URL =
-            "https://api.worldoftanks.eu/wot/clans/info/?application_id=d5cfa347c97b1997c50c1797e2f1cfdc&clan_id=" + CLAN_ID + "&language=fr";
+    private static String clanID;
 
+    /**
+     * The base URL for the World of Tanks API requests.
+     */
+    private static final String WOT_API_URL =
+            "https://api.worldoftanks.eu/wot/clans/info/?application_id=d5cfa347c97b1997c50c1797e2f1cfdc&clan_id=" + clanID + "&language=fr";
+
+    /**
+     * Formats the World of Tanks API URL with the given parameter.
+     *
+     * @param parameter the parameter to add to the URL
+     * @return the formatted URL
+     */
     private static String formatWoTApiUrl(String parameter) {
         return String.format("%s%s", WOT_API_URL, parameter);
     }
 
+    /**
+     * Creates an HTTP URL connection to the given World of Tanks API URL.
+     *
+     * @param wotUrl the URL of the API request
+     * @return the HTTP URL connection
+     * @throws URISyntaxException if the URL is not a valid URI
+     * @throws IOException if there is an error creating the connection
+     */
     private static HttpURLConnection getHttpURLConnection(String wotUrl) throws URISyntaxException, IOException {
         URI uri = new URI(wotUrl);
         HttpURLConnection httpURLConnection = (HttpURLConnection) uri.toURL()
@@ -41,6 +65,13 @@ public class WotService {
         return httpURLConnection;
     }
 
+    /**
+     * Converts an HTTP URL connection to a World of Tanks API response.
+     *
+     * @param httpURLConnection the HTTP URL connection
+     * @return the World of Tanks API response
+     * @throws IOException if there is an error reading from the connection
+     */
     private static Response convertURLConnectionToResponse(HttpURLConnection httpURLConnection) throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
         String inputLine;
@@ -53,6 +84,11 @@ public class WotService {
         return new Gson().fromJson(content.toString(), Response.class);
     }
 
+    /**
+     * Retrieves information about the members of the clan.
+     *
+     * @return the members of the clan, or null if there was an error
+     */
     public Members getClanMembers() {
         try {
             HttpURLConnection httpURLConnection = getHttpURLConnection(formatWoTApiUrl("&fields=members.account_id%2Cmembers.role"));
@@ -64,7 +100,7 @@ public class WotService {
             }
 
             return new Gson().fromJson(convertURLConnectionToResponse(httpURLConnection).getData()
-                                                                                        .get(CLAN_ID)
+                                                                                        .get(clanID)
                                                                                         .toString(), Members.class);
         } catch (URISyntaxException | IOException | JsonSyntaxException e) {
             log.error("The request to wot api failed with error: \n" + e);
@@ -72,6 +108,12 @@ public class WotService {
         }
     }
 
+    /**
+     * Checks if the given access token is valid.
+     *
+     * @param accessToken the access token to check
+     * @return true if the access token is valid, false otherwise
+     */
     public boolean checkAccessToken(String accessToken) {
         try {
             HttpURLConnection httpURLConnection = getHttpURLConnection(formatWoTApiUrl("&fields=private&access_token=" + accessToken));

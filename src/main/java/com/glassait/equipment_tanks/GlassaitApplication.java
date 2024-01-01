@@ -8,10 +8,20 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
+/**
+ * Main class of the Glassait application.
+ *
+ * @author Glassait
+ */
 @SpringBootApplication
 @EnableConfigurationProperties({ DataSourceConfigProperties.class, SecurityConfigProperties.class, GlassaitConfigProperties.class })
 @Slf4j
 public class GlassaitApplication {
+    /**
+     * Main method of the application.
+     *
+     * @param args command line arguments
+     */
     public static void main(String[] args) {
         SpringApplication.run(GlassaitApplication.class, args);
         log.info("YAHOO, The application is running properly");

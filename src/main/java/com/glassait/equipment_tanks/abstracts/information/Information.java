@@ -17,6 +17,11 @@ public class Information {
      */
     private final InformationLink lien;
 
+    public Information() {
+        this.text = null;
+        this.lien = null;
+    }
+
     /**
      * The constructor of the class
      *
@@ -24,6 +29,6 @@ public class Information {
      */
     public Information(InformationModel informationModel) {
         this.text = informationModel.getText();
-        this.lien = informationModel.getUrl() != null ? new InformationLink(informationModel.getUrl(), informationModel.getTextUrl()) : null;
+        this.lien = new InformationLink(informationModel.getUrl(), informationModel.getTextUrl());
     }
 }

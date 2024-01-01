@@ -20,11 +20,9 @@ public class TankService {
      * @return The list of tanks data
      */
     public List<Tank> getTanks() {
-        List<TankModel> tankModels = tankRepository.findAll();
+        List<TankModel> tankModels = tankRepository.getMeta();
         List<Tank> tanks = new ArrayList<>();
-
         tankModels.forEach(tankModel -> tanks.add(new Tank(tankModel)));
-
         return tanks;
     }
 }

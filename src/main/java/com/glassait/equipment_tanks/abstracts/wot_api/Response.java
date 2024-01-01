@@ -7,8 +7,8 @@ import java.util.Map;
 
 @AllArgsConstructor
 @Getter
-public class Response<T> {
+public class Response {
     private String status;
     private Meta meta;
-    private Map<String, T> data;
+    private Map<String, Object> data;
 }

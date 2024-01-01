@@ -34,7 +34,7 @@ public class FeatureController {
      */
     @GetMapping(value = "api/feature")
     public ResponseEntity<FeatureFlipping> getAll(@RequestParam(name = "access_token") String accessToken) {
-        if (accessToken != null && !accessToken.isEmpty() && this.wotService.checkAccessToken(accessToken)) {
+        if (this.wotService.checkAccessToken(accessToken)) {
             return new ResponseEntity<>(this.featureService.getAll(), HttpStatus.OK);
         }
 

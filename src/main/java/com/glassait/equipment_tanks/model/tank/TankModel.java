@@ -33,6 +33,9 @@ public class TankModel {
     @Column(name = "priority")
     private int priority;
 
+    @Column(name = "meta")
+    private int meta;
+
     @OneToOne(cascade = CascadeType.ALL, targetEntity = CrewModel.class)
     @JoinColumn(name = "id", referencedColumnName = "tank_id")
     private CrewModel crewModel;
