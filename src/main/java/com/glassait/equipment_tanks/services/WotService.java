@@ -26,13 +26,13 @@ public class WotService {
     /**
      * The clan ID of the clan to retrieve information about.
      */
-    @Value("${glassait.clanID}")
-    private static String clanID;
+    @Value("${glassait.clan-id}")
+    private String clanID;
 
     /**
      * The base URL for the World of Tanks API requests.
      */
-    private static final String WOT_API_URL =
+    private final String wotApiUrl =
             "https://api.worldoftanks.eu/wot/clans/info/?application_id=d5cfa347c97b1997c50c1797e2f1cfdc&language=fr&clan_id=";
 
     /**
@@ -41,8 +41,8 @@ public class WotService {
      * @param parameter the parameter to add to the URL
      * @return the formatted URL
      */
-    private static String formatWoTApiUrl(String parameter) {
-        return String.format("%s%s", WOT_API_URL + clanID, parameter);
+    private String formatWoTApiUrl(String parameter) {
+        return String.format("%s%s", wotApiUrl + clanID, parameter);
     }
 
     /**
@@ -53,7 +53,7 @@ public class WotService {
      * @throws URISyntaxException if the URL is not a valid URI
      * @throws IOException        if there is an error creating the connection
      */
-    private static HttpURLConnection getHttpURLConnection(String wotUrl) throws URISyntaxException, IOException {
+    private HttpURLConnection getHttpURLConnection(String wotUrl) throws URISyntaxException, IOException {
         URI uri = new URI(wotUrl);
         log.info("Call to wot api with url : {}", uri);
         HttpURLConnection httpURLConnection = (HttpURLConnection) uri.toURL().openConnection();
@@ -72,7 +72,7 @@ public class WotService {
      * @return the World of Tanks API response
      * @throws IOException if there is an error reading from the connection
      */
-    private static Response convertURLConnectionToResponse(HttpURLConnection httpURLConnection) throws IOException {
+    private Response convertURLConnectionToResponse(HttpURLConnection httpURLConnection) throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
         String inputLine;
         StringBuilder content = new StringBuilder();
@@ -91,7 +91,7 @@ public class WotService {
      */
     public Members getClanMembers() {
         try {
-            HttpURLConnection httpURLConnection = getHttpURLConnection(formatWoTApiUrl("&fields=members.account_id%2Cmembers.role"));
+            HttpURLConnection httpURLConnection = this.getHttpURLConnection(formatWoTApiUrl("&fields=members.account_id%2Cmembers.role"));
 
             int status = httpURLConnection.getResponseCode();
             if (status != 200) {
@@ -99,7 +99,9 @@ public class WotService {
                 return null;
             }
 
-            return new Gson().fromJson(convertURLConnectionToResponse(httpURLConnection).getData().get(clanID).toString(), Members.class);
+            Response response = this.convertURLConnectionToResponse(httpURLConnection);
+            log.debug("Response : {}", response);
+            return new Gson().fromJson(response.getData().get(clanID).toString(), Members.class);
         } catch (URISyntaxException | IOException | JsonSyntaxException e) {
             log.error("The request to wot api failed with error: \n" + e);
             throw new RuntimeException(e);
@@ -114,7 +116,7 @@ public class WotService {
      */
     public boolean checkAccessToken(String accessToken) {
         try {
-            HttpURLConnection httpURLConnection = getHttpURLConnection(formatWoTApiUrl("&fields=private&access_token=" + accessToken));
+            HttpURLConnection httpURLConnection = this.getHttpURLConnection(formatWoTApiUrl("&fields=private&access_token=" + accessToken));
 
             int status = httpURLConnection.getResponseCode();
             log.info("Check access token status : " + status);
@@ -123,7 +125,7 @@ public class WotService {
                 return false;
             }
 
-            Response response = convertURLConnectionToResponse(httpURLConnection);
+            Response response = this.convertURLConnectionToResponse(httpURLConnection);
             log.info("Response : {}", response);
             return !response.getStatus().equals("error");
         } catch (URISyntaxException | IOException e) {
