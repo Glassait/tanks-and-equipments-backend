@@ -55,7 +55,7 @@ public class WotService {
      */
     private static HttpURLConnection getHttpURLConnection(String wotUrl) throws URISyntaxException, IOException {
         URI uri = new URI(wotUrl);
-        log.debug("Call to wot api with url : {}", uri);
+        log.info("Call to wot api with url : {}", uri);
         HttpURLConnection httpURLConnection = (HttpURLConnection) uri.toURL().openConnection();
         httpURLConnection.setRequestMethod("GET");
         httpURLConnection.setRequestProperty("Content-Type", "application/json");
@@ -117,14 +117,14 @@ public class WotService {
             HttpURLConnection httpURLConnection = getHttpURLConnection(formatWoTApiUrl("&fields=private&access_token=" + accessToken));
 
             int status = httpURLConnection.getResponseCode();
-            log.debug("Check access token status : " + status);
+            log.info("Check access token status : " + status);
             if (status != 200) {
                 log.error("The request to wot api failed with the given accessToken with status : " + status);
                 return false;
             }
 
             Response response = convertURLConnectionToResponse(httpURLConnection);
-            log.debug("Response : {}", response);
+            log.info("Response : {}", response);
             return !response.getStatus().equals("error");
         } catch (URISyntaxException | IOException e) {
             log.error("The request to wot api failed with error: " + e);
