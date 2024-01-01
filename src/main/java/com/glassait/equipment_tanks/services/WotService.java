@@ -33,7 +33,7 @@ public class WotService {
      * The base URL for the World of Tanks API requests.
      */
     private static final String WOT_API_URL =
-            "https://api.worldoftanks.eu/wot/clans/info/?application_id=d5cfa347c97b1997c50c1797e2f1cfdc&clan_id=" + clanID + "&language=fr";
+            "https://api.worldoftanks.eu/wot/clans/info/?application_id=d5cfa347c97b1997c50c1797e2f1cfdc&language=fr&clan_id=";
 
     /**
      * Formats the World of Tanks API URL with the given parameter.
@@ -42,7 +42,7 @@ public class WotService {
      * @return the formatted URL
      */
     private static String formatWoTApiUrl(String parameter) {
-        return String.format("%s%s", WOT_API_URL, parameter);
+        return String.format("%s%s", WOT_API_URL + clanID, parameter);
     }
 
     /**
@@ -51,12 +51,12 @@ public class WotService {
      * @param wotUrl the URL of the API request
      * @return the HTTP URL connection
      * @throws URISyntaxException if the URL is not a valid URI
-     * @throws IOException if there is an error creating the connection
+     * @throws IOException        if there is an error creating the connection
      */
     private static HttpURLConnection getHttpURLConnection(String wotUrl) throws URISyntaxException, IOException {
         URI uri = new URI(wotUrl);
-        HttpURLConnection httpURLConnection = (HttpURLConnection) uri.toURL()
-                                                                     .openConnection();
+        log.debug("Call to wot api with url : {}", uri);
+        HttpURLConnection httpURLConnection = (HttpURLConnection) uri.toURL().openConnection();
         httpURLConnection.setRequestMethod("GET");
         httpURLConnection.setRequestProperty("Content-Type", "application/json");
         httpURLConnection.setConnectTimeout(5000);
@@ -99,9 +99,7 @@ public class WotService {
                 return null;
             }
 
-            return new Gson().fromJson(convertURLConnectionToResponse(httpURLConnection).getData()
-                                                                                        .get(clanID)
-                                                                                        .toString(), Members.class);
+            return new Gson().fromJson(convertURLConnectionToResponse(httpURLConnection).getData().get(clanID).toString(), Members.class);
         } catch (URISyntaxException | IOException | JsonSyntaxException e) {
             log.error("The request to wot api failed with error: \n" + e);
             throw new RuntimeException(e);
@@ -119,15 +117,17 @@ public class WotService {
             HttpURLConnection httpURLConnection = getHttpURLConnection(formatWoTApiUrl("&fields=private&access_token=" + accessToken));
 
             int status = httpURLConnection.getResponseCode();
+            log.debug("Check access token status : " + status);
             if (status != 200) {
                 log.error("The request to wot api failed with the given accessToken with status : " + status);
                 return false;
             }
 
-            return !convertURLConnectionToResponse(httpURLConnection).getStatus()
-                                                                     .equals("error");
+            Response response = convertURLConnectionToResponse(httpURLConnection);
+            log.debug("Response : {}", response);
+            return !response.getStatus().equals("error");
         } catch (URISyntaxException | IOException e) {
-            log.error("The request to wot api failed with error: \n" + e);
+            log.error("The request to wot api failed with error: " + e);
             return false;
         }
     }
