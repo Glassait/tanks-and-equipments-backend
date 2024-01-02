@@ -15,5 +15,8 @@ jobs:
         uses: nnichols/maven-version-bump-action@v4
         with:
           github-token: ${{ secrets.TOKEN }}
+      - name: Push version
+        run: |
+          git push --tags https://${{ secrets.TOKEN }}@github.com/${{ github.repository }} main
       - name: Print Version
         run: "echo 'New Version: ${{steps.bump.outputs.version}}'"
