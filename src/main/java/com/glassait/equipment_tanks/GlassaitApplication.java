@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * Main class of the Glassait application.
@@ -15,6 +16,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
  */
 @SpringBootApplication
 @EnableConfigurationProperties({ DataSourceConfigProperties.class, SecurityConfigProperties.class, GlassaitConfigProperties.class })
+@EnableScheduling
 @Slf4j
 public class GlassaitApplication {
     /**
