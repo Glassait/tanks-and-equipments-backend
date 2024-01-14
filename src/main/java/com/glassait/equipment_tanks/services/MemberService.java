@@ -2,6 +2,7 @@ package com.glassait.equipment_tanks.services;
 
 import com.glassait.equipment_tanks.abstracts.member.Member;
 import com.glassait.equipment_tanks.abstracts.member.Members;
+import com.glassait.equipment_tanks.abstracts.member.UpdateResponse;
 import com.glassait.equipment_tanks.model.member.MemberModel;
 import com.glassait.equipment_tanks.repositories.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -44,7 +45,7 @@ public class MemberService {
      *
      * @return true
      */
-    public String updateMembers() {
+    public UpdateResponse updateMembers() {
         Members fromWot = this.wotService.getClanMembers();
         Members fromDB = new Members(this.getAll());
 
@@ -70,7 +71,7 @@ public class MemberService {
             }
         });
 
-        return "Database updated";
+        return new UpdateResponse("Database has been updated");
     }
 
     /**

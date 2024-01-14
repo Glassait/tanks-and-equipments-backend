@@ -1,6 +1,7 @@
 package com.glassait.equipment_tanks.controllers;
 
 import com.glassait.equipment_tanks.abstracts.member.Member;
+import com.glassait.equipment_tanks.abstracts.member.UpdateResponse;
 import com.glassait.equipment_tanks.services.MemberService;
 import com.glassait.equipment_tanks.services.WotService;
 import lombok.RequiredArgsConstructor;
@@ -48,7 +49,7 @@ public class MemberController {
      * @return A string if the access token in valide, else a 401 error
      */
     @PostMapping(value = "api/member/update")
-    public ResponseEntity<String> updateClanMember(@RequestParam(name = "access_token") String accessToken) {
+    public ResponseEntity<UpdateResponse> updateClanMember(@RequestParam(name = "access_token") String accessToken) {
         if (this.wotService.checkAccessToken(accessToken)) {
             return new ResponseEntity<>(this.memberService.updateMembers(), HttpStatus.OK);
         }
