@@ -1,19 +1,31 @@
-name: Update release version
+name: Update maven version
+
 on:
-  push:
-    branches:
-      - main
+    push:
+        branches:
+            - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Latest Commit
-        uses: actions/checkout@v2
-      - name: Bump Version
-        id: bump
-        uses: nnichols/maven-version-bump-action@v4
-        with:
-          github-token: ${{ secrets.TOKEN }}
-      - name: Print Version
-        run: "echo 'New Version: ${{steps.bump.outputs.version}}'"
+    release:
+        name: Update version
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Latest Commit
+              uses: actions/checkout@v2
+            - name: Bump Version
+              env:
+                  TOKEN: ${{ secrets.TOKEN }}
+                  EMAIL: ${{ secrets.MAINTAINER_EMAIL }}
+                  NAME: ${{ secrets.MAINTAINER_NAME }}
+                  POMPATH: "."
+              run: ${{github.action_path}}/version-bump.sh
+              shell: bash
+            - name: Set outputs
+              id: get-outputs
+              shell: bash
+              env:
+                PO  MPATH: "."
+              run: echo "::set-output name=version::$(${{github.action_path}}/get-version.sh)"
+            - name: Result
+              shell: bash
+              run: "echo 'Version is now ${{ steps.get-outputs.outputs.version }}'"
