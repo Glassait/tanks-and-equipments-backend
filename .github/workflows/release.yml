@@ -18,14 +18,14 @@ jobs:
                   EMAIL: ${{ secrets.MAINTAINER_EMAIL }}
                   NAME: ${{ secrets.MAINTAINER_NAME }}
                   POMPATH: "."
-              run: ./.github/workflows/version-bump.sh
+              run: ${{github.action_path}}/version-bump.sh
               shell: bash
             - name: Set outputs
               id: get-outputs
               shell: bash
               env:
                 PO  MPATH: "."
-              run: echo "::set-output name=version::$(./.github/workflows/get-version.sh)"
+              run: echo "::set-output name=version::$(${{github.action_path}}/get-version.sh)"
             - name: Result
               shell: bash
               run: "echo 'Version is now ${{ steps.get-outputs.outputs.version }}'"
