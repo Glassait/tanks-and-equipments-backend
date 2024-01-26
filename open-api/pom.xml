@@ -139,6 +139,29 @@
                             </configOptions>
                         </configuration>
                     </execution>
+
+                    <execution>
+                        <id>members</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/api/members.yml</inputSpec>
+                            <generatorName>spring</generatorName>
+                            <library>spring-boot</library>
+                            <modelPackage>true</modelPackage>
+                            <apiPackage>true</apiPackage>
+                            <modelPackage>${api.package}.model</modelPackage>
+                            <apiPackage>${api.package}</apiPackage>
+                            <generateSupportingFiles>true</generateSupportingFiles>
+                            <configOptions>
+                                <useTags>true</useTags>
+                                <sourceFolder>src/gen/java/</sourceFolder>
+                                <interfaceOnly>true</interfaceOnly>
+                                <serializableModel>true</serializableModel>
+                            </configOptions>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>

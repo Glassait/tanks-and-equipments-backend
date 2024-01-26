@@ -25,7 +25,7 @@ public class UpdateMemberDB {
     /**
      * This method is called by the scheduler to update the member information in the database.
      */
-    @Scheduled(fixedDelay = 1, timeUnit = TimeUnit.HOURS)
+    @Scheduled(fixedDelay = 2, timeUnit = TimeUnit.HOURS)
     public void updateMemberInDatabase() {
         log.info("Actualisation automatique de la base de données lancé");
         this.memberService.updateMembers();

@@ -1,8 +1,11 @@
 package com.glassait.equipment_tanks.services;
 
-import com.glassait.equipment_tanks.abstracts.member.Members;
 import com.glassait.equipment_tanks.abstracts.wot_api.Response;
+import com.glassait.equipment_tanks.adapters.MemberDtoAdapter;
+import com.glassait.equipment_tanks.api.model.MemberDto;
+import com.glassait.equipment_tanks.api.model.MembersDto;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +35,7 @@ public class WotService {
     /**
      * The base URL for the World of Tanks API requests.
      */
-    private final String wotApiUrl =
+    private static final String WOT_API_URL =
             "https://api.worldoftanks.eu/wot/clans/info/?application_id=d5cfa347c97b1997c50c1797e2f1cfdc&language=fr&clan_id=";
 
     /**
@@ -42,7 +45,7 @@ public class WotService {
      * @return the formatted URL
      */
     private String formatWoTApiUrl(String parameter) {
-        return String.format("%s%s", wotApiUrl + clanID, parameter);
+        return String.format("%s%s", WOT_API_URL + clanID, parameter);
     }
 
     /**
@@ -89,7 +92,10 @@ public class WotService {
      *
      * @return the members of the clan, or null if there was an error
      */
-    public Members getClanMembers() {
+    public MembersDto getClanMembers() {
+        GsonBuilder builder = new GsonBuilder();
+        builder.registerTypeAdapter(MemberDto.class, new MemberDtoAdapter());
+
         try {
             HttpURLConnection httpURLConnection = this.getHttpURLConnection(formatWoTApiUrl("&fields=members.account_id%2Cmembers.role"));
 
@@ -101,10 +107,10 @@ public class WotService {
 
             Response response = this.convertURLConnectionToResponse(httpURLConnection);
             log.debug("Response : {}", response);
-            return new Gson().fromJson(response.getData().get(clanID).toString(), Members.class);
+            return builder.create().fromJson(response.getData().get(clanID).toString(), MembersDto.class);
         } catch (URISyntaxException | IOException | JsonSyntaxException e) {
             log.error("The request to wot api failed with error: \n" + e);
-            throw new RuntimeException(e);
+            throw new RuntimeException(e); // NOSONAR
         }
     }
 

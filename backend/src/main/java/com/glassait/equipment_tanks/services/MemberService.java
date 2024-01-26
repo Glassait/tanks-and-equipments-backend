@@ -1,16 +1,18 @@
 package com.glassait.equipment_tanks.services;
 
-import com.glassait.equipment_tanks.abstracts.member.Member;
-import com.glassait.equipment_tanks.abstracts.member.Members;
-import com.glassait.equipment_tanks.abstracts.member.UpdateResponse;
+import com.glassait.equipment_tanks.api.model.MemberDto;
+import com.glassait.equipment_tanks.api.model.MembersDto;
+import com.glassait.equipment_tanks.api.model.UpdateDto;
+import com.glassait.equipment_tanks.mapper.MembersMapper;
 import com.glassait.equipment_tanks.model.member.MemberModel;
 import com.glassait.equipment_tanks.repositories.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.Objects;
 
 @Service
 @Slf4j
@@ -20,13 +22,17 @@ public class MemberService {
      * Beginning of the log sentence
      */
     private static final String START_LOG = "The account n°: ";
+    /**
+     * Instance of the member mapper
+     */
+    private static final MembersMapper MEMBERS_MAPPER = Mappers.getMapper(MembersMapper.class);
 
     /**
-     * The instance of the member repository
+     * Instance of the member repository
      */
     private final MemberRepository memberRepository;
     /**
-     * The instance of the wot service
+     * Instance of the wot service
      */
     private final WotService wotService;
 
@@ -36,8 +42,8 @@ public class MemberService {
      * @param accountId The account id of the user
      * @return An optional with the result of the search
      */
-    public Optional<MemberModel> findById(int accountId) {
-        return this.memberRepository.findById(accountId);
+    public MemberDto findById(int accountId) {
+        return MEMBERS_MAPPER.convertMemberModelToMemberDto(this.memberRepository.findById(accountId).orElse(null));
     }
 
     /**
@@ -45,33 +51,40 @@ public class MemberService {
      *
      * @return true
      */
-    public UpdateResponse updateMembers() {
-        Members fromWot = this.wotService.getClanMembers();
-        Members fromDB = new Members(this.getAll());
+    public UpdateDto updateMembers() {
+        var fromWot = this.wotService.getClanMembers();
+        var fromDB = new MembersDto();
+        fromDB.setMembers(this.getAll());
 
         fromWot.getMembers().forEach(member -> {
-            List<Member> list = fromDB.getMembers().stream().filter(member1 -> member.getAccount_id() == member1.getAccount_id()).toList();
+            List<MemberDto> list = fromDB.getMembers().stream().filter(member1 -> Objects.equals(member.getAccountId(),
+                    member1.getAccountId())).toList();
             if (list.size() == 1) {
-                Member memberFromDB = list.get(0);
+                MemberDto memberFromDB = list.get(0);
                 if (!memberFromDB.getRole().equals(member.getRole())) {
-                    log.debug(member.getAccount_id() + " need to update the role from " + memberFromDB.getRole() + " to " + member.getRole());
-                    this.updateMember(new MemberModel(memberFromDB.getAccount_id(), member.getRole()));
+                    log.debug(
+                            member.getAccountId() + " need to update the role from " + memberFromDB.getRole() + " to " + member.getRole());
+                    this.updateMember(new MemberModel(memberFromDB.getAccountId(), member.getRole()));
                 }
             } else {
-                log.debug(member.getAccount_id() + " is outside the database");
-                this.addMember(new MemberModel(member.getAccount_id(), member.getRole()));
+                log.debug(member.getAccountId() + " is outside the database");
+                this.addMember(new MemberModel(member.getAccountId(), member.getRole()));
             }
         });
 
         fromDB.getMembers().forEach(member -> {
-            List<Member> list = fromWot.getMembers().stream().filter(member1 -> member.getAccount_id() == member1.getAccount_id()).toList();
+            List<MemberDto> list = fromWot.getMembers().stream().filter(member1 -> Objects.equals(member.getAccountId(),
+                    member1.getAccountId())).toList();
             if (list.isEmpty()) {
-                log.debug(member.getAccount_id() + " has leaved the clan");
-                this.deleteMember(new MemberModel(member.getAccount_id(), member.getRole()));
+                log.debug(member.getAccountId() + " has leaved the clan");
+                this.deleteMember(new MemberModel(member.getAccountId(), member.getRole()));
             }
         });
 
-        return new UpdateResponse("Database has been updated");
+        var response = new UpdateDto();
+        response.setStatus("OK");
+
+        return response;
     }
 
     /**
@@ -79,8 +92,8 @@ public class MemberService {
      *
      * @return The list of all the members in the database
      */
-    private List<MemberModel> getAll() {
-        return this.memberRepository.findAll();
+    private List<MemberDto> getAll() {
+        return MEMBERS_MAPPER.convertListMemberModelToListMemberDto(this.memberRepository.findAll());
     }
 
     /**
