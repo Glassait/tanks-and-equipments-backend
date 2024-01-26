@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-    title: Feature API
+    title: Features API
     description: Api to fetch the features of the site
     version: 1.0.0
 
@@ -41,7 +41,7 @@ components:
             properties:
                 clanWar:
                     type: boolean
-                    description: Si l'onglet clan war est activé
+                    description: If the clan war tab is enabled
                     example: true
         FeatureEnum:
             title: FeatureEnum

@@ -1,6 +1,7 @@
 package com.glassait.equipment_tanks.controllers;
 
-import com.glassait.equipment_tanks.abstracts.information.Information;
+import com.glassait.equipment_tanks.api.InformationApi;
+import com.glassait.equipment_tanks.api.model.InformationDto;
 import com.glassait.equipment_tanks.services.InformationService;
 import com.glassait.equipment_tanks.services.WotService;
 import lombok.RequiredArgsConstructor;
@@ -8,8 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -19,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @Slf4j
 @RequiredArgsConstructor
-public class InformationController {
+public class InformationController implements InformationApi {
     /**
      * The service that manages the information of the website
      */
@@ -35,8 +34,8 @@ public class InformationController {
      * @param accessToken The wot access token of the user
      * @return The last information if the access token is good, else a 401 error
      */
-    @GetMapping(value = "api/information")
-    public ResponseEntity<Information> getInformation(@RequestParam(name = "access_token") String accessToken) {
+    @Override
+    public ResponseEntity<InformationDto> informations(String accessToken) {
         if (this.wotService.checkAccessToken(accessToken)) {
             return new ResponseEntity<>(this.informationService.getLastInformation(), HttpStatus.OK);
         }

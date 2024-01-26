@@ -95,12 +95,35 @@
                 <!-- /RELEASE_VERSION -->
                 <executions>
                     <execution>
-                        <id>equipement-char-api</id>
+                        <id>features</id>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
                             <inputSpec>${project.basedir}/api/features.yml</inputSpec>
+                            <generatorName>spring</generatorName>
+                            <library>spring-boot</library>
+                            <modelPackage>true</modelPackage>
+                            <apiPackage>true</apiPackage>
+                            <modelPackage>${api.package}.model</modelPackage>
+                            <apiPackage>${api.package}</apiPackage>
+                            <generateSupportingFiles>true</generateSupportingFiles>
+                            <configOptions>
+                                <useTags>true</useTags>
+                                <sourceFolder>src/gen/java/</sourceFolder>
+                                <interfaceOnly>true</interfaceOnly>
+                                <serializableModel>true</serializableModel>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>information</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/api/information.yml</inputSpec>
                             <generatorName>spring</generatorName>
                             <library>spring-boot</library>
                             <modelPackage>true</modelPackage>
