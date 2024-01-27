@@ -1,6 +1,6 @@
 package com.glassait.equipment_tanks.tasks;
 
-import com.glassait.equipment_tanks.services.MemberService;
+import com.glassait.equipment_tanks.services.MembersService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -20,7 +20,7 @@ public class UpdateMemberDB {
     /**
      * The MemberService instance is used to fetch the latest member information from the API.
      */
-    private final MemberService memberService;
+    private final MembersService membersService;
 
     /**
      * This method is called by the scheduler to update the member information in the database.
@@ -28,7 +28,7 @@ public class UpdateMemberDB {
     @Scheduled(fixedDelay = 2, timeUnit = TimeUnit.HOURS)
     public void updateMemberInDatabase() {
         log.info("Actualisation automatique de la base de données lancé");
-        this.memberService.updateMembers();
+        this.membersService.updateMembers();
         log.info("Actualisation automatique de la base de données fini");
     }
 }

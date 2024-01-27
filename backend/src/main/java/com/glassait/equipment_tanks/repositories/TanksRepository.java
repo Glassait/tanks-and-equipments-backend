@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface TankRepository extends JpaRepository<TankModel, Integer> {
+public interface TanksRepository extends JpaRepository<TankModel, Integer> {
     /**
      * Fetch the last information of the website
      *

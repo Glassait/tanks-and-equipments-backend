@@ -5,7 +5,7 @@ import com.glassait.equipment_tanks.api.model.MembersDto;
 import com.glassait.equipment_tanks.api.model.UpdateDto;
 import com.glassait.equipment_tanks.mapper.MembersMapper;
 import com.glassait.equipment_tanks.model.member.MemberModel;
-import com.glassait.equipment_tanks.repositories.MemberRepository;
+import com.glassait.equipment_tanks.repositories.MembersRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.mapstruct.factory.Mappers;
@@ -17,7 +17,7 @@ import java.util.Objects;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class MemberService {
+public class MembersService {
     /**
      * Beginning of the log sentence
      */
@@ -30,7 +30,7 @@ public class MemberService {
     /**
      * Instance of the member repository
      */
-    private final MemberRepository memberRepository;
+    private final MembersRepository membersRepository;
     /**
      * Instance of the wot service
      */
@@ -43,7 +43,7 @@ public class MemberService {
      * @return An optional with the result of the search
      */
     public MemberDto findById(int accountId) {
-        return MEMBERS_MAPPER.convertMemberModelToMemberDto(this.memberRepository.findById(accountId).orElse(null));
+        return MEMBERS_MAPPER.convertMemberModelToMemberDto(this.membersRepository.findById(accountId).orElse(null));
     }
 
     /**
@@ -93,7 +93,7 @@ public class MemberService {
      * @return The list of all the members in the database
      */
     private List<MemberDto> getAll() {
-        return MEMBERS_MAPPER.convertListMemberModelToListMemberDto(this.memberRepository.findAll());
+        return MEMBERS_MAPPER.convertListMemberModelToListMemberDto(this.membersRepository.findAll());
     }
 
     /**
@@ -102,7 +102,7 @@ public class MemberService {
      * @param memberModel The new data of the user to update
      */
     private void updateMember(MemberModel memberModel) {
-        this.memberRepository.saveAndFlush(memberModel);
+        this.membersRepository.saveAndFlush(memberModel);
         log.debug(START_LOG + memberModel.getAccountId() + " as been updated");
     }
 
@@ -112,8 +112,8 @@ public class MemberService {
      * @param memberModel The user to delete
      */
     private void deleteMember(MemberModel memberModel) {
-        this.memberRepository.delete(memberModel);
-        this.memberRepository.flush();
+        this.membersRepository.delete(memberModel);
+        this.membersRepository.flush();
         log.debug(START_LOG + memberModel.getAccountId() + " as been deleted");
     }
 
@@ -123,7 +123,7 @@ public class MemberService {
      * @param memberModel The user to add
      */
     private void addMember(MemberModel memberModel) {
-        this.memberRepository.saveAndFlush(memberModel);
+        this.membersRepository.saveAndFlush(memberModel);
         log.debug(START_LOG + memberModel.getAccountId() + " as been added");
     }
 }

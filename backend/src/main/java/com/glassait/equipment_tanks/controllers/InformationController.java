@@ -28,12 +28,6 @@ public class InformationController implements InformationApi {
      */
     private final WotService wotService;
 
-    /**
-     * This method is the api to get the last information of the website
-     *
-     * @param accessToken The wot access token of the user
-     * @return The last information if the access token is good, else a 401 error
-     */
     @Override
     public ResponseEntity<InformationDto> informations(String accessToken) {
         if (this.wotService.checkAccessToken(accessToken)) {
