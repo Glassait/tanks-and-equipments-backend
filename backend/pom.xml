@@ -20,17 +20,11 @@
     </properties>
 
     <dependencies>
+        <!--region SPRING-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <version>${version.spring-boot}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${version.lombok}</version>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -58,6 +52,20 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!--endregion-->
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${version.lombok}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
@@ -76,19 +84,16 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
+        <!--region PROJECT-->
         <dependency>
             <groupId>com.glassait</groupId>
             <artifactId>equipment_tanks-api</artifactId>
             <version>1.0.3</version>
             <scope>compile</scope>
         </dependency>
+        <!--endregion-->
 
+        <!--region MAPSTRUCT-->
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
@@ -100,6 +105,7 @@
             <artifactId>mapstruct-processor</artifactId>
             <version>${version.mapstruct}</version>
         </dependency>
+        <!--endregion-->
     </dependencies>
 
     <build>
