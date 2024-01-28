@@ -1,0 +1,1 @@
+web: java -jar backend/target/equipment_tanks-app-1.0.3.jar
