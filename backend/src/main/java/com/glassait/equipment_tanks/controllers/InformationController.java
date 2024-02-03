@@ -35,6 +35,6 @@ public class InformationController implements InformationApi {
         }
 
         log.warn("The access token {" + accessToken + "} is not valide or the user is not a member of the clan");
-        return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 }
