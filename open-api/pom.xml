@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.glassait</groupId>
         <artifactId>equipment_tanks-parent</artifactId>
-        <version>1.0.3</version>
+        <version>${revision}</version>
     </parent>
 
     <artifactId>equipment_tanks-api</artifactId>

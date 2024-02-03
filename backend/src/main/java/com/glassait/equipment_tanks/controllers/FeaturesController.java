@@ -2,6 +2,7 @@ package com.glassait.equipment_tanks.controllers;
 
 import com.glassait.equipment_tanks.api.FeaturesApi;
 import com.glassait.equipment_tanks.api.model.FeatureDto;
+import com.glassait.equipment_tanks.api.model.FeatureEnum;
 import com.glassait.equipment_tanks.services.FeaturesService;
 import com.glassait.equipment_tanks.services.WotService;
 import lombok.RequiredArgsConstructor;
@@ -33,5 +34,19 @@ public class FeaturesController implements FeaturesApi {
 
         log.warn("The access token {" + accessToken + "} is not valide or the user is not a member of the clan");
         return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
+    }
+
+    @Override
+    public ResponseEntity<FeatureDto> updateFeatures(String accessToken, String feature) {
+        if (this.wotService.checkAccessToken(accessToken)) {
+            try {
+                return new ResponseEntity<>(this.featuresService.update(FeatureEnum.fromValue(feature).toString()), HttpStatus.OK);
+            } catch (IllegalArgumentException e) {
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }
+        }
+
+        log.warn("The access token {" + accessToken + "} is not valide or the user is not a member of the clan");
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 }

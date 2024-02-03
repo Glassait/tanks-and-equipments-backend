@@ -30,4 +30,18 @@ public class FeaturesService {
     public FeatureDto getAll() {
         return FEATURES_MAPPER.convertFeaturesModelToFeaturesDto(featureRepository.findAll());
     }
+
+    /**
+     * Change the activated part of the given feature
+     *
+     * @param featureName The name of the feature
+     * @return All the features with there status
+     */
+    public FeatureDto update(String featureName) {
+        var feature = featureRepository.findByFeature(featureName);
+        feature.setActivated(feature.getActivated() == 0 ? 1 : 0);
+        featureRepository.saveAndFlush(feature);
+
+        return FEATURES_MAPPER.convertFeaturesModelToFeaturesDto(featureRepository.findAll());
+    }
 }

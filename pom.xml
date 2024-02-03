@@ -12,11 +12,12 @@
 
     <groupId>com.glassait</groupId>
     <artifactId>equipment_tanks-parent</artifactId>
-    <version>1.0.3</version>
+    <version>${revision}</version>
     <description>Backend for equipmentTanks web site</description>
 
     <properties>
         <java.version>20</java.version>
+        <revision>1.0.4-SNAPSHOT</revision>
     </properties>
 
     <packaging>pom</packaging>
