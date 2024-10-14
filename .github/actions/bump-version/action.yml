@@ -51,6 +51,7 @@ runs:
         esac
         
         echo "NEW_VERSION=$NEW_VERSION" > .env
+        echo "web: java -jar backend/target/tanks-and-equipments-app-$NEW_VERSION-SNAPSHOT.jar" > Procfile
 
         # Update the version in the pom.xml's properties.revision
         mvn versions:set-property -Dproperty=revision -DnewVersion=$NEW_VERSION-SNAPSHOT
@@ -63,6 +64,7 @@ runs:
         
         BRANCH=$(echo "${{ github.ref }}" | sed 's/refs\/heads\///')
         git add pom.xml
+        git add Procfile
         git commit -m "Bumped revision version to $NEW_VERSION"
         git tag -a v$NEW_VERSION -m "$NEW_VERSION"
         git push --tags https://${{ inputs.TOKEN }}@github.com/${{ github.repository }} $BRANCH
