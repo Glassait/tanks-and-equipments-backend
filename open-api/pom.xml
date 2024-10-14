@@ -5,15 +5,15 @@
 
     <parent>
         <groupId>com.glassait</groupId>
-        <artifactId>equipment_tanks-parent</artifactId>
+        <artifactId>tanks-and-equipments-parent</artifactId>
         <version>${revision}</version>
     </parent>
 
-    <artifactId>equipment_tanks-api</artifactId>
-    <description>Open for equipmentTanks web site</description>
+    <artifactId>tanks-and-equipments-api</artifactId>
+    <description>Open API for equipmentTanks web site</description>
 
     <properties>
-        <api.package>com.glassait.equipment_tanks.api</api.package>
+        <api.package>com.glassait.tanks-and-equipments.api</api.package>
     </properties>
 
     <dependencies>
@@ -26,13 +26,13 @@
         <dependency>
             <groupId>org.thingsboard</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>3.0.4</version>
+            <version>${version.thingsboard}</version>
         </dependency>
 
         <dependency>
             <groupId>org.thingsboard</groupId>
             <artifactId>springfox-bean-validators</artifactId>
-            <version>3.0.4</version>
+            <version>${version.thingsboard}</version>
         </dependency>
 
         <dependency>
@@ -94,97 +94,6 @@
                 <version>7.2.0</version>
                 <!-- /RELEASE_VERSION -->
                 <executions>
-                    <execution>
-                        <id>features</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <inputSpec>${project.basedir}/api/features.yml</inputSpec>
-                            <generatorName>spring</generatorName>
-                            <library>spring-boot</library>
-                            <modelPackage>true</modelPackage>
-                            <apiPackage>true</apiPackage>
-                            <modelPackage>${api.package}.model</modelPackage>
-                            <apiPackage>${api.package}</apiPackage>
-                            <generateSupportingFiles>true</generateSupportingFiles>
-                            <configOptions>
-                                <useTags>true</useTags>
-                                <sourceFolder>src/gen/java/</sourceFolder>
-                                <interfaceOnly>true</interfaceOnly>
-                                <serializableModel>true</serializableModel>
-                            </configOptions>
-                        </configuration>
-                    </execution>
-
-                    <execution>
-                        <id>information</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <inputSpec>${project.basedir}/api/information.yml</inputSpec>
-                            <generatorName>spring</generatorName>
-                            <library>spring-boot</library>
-                            <modelPackage>true</modelPackage>
-                            <apiPackage>true</apiPackage>
-                            <modelPackage>${api.package}.model</modelPackage>
-                            <apiPackage>${api.package}</apiPackage>
-                            <generateSupportingFiles>true</generateSupportingFiles>
-                            <configOptions>
-                                <useTags>true</useTags>
-                                <sourceFolder>src/gen/java/</sourceFolder>
-                                <interfaceOnly>true</interfaceOnly>
-                                <serializableModel>true</serializableModel>
-                            </configOptions>
-                        </configuration>
-                    </execution>
-
-                    <execution>
-                        <id>members</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <inputSpec>${project.basedir}/api/members.yml</inputSpec>
-                            <generatorName>spring</generatorName>
-                            <library>spring-boot</library>
-                            <modelPackage>true</modelPackage>
-                            <apiPackage>true</apiPackage>
-                            <modelPackage>${api.package}.model</modelPackage>
-                            <apiPackage>${api.package}</apiPackage>
-                            <generateSupportingFiles>true</generateSupportingFiles>
-                            <configOptions>
-                                <useTags>true</useTags>
-                                <sourceFolder>src/gen/java/</sourceFolder>
-                                <interfaceOnly>true</interfaceOnly>
-                                <serializableModel>true</serializableModel>
-                            </configOptions>
-                        </configuration>
-                    </execution>
-
-                    <execution>
-                        <id>tanks</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <inputSpec>${project.basedir}/api/tanks.yml</inputSpec>
-                            <generatorName>spring</generatorName>
-                            <library>spring-boot</library>
-                            <modelPackage>true</modelPackage>
-                            <apiPackage>true</apiPackage>
-                            <modelPackage>${api.package}.model</modelPackage>
-                            <apiPackage>${api.package}</apiPackage>
-                            <generateSupportingFiles>true</generateSupportingFiles>
-                            <configOptions>
-                                <useTags>true</useTags>
-                                <sourceFolder>src/gen/java/</sourceFolder>
-                                <interfaceOnly>true</interfaceOnly>
-                                <serializableModel>true</serializableModel>
-                            </configOptions>
-                        </configuration>
-                    </execution>
                 </executions>
             </plugin>
         </plugins>
