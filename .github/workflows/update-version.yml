@@ -1,0 +1,24 @@
+# File: .github/workflows/ci.yml
+name: Update Version
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.ref }}-update # This ensures only one job per branch
+  cancel-in-progress: true # Cancels previous jobs in the group if a new job is triggered
+
+jobs:
+  update-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup Java
+        uses: ./.github/actions/setup-java
+      - name: Bump the mvn version
+        uses: ./.github/actions/bump-version
+        with:
+          version_type: 'patch'
