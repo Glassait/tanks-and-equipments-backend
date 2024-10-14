@@ -16,7 +16,7 @@
     <description>Backend for equipmentTanks web site</description>
 
     <properties>
-        <revision>2.0.0-SNAPSHOT</revision>
+        <revision>2.0.1-SNAPSHOT</revision>
 
         <java.version>20</java.version>
 
