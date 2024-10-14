@@ -1,0 +1,14 @@
+spring:
+    jpa:
+        show-sql: true
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQLDialect
+    datasource:
+        password: "${BDD_PASSWORD}"
+        username: "${BDD_USERNAME}"
+        url: "${BDD_URL}"
+        hikari:
+            maximum-pool-size: 5

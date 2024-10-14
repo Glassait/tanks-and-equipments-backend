@@ -1,0 +1,14 @@
+spring:
+    profiles:
+        include:
+            - bdd
+
+logging:
+    level:
+        org:
+            springframework: INFO
+            hibernate: WARN
+        com.glassait.tanks-and-equipments: DEBUG
+
+server:
+    port: 8080
