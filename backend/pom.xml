@@ -5,19 +5,12 @@
 
     <parent>
         <groupId>com.glassait</groupId>
-        <artifactId>equipment_tanks-parent</artifactId>
+        <artifactId>tanks-and-equipments-parent</artifactId>
         <version>${revision}</version>
     </parent>
 
-    <artifactId>equipment_tanks-app</artifactId>
+    <artifactId>tanks-and-equipments-app</artifactId>
     <description>Backend for equipmentTanks web site</description>
-
-    <properties>
-        <java.version>20</java.version>
-        <version.spring-boot>3.2.2</version.spring-boot>
-        <version.lombok>1.18.30</version.lombok>
-        <version.mapstruct>1.5.5.Final</version.mapstruct>
-    </properties>
 
     <dependencies>
         <!--region SPRING-->
@@ -87,7 +80,7 @@
         <!--region PROJECT-->
         <dependency>
             <groupId>com.glassait</groupId>
-            <artifactId>equipment_tanks-api</artifactId>
+            <artifactId>tanks-and-equipments-api</artifactId>
             <version>${revision}</version>
             <scope>compile</scope>
         </dependency>

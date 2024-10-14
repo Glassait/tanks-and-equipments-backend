@@ -1,4 +1,4 @@
-package com.glassait.equipment_tanks;
+package com.glassait.tanks_and_equipments;
 
 import org.springframework.boot.test.context.SpringBootTest;
 
