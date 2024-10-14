@@ -15,7 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @Profile("security")
-public class SecurityConfiguration {
+public class SecurityConfig {
     @Value("${spring.security.user.name}")
     private String username;
 

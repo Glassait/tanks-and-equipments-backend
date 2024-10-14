@@ -1,14 +1,15 @@
 spring:
     profiles:
-        include:
-            - bdd
+        active: "bdd"
+
+debug: true
 
 logging:
     level:
         org:
             springframework: INFO
             hibernate: WARN
-        com.glassait.tanks-and-equipments: DEBUG
+        com.glassait.tanks_and_equipments: DEBUG
 
 server:
     port: 8080
