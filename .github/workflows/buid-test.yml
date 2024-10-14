@@ -1,0 +1,22 @@
+# File: .github/workflows/ci.yml
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - '**'
+
+concurrency:
+  group: ${{ github.ref }}-build # This ensures only one job per branch
+  cancel-in-progress: true # Cancels previous jobs in the group if a new job is triggered
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup Java
+        uses: ./.github/actions/setup-java
+      - name: Maven clean install
+        run: mvn clean install
