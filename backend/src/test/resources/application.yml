@@ -1,6 +1,6 @@
 spring:
     profiles:
-        active: "bdd"
+        active: "bdd,cache"
 
 debug: true
 

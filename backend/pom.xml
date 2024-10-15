@@ -82,11 +82,19 @@
             <scope>test</scope>
         </dependency>
 
+        <!--region HAZELCAST-->
         <dependency>
             <groupId>com.hazelcast</groupId>
-            <artifactId>hazelcast</artifactId>
-            <version>4.0.2</version>
+            <artifactId>hazelcast-spring</artifactId>
+            <version>5.3.8</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast-all</artifactId>
+            <version>4.2.8</version>
+        </dependency>
+        <!--endregion-->
 
         <!--region PROJECT-->
         <dependency>
