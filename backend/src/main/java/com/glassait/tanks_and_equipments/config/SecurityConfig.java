@@ -16,7 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @Profile("security")
 public class SecurityConfig {
-    @Value("${spring.security.user.name}")
+    @Value("${spring.application.name}")
     private String username;
 
     @Value("${spring.security.user.password}")
@@ -34,8 +34,10 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http.authorizeHttpRequests(request -> request.anyRequest()
-                                                            .authenticated())
+        return http.authorizeHttpRequests(
+                           request -> request.requestMatchers("/actuator/**").permitAll()
+                                             .anyRequest().authenticated()
+                   )
                    .httpBasic(Customizer.withDefaults())
                    .build();
     }

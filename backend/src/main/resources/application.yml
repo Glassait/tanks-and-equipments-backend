@@ -1,4 +1,6 @@
 spring:
+    application:
+        name: "FOLD_ BACKEND"
     profiles:
         active: "${ACTIVE_PROFILES}"
 

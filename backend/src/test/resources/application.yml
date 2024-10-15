@@ -1,6 +1,8 @@
 spring:
+    application:
+        name: "FOLD_ BACKEND"
     profiles:
-        active: "bdd"
+        active: "actuator,bdd,cache"
 
 debug: true
 
