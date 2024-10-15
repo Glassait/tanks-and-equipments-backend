@@ -93,7 +93,30 @@
                 <!-- RELEASE_VERSION -->
                 <version>7.2.0</version>
                 <!-- /RELEASE_VERSION -->
+
                 <executions>
+                    <execution>
+                        <id>features</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/api/tanks.yml</inputSpec>
+                            <generatorName>spring</generatorName>
+                            <library>spring-boot</library>
+                            <modelPackage>true</modelPackage>
+                            <apiPackage>true</apiPackage>
+                            <modelPackage>${api.package}.model</modelPackage>
+                            <apiPackage>${api.package}</apiPackage>
+                            <generateSupportingFiles>true</generateSupportingFiles>
+                            <configOptions>
+                                <useTags>true</useTags>
+                                <sourceFolder>src/gen/java/</sourceFolder>
+                                <interfaceOnly>true</interfaceOnly>
+                                <serializableModel>true</serializableModel>
+                            </configOptions>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>

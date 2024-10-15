@@ -18,7 +18,7 @@
     <properties>
         <revision>2.0.2-SNAPSHOT</revision>
 
-        <java.version>20</java.version>
+        <java.version>21</java.version>
 
         <version.thingsboard>3.0.4</version.thingsboard>
 

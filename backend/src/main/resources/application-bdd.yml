@@ -10,5 +10,6 @@ spring:
         password: "${BDD_PASSWORD}"
         username: "${BDD_USERNAME}"
         url: "${BDD_URL}"
+        driver-class-name: com.mysql.cj.jdbc.Driver
         hikari:
             maximum-pool-size: 5
