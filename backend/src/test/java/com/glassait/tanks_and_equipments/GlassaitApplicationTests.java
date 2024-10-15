@@ -1,10 +1,15 @@
 package com.glassait.tanks_and_equipments;
 
+import com.hazelcast.core.HazelcastInstance;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.annotation.DirtiesContext;
 
 @SpringBootTest
 class GlassaitApplicationTests {
+    @MockBean
+    private HazelcastInstance hazelcastInstance;
 
     @Test
     void contextLoads() {
@@ -14,7 +19,6 @@ class GlassaitApplicationTests {
     @Test
     void testApplicationStartup() {
         // You can verify the startup behavior here
-        String[] args = {};
-        GlassaitApplication.main(args);
+        GlassaitApplication.main(new String[]{});
     }
 }
