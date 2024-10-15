@@ -1,5 +1,0 @@
-spring:
-    cache:
-        type: hazelcast
-    hazelcast:
-        instance-name: "fold-instance"
