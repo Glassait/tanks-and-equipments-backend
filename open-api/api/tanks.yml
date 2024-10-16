@@ -9,7 +9,7 @@ paths:
         get:
             tags:
                 - tanks-overview
-            description: Return the overview of all tank stored in the datase who are meta
+            description: Return the overview of all tank stored in the database who are meta
             operationId: tanks-overview
             responses:
                 200:

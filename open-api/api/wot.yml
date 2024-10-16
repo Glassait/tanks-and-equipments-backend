@@ -1,0 +1,53 @@
+openapi: 3.0.3
+info:
+    title: Wot API
+    description: Api to manage the wot of the site
+    version: 1.0.0
+
+paths:
+    /api/private/v1/wot/news:
+        get:
+            tags:
+                - wot-news
+            description: Return the last wot news in the database
+            operationId: wot-news
+            responses:
+                200:
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/WotsNews'
+                500:
+                    description: internal server error
+            deprecated: false
+
+components:
+    schemas:
+        WotsNews:
+            title: WotNews
+            description: The array of WotNew
+            type: array
+            items:
+                $ref: "#/components/schemas/WotNews"
+        WotNews:
+            title: TankOverviewDto
+            description: The overview of a tank
+            type: object
+            required:
+                - title
+                - image_url
+                - tags
+            properties:
+                title:
+                    type: string
+                    description: The title of the news
+                    example: Sommet de l'arbre de juin 2024
+                image_url:
+                    type: string
+                    description: The url of the new image
+                    example: https://eu-wotp.wgcdn.co/dcont/fb/image/1.26.1_1022x360_thumbnail.jpg
+                tags:
+                    type: array
+                    items:
+                        type: string
