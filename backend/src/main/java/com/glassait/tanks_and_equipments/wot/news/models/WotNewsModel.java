@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "wot-news")
+@Table(name = "wot_news")
 public class WotNewsModel {
     @Id
     @Column(name = "id")
