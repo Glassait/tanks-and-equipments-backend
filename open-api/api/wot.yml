@@ -1,8 +1,8 @@
 openapi: 3.0.3
 info:
     title: Wot API
-    description: Api to manage the wot of the site
-    version: 1.0.0
+    description: All api related to some World of tanks elements
+    version: 1.0.1
 
 paths:
     /api/private/v1/wot/news:
@@ -19,7 +19,7 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/WotsNews'
                 500:
-                    description: internal server error
+                    description: Internal server error
             deprecated: false
 
 components:
@@ -44,14 +44,17 @@ components:
                     type: string
                     description: The title of the news
                     example: Sommet de l'arbre de juin 2024
+                    minLength: 1
                 url:
                     type: string
                     description: The url of the new
                     example: https://worldoftanks.eu/fr/news/general-news/halloween-2024-how-to-play/
+                    minLength: 23
                 image_url:
                     type: string
                     description: The image url of the news
                     example: https://eu-wotp.wgcdn.co/dcont/fb/image/1.26.1_1022x360_thumbnail.jpg
+                    minLength: 23
                 tags:
                     type: array
                     description: The tags apply to the news

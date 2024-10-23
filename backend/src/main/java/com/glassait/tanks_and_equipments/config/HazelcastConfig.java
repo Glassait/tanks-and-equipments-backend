@@ -19,6 +19,7 @@ import java.util.concurrent.TimeUnit;
 public class HazelcastConfig {
     public static final String TANKS_OVERVIEW_CACHE_KEY = "tanks-overview";
     public static final String WOT_NEWS_CACHE_KEY = "wot-news";
+    public static final String FOLD_RESULTS_CACHE_KEY = "fold-results";
 
     @Value("${spring.hazelcast.instance-name}")
     private String hazelcastInstanceName;
@@ -42,8 +43,16 @@ public class HazelcastConfig {
                 FactoryBuilder.factoryOf(new CreatedExpiryPolicy(new Duration(TimeUnit.MINUTES, 30))).toString()
         );
 
+        CacheSimpleConfig foldResultServicesCacheConfig = new CacheSimpleConfig();
+        foldResultServicesCacheConfig.setName(FOLD_RESULTS_CACHE_KEY);
+        foldResultServicesCacheConfig.setBackupCount(1);
+        foldResultServicesCacheConfig.setExpiryPolicyFactory(
+                FactoryBuilder.factoryOf(new CreatedExpiryPolicy(new Duration(TimeUnit.HOURS, 1))).toString()
+        );
+
         config.addCacheConfig(tankOverviewCacheConfig);
         config.addCacheConfig(wotNewsCacheConfig);
+        config.addCacheConfig(foldResultServicesCacheConfig);
 
         return Hazelcast.newHazelcastInstance(config);
     }

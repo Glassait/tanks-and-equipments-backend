@@ -1,8 +1,8 @@
 openapi: 3.0.3
 info:
     title: Tanks API
-    description: Api to manage the tanks of the site
-    version: 1.0.0
+    description: All apis related to the tanks
+    version: 1.0.1
 
 paths:
     /api/private/v1/tanks/overview:
@@ -19,7 +19,7 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/TanksOverview'
                 500:
-                    description: internal server error
+                    description: Internal server error
             deprecated: false
 
 components:
@@ -32,7 +32,7 @@ components:
                 $ref: "#/components/schemas/TankOverview"
         TankOverview:
             title: TankOverviewDto
-            description: The overview of a tank
+            description: The object representing the overview of a tank
             type: object
             required:
                 - name
@@ -45,6 +45,7 @@ components:
                     type: string
                     description: The name of the tank
                     example: Object 260
+                    minLength: 1
                 type:
                     type: string
                     description: The type of the tank
@@ -74,9 +75,9 @@ components:
                 priority:
                     type: number
                     description: The priority of the tank
-                    example: 5
                     minimum: 1
                     maximum: 5
+                    example: 5
                 is_reward:
                     type: boolean
                     description: If the tank is a reward tank
