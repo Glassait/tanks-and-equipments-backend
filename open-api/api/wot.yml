@@ -36,6 +36,7 @@ components:
             type: object
             required:
                 - title
+                - url
                 - image_url
                 - tags
             properties:
@@ -43,11 +44,17 @@ components:
                     type: string
                     description: The title of the news
                     example: Sommet de l'arbre de juin 2024
+                url:
+                    type: string
+                    description: The url of the new
+                    example: https://worldoftanks.eu/fr/news/general-news/halloween-2024-how-to-play/
                 image_url:
                     type: string
-                    description: The url of the new image
+                    description: The image url of the news
                     example: https://eu-wotp.wgcdn.co/dcont/fb/image/1.26.1_1022x360_thumbnail.jpg
                 tags:
                     type: array
+                    description: The tags apply to the news
+                    example: ["sommet de l'arbre"]
                     items:
                         type: string

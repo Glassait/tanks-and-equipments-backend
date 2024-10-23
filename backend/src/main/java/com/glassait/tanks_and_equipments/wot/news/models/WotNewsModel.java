@@ -43,6 +43,14 @@ public class WotNewsModel {
     @NotNull(message = "The wot news image_url is mandatory")
     private String imageUrl;
 
+    @Column(name = "url", nullable = false)
+    @Size(min = 5, max = 100)
+    @Description("The url of the wot news")
+    @NotBlank(message = "The wot news url must be not blank")
+    @NotEmpty(message = "The wot news url must be not empty")
+    @NotNull(message = "The wot news url is mandatory")
+    private String url;
+
     @Column(name = "tags", nullable = false)
     @Description("The tags of the wot news")
     @NotBlank(message = "The wot news tags must be not blank")
