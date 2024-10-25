@@ -39,6 +39,7 @@ components:
                 - type
                 - level
                 - role
+                - nation
                 - priority
             properties:
                 name:
@@ -72,6 +73,22 @@ components:
                         - supports
                         - versatile
                         - wheels
+                nation:
+                    type: string
+                    description: The nation of the tank
+                    example: URSS
+                    enum:
+                        - China
+                        - Italy
+                        - Sweden
+                        - Japan
+                        - Czech
+                        - France
+                        - USA
+                        - UK
+                        - Poland
+                        - Germany
+                        - USSR
                 priority:
                     type: number
                     description: The priority of the tank

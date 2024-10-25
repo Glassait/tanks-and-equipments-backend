@@ -60,6 +60,14 @@ public class TankModel {
     @NotNull(message = "The tank's role is mandatory")
     private String role;
 
+    @Column(name = "nation", nullable = false)
+    @Size(min = 5, max = 100)
+    @Description("The nation of the tank")
+    @NotBlank(message = "The tank's nation must be not blank")
+    @NotEmpty(message = "The tank's nation must be not empty")
+    @NotNull(message = "The tank's nation is mandatory")
+    private String nation;
+
     @Column(name = "priority", nullable = false)
     @Description("The priority of the tank")
     @Min(value = 1)

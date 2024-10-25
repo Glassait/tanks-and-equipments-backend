@@ -19,6 +19,7 @@ public interface TanksOverviewMapper {
     @Mapping(source = "level", target = "level")
     @Mapping(source = "role", target = "role", qualifiedByName = "convertToRoleEnum")
     @Mapping(source = "priority", target = "priority")
+    @Mapping(source = "nation", target = "nation")
     @Mapping(source = "isReward", target = "isReward")
     TankOverview convertTankModelToTankOverview(TankModel tankModel);
 
