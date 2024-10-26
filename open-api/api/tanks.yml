@@ -36,6 +36,7 @@ components:
             type: object
             required:
                 - name
+                - wotName
                 - type
                 - level
                 - role
@@ -46,6 +47,11 @@ components:
                     type: string
                     description: The name of the tank
                     example: Object 260
+                    minLength: 1
+                wotName:
+                    type: string
+                    description: The wargaming name of the tank
+                    example: r110_object_260
                     minLength: 1
                 type:
                     type: string

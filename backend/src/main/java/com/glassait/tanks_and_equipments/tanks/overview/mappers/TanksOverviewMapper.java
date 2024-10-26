@@ -16,6 +16,7 @@ public interface TanksOverviewMapper {
     List<TankOverview> convertListTankModelToListTankOverview(List<TankModel> tankModels);
 
     @Mapping(source = "name", target = "name")
+    @Mapping(source = "wotName", target = "wotName")
     @Mapping(source = "type", target = "type", qualifiedByName = "convertToTypeEnum")
     @Mapping(source = "level", target = "level")
     @Mapping(source = "role", target = "role", qualifiedByName = "convertToRoleEnum")

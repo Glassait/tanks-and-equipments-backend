@@ -37,6 +37,14 @@ public class TankModel {
     @NotNull(message = "The tank's name is mandatory")
     private String name;
 
+    @Column(name = "wot_name", nullable = false)
+    @Size(min = 5, max = 100)
+    @Description("The wotName of the tank")
+    @NotBlank(message = "The tank's wotName must be not blank")
+    @NotEmpty(message = "The tank's wotName must be not empty")
+    @NotNull(message = "The tank's wotName is mandatory")
+    private String wotName;
+
     @Column(name = "type", nullable = false)
     @Size(min = 5, max = 100)
     @Description("The type of the tank")
