@@ -14,6 +14,6 @@ public interface WotNewsMapper {
     @Mapping(source = "title", target = "title")
     @Mapping(source = "url", target = "url")
     @Mapping(source = "imageUrl", target = "imageUrl")
-    @Mapping(target = "tags", expression = "java(List.of(wotNewsModel.getTags().split(\",\")))")
+    @Mapping(source = "tags", target = "tags")
     WotNews convertWotNewsModelToWotNews(WotNewsModel wotNewsModel);
 }
