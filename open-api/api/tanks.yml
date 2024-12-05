@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
     title: Tanks API
     description: All apis related to the tanks
-    version: 1.0.4
+    version: 1.1.0
 
 servers:
     -   url: https://fold-backend-5e6c2cf7c25c.herokuapp.com
@@ -12,7 +12,7 @@ paths:
         get:
             tags:
                 - tanks-overview
-            description: Return the overview of all tank stored in the database who are meta
+            description: Return the overview of all tanks stored in the database who are meta
             operationId: tanks-overview
             responses:
                 200:
@@ -21,6 +21,29 @@ paths:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/TanksOverview'
+                500:
+                    description: Internal server error
+            deprecated: false
+    /api/private/v1/tanks/detail/{tank_id}:
+        get:
+            tags:
+                - tanks-detail
+            description: Return the detail configuration of the tank stored in the database
+            operationId: tanks-detail
+            parameters:
+                -   name: tank_id
+                    in: path
+                    description: The id of the tank
+                    required: true
+                    schema:
+                        type: integer
+            responses:
+                200:
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/TankDetail'
                 500:
                     description: Internal server error
             deprecated: false
@@ -85,7 +108,7 @@ components:
                 nation:
                     type: string
                     description: The nation of the tank
-                    example: URSS
+                    example: USSR
                     enum:
                         - China
                         - Italy
@@ -107,4 +130,282 @@ components:
                 is_reward:
                     type: boolean
                     description: If the tank is a reward tank
+                    example: true
+
+        TankDetail:
+            title: TankDetailDto
+            description: The object representing the detail configuration of a tank
+            type: object
+            required:
+                - description
+                - configuration
+            properties:
+                description:
+                    type: string
+                    description: The tankopedia description of the tank
+                    example: "Une version du char lourd Object 260. Les plans de conception ont été terminés en septembre 1945, mais aucun prototype n'a été fabriqué."
+                configuration:
+                    type: array
+                    description: The list of equipments configuration
+                    minItems: 1
+                    items:
+                        $ref: "#/components/schemas/Configuration"
+                crew:
+                    type: array
+                    description: The object represent the crew of the tank
+                    minItems: 2
+                    maxItems: 6
+                    items:
+                        $ref: "#/components/schemas/CrewMember"
+                fieldModification:
+                    type: object
+                    description: The object represent the field modification of the tank
+                    properties:
+                        level2:
+                            $ref: "#/components/schemas/FieldRow"
+                        level4:
+                            $ref: "#/components/schemas/FieldRow"
+                        level5:
+                            $ref: "#/components/schemas/FieldRow"
+                        level6:
+                            $ref: "#/components/schemas/FieldRow"
+                        level7:
+                            $ref: "#/components/schemas/FieldRow"
+                        level8:
+                            $ref: "#/components/schemas/FieldRow"
+        Configuration:
+            title: ConfigurationDto
+            description: The object representing one equipment configuration for a tank
+            type: object
+            properties:
+                equipments:
+                    type: array
+                    description: The list of equipment
+                    minItems: 3
+                    maxItems: 3
+                    items:
+                        $ref: "#/components/schemas/Equipment"
+                directive:
+                    $ref: "#/components/schemas/Equipment"
+                consumables:
+                    type: array
+                    description: The list of equipment
+                    minItems: 3
+                    maxItems: 3
+                    items:
+                        $ref: "#/components/schemas/Consumable"
+                priority:
+                    type: string
+                    description: The priority of the configuration
+                    enum:
+                        - principal
+                        - secondaire
+                        - alternatif
+        Equipment:
+            title: EquipmentDto
+            description: The representation of one equipment
+            type: object
+            required:
+                - name
+                - isModernized
+                - isDirective
+            properties:
+                name:
+                    type: string
+                    description: The name of the equipment
+                    example: improvedConfiguration
+                    enum:
+                        - improvedConfiguration
+                        - grousers
+                        - extraHealthReserve
+                        - camouflageNet
+                        - rammer
+                        - modernizedAimDrivesAimingStabilizer
+                        - improvedRotationMechanism
+                        - coatedOptics
+                        - antifragmentationLining
+                        - additionalInvisibilityDevice
+                        - aimingStabilizer
+                        - modernizedTurbochargerRotationMechanism
+                        - modernizedAimDrivesAimingStabilizer
+                        - enhancedAimDrives
+                        - commandersView
+                        - stereoscope
+                        - turbocharger
+                        - improvedVentilation
+                        - improvedSights
+                isModernized:
+                    type: boolean
+                    description: Define if the equipment is a modernized equipment or not
+                    example: false
+                isDirective:
+                    type: boolean
+                    description: Define if the equipment is a directive or not
+                    example: false
+        Consumable:
+            title: ConsumableDto
+            description: The representation of one consumable
+            type: object
+            required:
+                - name
+            properties:
+                name:
+                    type: string
+                    description: The name of the consumable
+                    example: ration_sweden
+                    enum:
+                        - ration_sweden
+                        - hotCoffee
+                        - cocacola
+                        - chocolate
+                        - qualityFuel
+                        - excellentFuel
+                        - ration_uk
+                        - ration_poland
+                        - autoExtinguishers
+                        - ration_russia
+                        - largeMedkit
+                        - largeRepairkit
+                        - ration_china
+        CrewMember:
+            title: CrewMemberDto
+            description: The representation of a crew member
+            type: object
+            required:
+                - name
+                - roles
+            properties:
+                name:
+                    type: string
+                    description: The name of the member
+                    example: Commandant
+                    pattern: '[\s\wé]+'
+                roles:
+                    type: object
+                    description: The roles the member can take
+                    properties:
+                        commander:
+                            type: array
+                            description: The skill of the commander
+                            minItems: 3
+                            maxItems: 6
+                            items:
+                                $ref: "#/components/schemas/Skill"
+                        gunner:
+                            type: array
+                            description: The skill of the gunner
+                            minItems: 3
+                            maxItems: 6
+                            items:
+                                $ref: "#/components/schemas/Skill"
+                        driver:
+                            type: array
+                            description: The skill of the driver
+                            minItems: 3
+                            maxItems: 6
+                            items:
+                                $ref: "#/components/schemas/Skill"
+                        radioman:
+                            type: array
+                            description: The skill of the radioman
+                            minItems: 3
+                            maxItems: 6
+                            items:
+                                $ref: "#/components/schemas/Skill"
+                        loader:
+                            type: array
+                            description: The skill of the radioman
+                            minItems: 3
+                            maxItems: 6
+                            items:
+                                $ref: "#/components/schemas/Skill"
+        Skill:
+            title: SkillDto
+            description: The representation of one skill
+            type: object
+            required:
+                - name
+            properties:
+                name:
+                    type: string
+                    description: The name of the skill
+                    example: brotherhood
+                    enum:
+                        - brotherhood
+                        - repair
+                        - camouflage
+                        - commander_eagleEye
+                        - commander_emergency
+                        - commander_tutor
+                        - commander_coordination
+                        - commander_enemyShotPredictor
+                        - commander_practical
+                        - gunner_smoothTurret
+                        - gunner_sniper
+                        - gunner_rancorous
+                        - gunner_quickAiming
+                        - gunner_armorer
+                        - driver_virtuoso
+                        - driver_smoothDriving
+                        - driver_badRoadsKing
+                        - driver_reliablePlacement
+                        - driver_rammingMaster
+                        - driver_motorExpert
+                        - loader_desperado
+                        - loader_pedant
+                        - loader_intuition
+                        - loader_perfectCharge
+                        - loader_melee
+                        - loader_ammunitionImprove
+                        - radioman_finder
+                        - radioman_sideBySide
+                        - radioman_interference
+                        - radioman_signalInterception
+                        - radioman_expert
+                        - fireFighting
+        FieldRow:
+            title: FieldRowDto
+            description: The object represent a row of field modification
+            properties:
+                left:
+                    $ref: "#/components/schemas/Field"
+                right:
+                    $ref: "#/components/schemas/Field"
+        Field:
+            title: FieldDto
+            description: The representation of one field modification
+            properties:
+                name:
+                    type: string
+                    description: The name of the field
+                wot_name:
+                    type: string
+                    description: The wot name of the field
+                    enum:
+                        - survivability
+                        - additionalGrousers
+                        - betterFriction
+                        - firepower
+                        - improvedAimingHandling
+                        - improvedChassisStability
+                        - improvedEnginePower
+                        - improvedGunBreech
+                        - improvedLightFilters
+                        - improvedMuzzleBreak
+                        - improvedObservationDevice
+                        - improvedScope
+                        - improvedSelfRepairingTracks
+                        - improvedSelfRepairingWheels
+                        - improvedSpallingResistance
+                        - improvedSpeedIndicator
+                        - improvedSpeedIndicatorBackwards
+                        - improvedTurretTurningWheels
+                        - increasedSensitivityOptics
+                        - increasedThickness
+                        - mobility
+                        - reinforcedStructure
+                        - stealth
+                isActive:
+                    type: boolean
+                    description: If the field modification if active or not
                     example: true
