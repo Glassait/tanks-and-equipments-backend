@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -10,7 +9,11 @@
     </parent>
 
     <artifactId>tanks-and-equipments-app</artifactId>
-    <description>Backend for equipmentTanks web site</description>
+    <description>Backend for tank and equipment web site</description>
+
+    <properties>
+        <resource.delimiter>@</resource.delimiter>
+    </properties>
 
     <dependencies>
         <!--region SPRING-->
@@ -56,18 +59,12 @@
         </dependency>
         <!--endregion-->
 
+        <!--region FRAMEWORK-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${version.lombok}</version>
             <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
-            <version>8.0.33</version>
         </dependency>
 
         <dependency>
@@ -83,12 +80,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>6.2.0.Final</version>
-        </dependency>
-
-        <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
             <version>3.1.0</version>
@@ -99,6 +90,7 @@
             <artifactId>cache-api</artifactId>
             <version>1.1.1</version>
         </dependency>
+        <!--endregion-->
 
         <!--region HAZELCAST-->
         <dependency>
@@ -118,8 +110,13 @@
         <dependency>
             <groupId>com.glassait</groupId>
             <artifactId>tanks-and-equipments-api</artifactId>
-            <version>${revision}</version>
-            <scope>compile</scope>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.glassait</groupId>
+            <artifactId>tanks-and-equipments-model</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <!--endregion-->
 
@@ -155,10 +152,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
+                <version>3.2.0</version>
                 <configuration>
                     <delimiters>
-                        <delimiter>@</delimiter>
+                        <delimiter>${resource.delimiter}</delimiter>
                     </delimiters>
+                    <useDefaultDelimiters>false</useDefaultDelimiters>
                 </configuration>
             </plugin>
         </plugins>

@@ -1,0 +1,201 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Glassait
+      preConditions:
+        - onFail: MARK_RAN
+        - tableExists:
+            tableName: skill
+      changes:
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: brotherhood
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: repair
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: camouflage
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: commander_eagleEye
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: commander_emergency
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: commander_tutor
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: commander_coordination
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: commander_enemyShotPredictor
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: commander_practical
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: gunner_smoothTurret
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: gunner_sniper
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: gunner_rancorous
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: gunner_quickAiming
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: gunner_armorer
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: driver_virtuoso
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: driver_smoothDriving
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: driver_badRoadsKing
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: driver_reliablePlacement
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: driver_rammingMaster
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: driver_motorExpert
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: loader_desperado
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: loader_pedant
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: loader_intuition
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: loader_perfectCharge
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: loader_melee
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: loader_ammunitionImprove
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: radioman_finder
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: radioman_sideBySide
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: radioman_interference
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: radioman_signalInterception
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: radioman_expert
+        - insert:
+            tableName: skill
+            columns:
+              - column:
+                  name: name
+                  value: fireFighting

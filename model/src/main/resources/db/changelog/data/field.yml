@@ -1,0 +1,147 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Glassait
+      preConditions:
+        - onFail: MARK_RAN
+        - tableExists:
+            tableName: field
+      changes:
+        - insert:
+            tableName: field
+            columns:
+              - column:
+                  name: name
+                  value: survivability
+        - insert:
+            tableName: field
+            columns:
+              - column:
+                  name: name
+                  value: additionalGrousers
+        - insert:
+            tableName: field
+            columns:
+              - column:
+                  name: name
+                  value: betterFriction
+        - insert:
+            tableName: field
+            columns:
+              - column:
+                  name: name
+                  value: firepower
+        - insert:
+            tableName: field
+            columns:
+              - column:
+                  name: name
+                  value: improvedAimingHandling
+        - insert:
+            tableName: field
+            columns:
+              - column:
+                  name: name
+                  value: improvedChassisStability
+        - insert:
+            tableName: field
+            columns:
+              - column:
+                  name: name
+                  value: improvedEnginePower
+        - insert:
+            tableName: field
+            columns:
+              - column:
+                  name: name
+                  value: improvedGunBreech
+        - insert:
+            tableName: field
+            columns:
+              - column:
+                  name: name
+                  value: improvedLightFilters
+        - insert:
+            tableName: field
+            columns:
+              - column:
+                  name: name
+                  value: improvedMuzzleBreak
+        - insert:
+            tableName: field
+            columns:
+              - column:
+                  name: name
+                  value: improvedObservationDevice
+        - insert:
+            tableName: field
+            columns:
+              - column:
+                  name: name
+                  value: improvedScope
+        - insert:
+            tableName: field
+            columns:
+              - column:
+                  name: name
+                  value: improvedSelfRepairingTracks
+        - insert:
+            tableName: field
+            columns:
+              - column:
+                  name: name
+                  value: improvedSelfRepairingWheels
+        - insert:
+            tableName: field
+            columns:
+              - column:
+                  name: name
+                  value: improvedSpallingResistance
+        - insert:
+            tableName: field
+            columns:
+              - column:
+                  name: name
+                  value: improvedSpeedIndicator
+        - insert:
+            tableName: field
+            columns:
+              - column:
+                  name: name
+                  value: improvedSpeedIndicatorBackwards
+        - insert:
+            tableName: field
+            columns:
+              - column:
+                  name: name
+                  value: improvedTurretTurningWheels
+        - insert:
+            tableName: field
+            columns:
+              - column:
+                  name: name
+                  value: increasedSensitivityOptics
+        - insert:
+            tableName: field
+            columns:
+              - column:
+                  name: name
+                  value: increasedThickness
+        - insert:
+            tableName: field
+            columns:
+              - column:
+                  name: name
+                  value: mobility
+        - insert:
+            tableName: field
+            columns:
+              - column:
+                  name: name
+                  value: reinforcedStructure
+        - insert:
+            tableName: field
+            columns:
+              - column:
+                  name: name
+                  value: stealth

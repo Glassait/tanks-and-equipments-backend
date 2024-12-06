@@ -1,0 +1,123 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Glassait
+      preConditions:
+        - onFail: MARK_RAN
+        - tableExists:
+            tableName: equipment
+      changes:
+        - insert:
+            tableName: equipment
+            columns:
+              - column:
+                  name: name
+                  value: improvedConfiguration
+        - insert:
+            tableName: equipment
+            columns:
+              - column:
+                  name: name
+                  value: grousers
+        - insert:
+            tableName: equipment
+            columns:
+              - column:
+                  name: name
+                  value: extraHealthReserve
+        - insert:
+            tableName: equipment
+            columns:
+              - column:
+                  name: name
+                  value: camouflageNet
+        - insert:
+            tableName: equipment
+            columns:
+              - column:
+                  name: name
+                  value: rammer
+        - insert:
+            tableName: equipment
+            columns:
+              - column:
+                  name: name
+                  value: modernizedAimDrivesAimingStabilizer
+        - insert:
+            tableName: equipment
+            columns:
+              - column:
+                  name: name
+                  value: improvedRotationMechanism
+        - insert:
+            tableName: equipment
+            columns:
+              - column:
+                  name: name
+                  value: coatedOptics
+        - insert:
+            tableName: equipment
+            columns:
+              - column:
+                  name: name
+                  value: antifragmentationLining
+        - insert:
+            tableName: equipment
+            columns:
+              - column:
+                  name: name
+                  value: additionalInvisibilityDevice
+        - insert:
+            tableName: equipment
+            columns:
+              - column:
+                  name: name
+                  value: aimingStabilizer
+        - insert:
+            tableName: equipment
+            columns:
+              - column:
+                  name: name
+                  value: modernizedTurbochargerRotationMechanism
+        - insert:
+            tableName: equipment
+            columns:
+              - column:
+                  name: name
+                  value: modernizedAimDrivesAimingStabilizer
+        - insert:
+            tableName: equipment
+            columns:
+              - column:
+                  name: name
+                  value: enhancedAimDrives
+        - insert:
+            tableName: equipment
+            columns:
+              - column:
+                  name: name
+                  value: commandersView
+        - insert:
+            tableName: equipment
+            columns:
+              - column:
+                  name: name
+                  value: stereoscope
+        - insert:
+            tableName: equipment
+            columns:
+              - column:
+                  name: name
+                  value: turbocharger
+        - insert:
+            tableName: equipment
+            columns:
+              - column:
+                  name: name
+                  value: improvedVentilation
+        - insert:
+            tableName: equipment
+            columns:
+              - column:
+                  name: name
+                  value: improvedSights

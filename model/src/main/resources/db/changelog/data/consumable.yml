@@ -1,0 +1,87 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Glassait
+      preConditions:
+        - onFail: MARK_RAN
+        - tableExists:
+            tableName: consumable
+      changes:
+        - insert:
+            tableName: consumable
+            columns:
+              - column:
+                  name: name
+                  value: ration_sweden
+        - insert:
+            tableName: consumable
+            columns:
+              - column:
+                  name: name
+                  value: hotCoffee
+        - insert:
+            tableName: consumable
+            columns:
+              - column:
+                  name: name
+                  value: cocacola
+        - insert:
+            tableName: consumable
+            columns:
+              - column:
+                  name: name
+                  value: chocolate
+        - insert:
+            tableName: consumable
+            columns:
+              - column:
+                  name: name
+                  value: qualityFuel
+        - insert:
+            tableName: consumable
+            columns:
+              - column:
+                  name: name
+                  value: excellentFuel
+        - insert:
+            tableName: consumable
+            columns:
+              - column:
+                  name: name
+                  value: ration_uk
+        - insert:
+            tableName: consumable
+            columns:
+              - column:
+                  name: name
+                  value: ration_poland
+        - insert:
+            tableName: consumable
+            columns:
+              - column:
+                  name: name
+                  value: autoExtinguishers
+        - insert:
+            tableName: consumable
+            columns:
+              - column:
+                  name: name
+                  value: ration_russia
+        - insert:
+            tableName: consumable
+            columns:
+              - column:
+                  name: name
+                  value: largeMedkit
+        - insert:
+            tableName: consumable
+            columns:
+              - column:
+                  name: name
+                  value: largeRepairkit
+        - insert:
+            tableName: consumable
+            columns:
+              - column:
+                  name: name
+                  value: ration_china

@@ -1,4 +1,7 @@
 spring:
+    liquibase:
+        enabled: true
+        change-log: "classpath:./db/changelog/db.changelog-master.yml"
     jpa:
         show-sql: true
         hibernate:
