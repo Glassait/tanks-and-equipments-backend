@@ -1,9 +1,9 @@
 databaseChangeLog:
-  - include:
-      file: db/changelog/data/skill.yml
-  - include:
-      file: db/changelog/data/equipment.yml
-  - include:
-      file: db/changelog/data/consumable.yml
-  - include:
-      file: db/changelog/data/field.yml
+#  - include:
+#      file: db/changelog/data/skill.yml
+#  - include:
+#      file: db/changelog/data/equipment.yml
+#  - include:
+#      file: db/changelog/data/consumable.yml
+#  - include:
+#      file: db/changelog/data/field.yml

@@ -43,6 +43,9 @@ databaseChangeLog:
               - column:
                   name: name
                   value: modernizedAimDrivesAimingStabilizer
+              - column:
+                  name: is_modernized
+                  value: "true"
         - insert:
             tableName: equipment
             columns:
@@ -79,12 +82,18 @@ databaseChangeLog:
               - column:
                   name: name
                   value: modernizedTurbochargerRotationMechanism
+              - column:
+                  name: is_modernized
+                  value: "true"
         - insert:
             tableName: equipment
             columns:
               - column:
                   name: name
                   value: modernizedAimDrivesAimingStabilizer
+              - column:
+                  name: is_modernized
+                  value: "true"
         - insert:
             tableName: equipment
             columns:
@@ -121,3 +130,12 @@ databaseChangeLog:
               - column:
                   name: name
                   value: improvedSights
+        - insert:
+            tableName: equipment
+            columns:
+              - column:
+                  name: name
+                  value: modernizedImprovedSightsEnhancedAimDrives
+              - column:
+                  name: is_modernized
+                  value: "true"

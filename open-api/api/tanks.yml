@@ -44,6 +44,8 @@ paths:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/TankDetail'
+                404:
+                    description: Not Found
                 500:
                     description: Internal server error
             deprecated: false
@@ -61,6 +63,7 @@ components:
             description: The object representing the overview of a tank
             type: object
             required:
+                - id
                 - name
                 - wotName
                 - type
@@ -69,6 +72,10 @@ components:
                 - nation
                 - priority
             properties:
+                id:
+                    type: integer
+                    description: The wot id of the tank
+                    example: 58369
                 name:
                     type: string
                     description: The name of the tank
@@ -139,6 +146,8 @@ components:
             required:
                 - description
                 - configuration
+                - crew
+                - fieldModification
             properties:
                 description:
                     type: string

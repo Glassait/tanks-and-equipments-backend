@@ -18,6 +18,7 @@ import java.util.concurrent.TimeUnit;
 @Configuration
 public class HazelcastConfig {
     public static final String TANKS_OVERVIEW_CACHE_KEY = "tanks-overview";
+    public static final String TANKS_DETAIL_CACHE_KEY = "tank-detail";
     public static final String WOT_NEWS_CACHE_KEY = "wot-news";
     public static final String FOLD_RESULTS_CACHE_KEY = "fold-results";
 
@@ -29,10 +30,17 @@ public class HazelcastConfig {
         Config config = new Config();
         config.setInstanceName(hazelcastInstanceName);
 
-        CacheSimpleConfig tankOverviewCacheConfig = new CacheSimpleConfig();
-        tankOverviewCacheConfig.setName(TANKS_OVERVIEW_CACHE_KEY);
-        tankOverviewCacheConfig.setBackupCount(1);
-        tankOverviewCacheConfig.setExpiryPolicyFactory(
+        CacheSimpleConfig tanksOverviewCacheConfig = new CacheSimpleConfig();
+        tanksOverviewCacheConfig.setName(TANKS_OVERVIEW_CACHE_KEY);
+        tanksOverviewCacheConfig.setBackupCount(1);
+        tanksOverviewCacheConfig.setExpiryPolicyFactory(
+                FactoryBuilder.factoryOf(new CreatedExpiryPolicy(new Duration(TimeUnit.HOURS, 1))).toString()
+        );
+
+        CacheSimpleConfig tankDetailCacheConfig = new CacheSimpleConfig();
+        tankDetailCacheConfig.setName(TANKS_OVERVIEW_CACHE_KEY);
+        tankDetailCacheConfig.setBackupCount(1);
+        tankDetailCacheConfig.setExpiryPolicyFactory(
                 FactoryBuilder.factoryOf(new CreatedExpiryPolicy(new Duration(TimeUnit.HOURS, 1))).toString()
         );
 
@@ -50,7 +58,8 @@ public class HazelcastConfig {
                 FactoryBuilder.factoryOf(new CreatedExpiryPolicy(new Duration(TimeUnit.HOURS, 1))).toString()
         );
 
-        config.addCacheConfig(tankOverviewCacheConfig);
+        config.addCacheConfig(tanksOverviewCacheConfig);
+        config.addCacheConfig(tankDetailCacheConfig);
         config.addCacheConfig(wotNewsCacheConfig);
         config.addCacheConfig(foldResultServicesCacheConfig);
 
