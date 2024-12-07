@@ -3,7 +3,6 @@ package com.glassait.tanks_and_equipments.wot.news.mappers;
 import com.glassait.tanks_and_equipments.api.model.WotNews;
 import com.glassait.tanks_and_equipments.wot.news.models.WotNewsModel;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 import java.util.List;
 
@@ -11,9 +10,5 @@ import java.util.List;
 public interface WotNewsMapper {
     List<WotNews> convertListWotNewsModelToListWotNews(List<WotNewsModel> wotNewsModels);
 
-    @Mapping(source = "title", target = "title")
-    @Mapping(source = "url", target = "url")
-    @Mapping(source = "imageUrl", target = "imageUrl")
-    @Mapping(source = "tags", target = "tags")
     WotNews convertWotNewsModelToWotNews(WotNewsModel wotNewsModel);
 }
