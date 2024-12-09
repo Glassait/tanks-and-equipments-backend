@@ -1,4 +1,4 @@
-package com.glassait.tanks_and_equipments.config;
+package com.glassait.tanks_and_equipments.shared.converters;
 
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;

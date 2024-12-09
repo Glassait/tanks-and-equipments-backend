@@ -1,6 +1,6 @@
 package com.glassait.tanks_and_equipments.wot.news.models;
 
-import com.glassait.tanks_and_equipments.config.JpaConverterList;
+import com.glassait.tanks_and_equipments.shared.converters.JpaConverterList;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;

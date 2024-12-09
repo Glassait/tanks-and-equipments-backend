@@ -1,4 +1,4 @@
-package com.glassait.tanks_and_equipments.config;
+package com.glassait.tanks_and_equipments.shared.configs;
 
 import com.hazelcast.config.CacheSimpleConfig;
 import com.hazelcast.config.Config;

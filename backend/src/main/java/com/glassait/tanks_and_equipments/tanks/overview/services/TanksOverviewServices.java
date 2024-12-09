@@ -1,7 +1,7 @@
 package com.glassait.tanks_and_equipments.tanks.overview.services;
 
 import com.glassait.tanks_and_equipments.api.model.TankOverview;
-import com.glassait.tanks_and_equipments.config.HazelcastConfig;
+import com.glassait.tanks_and_equipments.shared.configs.HazelcastConfig;
 import com.glassait.tanks_and_equipments.tanks.overview.mappers.TanksOverviewMapper;
 import com.glassait.tanks_and_equipments.tanks.overview.reposirories.TanksRepository;
 import lombok.RequiredArgsConstructor;

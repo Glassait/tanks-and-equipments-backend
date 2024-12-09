@@ -1,4 +1,4 @@
-package com.glassait.tanks_and_equipments.config;
+package com.glassait.tanks_and_equipments.shared.contributors;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.info.Info;

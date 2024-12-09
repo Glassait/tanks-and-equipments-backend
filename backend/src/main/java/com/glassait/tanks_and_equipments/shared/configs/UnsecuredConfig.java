@@ -1,4 +1,4 @@
-package com.glassait.tanks_and_equipments.config;
+package com.glassait.tanks_and_equipments.shared.configs;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
