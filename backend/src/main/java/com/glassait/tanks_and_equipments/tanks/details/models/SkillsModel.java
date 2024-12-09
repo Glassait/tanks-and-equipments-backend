@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Positive;
 import jdk.jfr.Description;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,19 +23,20 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "consumable")
-public class ConsumableModel {
+@Table(name = "skills")
+@Description("This table hold all the information for all World of Tanks crew skills")
+public class SkillsModel {
     @Id
-    @Column(name = "id")
-    @Description("The id of the consumable")
+    @Column(nullable = false)
+    @Description("The generated id of the skill")
+    @Positive(message = "Id must be positive")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "name", nullable = false)
-    @Size(min = 5, max = 100)
-    @Description("The name of the consumable")
-    @NotBlank(message = "The consumable's name must be not blank")
-    @NotEmpty(message = "The consumable's name must be not empty")
-    @NotNull(message = "The consumable's name is mandatory")
-    private String name;
+    @Column(nullable = false)
+    @Description("The name of the skill")
+    @NotBlank(message = "The skill's name must be not blank")
+    @NotEmpty(message = "The skill's name must be not empty")
+    @NotNull(message = "The skill's name is mandatory")
+    private String wotName;
 }

@@ -14,16 +14,21 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import jdk.jfr.Description;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
-@Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "wot_news")
+@Description("This table is feed by a discord bot, it's contains the World of Tanks news scrap from a rss flux")
 public class WotNewsModel {
     @Id
     @Column(name = "id")

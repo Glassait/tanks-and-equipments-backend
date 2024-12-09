@@ -1,12 +1,21 @@
 package com.glassait.tanks_and_equipments.tanks.details.models;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jdk.jfr.Description;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Builder
 @AllArgsConstructor
@@ -14,12 +23,13 @@ import lombok.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "equipment")
-public class EquipmentModel {
-    @Positive(message = "Id must be positive")
+@Table(name = "equipments")
+@Description("This table hold all the information for all World of Tanks equipments")
+public class EquipmentsModel {
     @Id
     @Column(nullable = false)
-    @Description("The id of the equipment")
+    @Description("The generated id of the equipment")
+    @Positive(message = "Id must be positive")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
@@ -28,7 +38,7 @@ public class EquipmentModel {
     @NotBlank(message = "The equipment's name must be not blank")
     @NotEmpty(message = "The equipment's name must be not empty")
     @NotNull(message = "The equipment's name is mandatory")
-    private String name;
+    private String wotName;
 
     @NotNull(message = "IsModernized field is mandatory")
     @Column(nullable = false)

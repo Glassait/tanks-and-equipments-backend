@@ -1,176 +1,176 @@
 databaseChangeLog:
   - changeSet:
-      id: equipment-1
+      id: equipments-1
       author: Glassait
       changes:
         - insert:
-            tableName: equipment
+            tableName: equipments
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: improvedConfiguration
               - column:
                   name: is_modernized
                   type: boolean
                   valueBoolean: "false"
         - insert:
-            tableName: equipment
+            tableName: equipments
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: grousers
               - column:
                   name: is_modernized
                   valueBoolean: "false"
         - insert:
-            tableName: equipment
+            tableName: equipments
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: extraHealthReserve
               - column:
                   name: is_modernized
                   valueBoolean: "false"
         - insert:
-            tableName: equipment
+            tableName: equipments
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: camouflageNet
               - column:
                   name: is_modernized
                   valueBoolean: "false"
         - insert:
-            tableName: equipment
+            tableName: equipments
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: rammer
               - column:
                   name: is_modernized
                   valueBoolean: "false"
         - insert:
-            tableName: equipment
+            tableName: equipments
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: modernizedAimDrivesAimingStabilizer
               - column:
                   name: is_modernized
                   valueBoolean: "true"
         - insert:
-            tableName: equipment
+            tableName: equipments
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: improvedRotationMechanism
               - column:
                   name: is_modernized
                   valueBoolean: "false"
         - insert:
-            tableName: equipment
+            tableName: equipments
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: coatedOptics
               - column:
                   name: is_modernized
                   valueBoolean: "false"
         - insert:
-            tableName: equipment
+            tableName: equipments
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: antifragmentationLining
               - column:
                   name: is_modernized
                   valueBoolean: "false"
         - insert:
-            tableName: equipment
+            tableName: equipments
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: additionalInvisibilityDevice
               - column:
                   name: is_modernized
                   valueBoolean: "false"
         - insert:
-            tableName: equipment
+            tableName: equipments
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: aimingStabilizer
               - column:
                   name: is_modernized
                   valueBoolean: "false"
         - insert:
-            tableName: equipment
+            tableName: equipments
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: modernizedTurbochargerRotationMechanism
               - column:
                   name: is_modernized
                   valueBoolean: "true"
         - insert:
-            tableName: equipment
+            tableName: equipments
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: enhancedAimDrives
               - column:
                   name: is_modernized
                   valueBoolean: "false"
         - insert:
-            tableName: equipment
+            tableName: equipments
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: commandersView
               - column:
                   name: is_modernized
                   valueBoolean: "false"
         - insert:
-            tableName: equipment
+            tableName: equipments
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: stereoscope
               - column:
                   name: is_modernized
                   valueBoolean: "false"
         - insert:
-            tableName: equipment
+            tableName: equipments
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: turbocharger
               - column:
                   name: is_modernized
                   valueBoolean: "false"
         - insert:
-            tableName: equipment
+            tableName: equipments
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: improvedVentilation
               - column:
                   name: is_modernized
                   valueBoolean: "false"
         - insert:
-            tableName: equipment
+            tableName: equipments
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: improvedSights
               - column:
                   name: is_modernized
                   valueBoolean: "false"
         - insert:
-            tableName: equipment
+            tableName: equipments
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: modernizedImprovedSightsEnhancedAimDrives
               - column:
                   name: is_modernized

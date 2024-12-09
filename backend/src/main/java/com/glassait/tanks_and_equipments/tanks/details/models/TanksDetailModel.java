@@ -1,11 +1,21 @@
 package com.glassait.tanks_and_equipments.tanks.details.models;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import jdk.jfr.Description;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Builder
 @AllArgsConstructor
@@ -13,10 +23,12 @@ import lombok.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "tank_detail")
-public class TankDetailModel {
+@Table(name = "tanks_detail")
+@Description("This table hold the advanced information for the tanks/detail api")
+public class TanksDetailModel {
     @Id
-    @Description("The id of the tank")
+    @Description("The World of Tanks id of the tank")
+    @Positive(message = "Id must be positive")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 

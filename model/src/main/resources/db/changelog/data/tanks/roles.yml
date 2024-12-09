@@ -1,197 +1,197 @@
 databaseChangeLog:
   - changeSet:
-      id: skill-1
+      id: crew_roles-1
       author: Glassait
       changes:
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: brotherhood
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: repair
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: camouflage
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: commander_eagleEye
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: commander_emergency
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: commander_tutor
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: commander_coordination
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: commander_enemyShotPredictor
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: commander_practical
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: gunner_smoothTurret
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: gunner_sniper
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: gunner_rancorous
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: gunner_quickAiming
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: gunner_armorer
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: driver_virtuoso
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: driver_smoothDriving
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: driver_badRoadsKing
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: driver_reliablePlacement
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: driver_rammingMaster
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: driver_motorExpert
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: loader_desperado
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: loader_pedant
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: loader_intuition
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: loader_perfectCharge
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: loader_melee
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: loader_ammunitionImprove
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: radioman_finder
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: radioman_sideBySide
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: radioman_interference
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: radioman_signalInterception
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: radioman_expert
         - insert:
-            tableName: skill
+            tableName: crew_roles
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: fireFighting

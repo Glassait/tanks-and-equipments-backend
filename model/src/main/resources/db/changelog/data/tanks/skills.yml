@@ -1,0 +1,197 @@
+databaseChangeLog:
+  - changeSet:
+      id: skills-1
+      author: Glassait
+      changes:
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: brotherhood
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: repair
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: camouflage
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: commander_eagleEye
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: commander_emergency
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: commander_tutor
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: commander_coordination
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: commander_enemyShotPredictor
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: commander_practical
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: gunner_smoothTurret
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: gunner_sniper
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: gunner_rancorous
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: gunner_quickAiming
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: gunner_armorer
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: driver_virtuoso
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: driver_smoothDriving
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: driver_badRoadsKing
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: driver_reliablePlacement
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: driver_rammingMaster
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: driver_motorExpert
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: loader_desperado
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: loader_pedant
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: loader_intuition
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: loader_perfectCharge
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: loader_melee
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: loader_ammunitionImprove
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: radioman_finder
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: radioman_sideBySide
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: radioman_interference
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: radioman_signalInterception
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: radioman_expert
+        - insert:
+            tableName: skills
+            columns:
+              - column:
+                  name: wot_name
+                  value: fireFighting

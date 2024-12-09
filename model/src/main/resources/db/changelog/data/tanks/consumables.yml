@@ -1,83 +1,83 @@
 databaseChangeLog:
   - changeSet:
-      id: consumable-1
+      id: consumables-1
       author: Glassait
       changes:
         - insert:
-            tableName: consumable
+            tableName: consumables
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: ration_sweden
         - insert:
-            tableName: consumable
+            tableName: consumables
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: hotCoffee
         - insert:
-            tableName: consumable
+            tableName: consumables
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: cocacola
         - insert:
-            tableName: consumable
+            tableName: consumables
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: chocolate
         - insert:
-            tableName: consumable
+            tableName: consumables
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: qualityFuel
         - insert:
-            tableName: consumable
+            tableName: consumables
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: excellentFuel
         - insert:
-            tableName: consumable
+            tableName: consumables
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: ration_uk
         - insert:
-            tableName: consumable
+            tableName: consumables
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: ration_poland
         - insert:
-            tableName: consumable
+            tableName: consumables
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: autoExtinguishers
         - insert:
-            tableName: consumable
+            tableName: consumables
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: ration_russia
         - insert:
-            tableName: consumable
+            tableName: consumables
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: largeMedkit
         - insert:
-            tableName: consumable
+            tableName: consumables
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: largeRepairkit
         - insert:
-            tableName: consumable
+            tableName: consumables
             columns:
               - column:
-                  name: name
+                  name: wot_name
                   value: ration_china
