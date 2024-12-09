@@ -1,0 +1,7 @@
+# This change log is a fake change log to allowing liquibase to load without executing any scripts
+# The real changelog is loaded in LiquibaseExecutor
+databaseChangeLog:
+  - changeSet:
+      runAlways: false
+      id: decoy-1
+      author: Glassait
