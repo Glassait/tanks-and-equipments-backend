@@ -1,7 +1,7 @@
 package com.glassait.tanks_and_equipments.tanks.details.services;
 
 import com.glassait.tanks_and_equipments.api.model.TankDetail;
-import com.glassait.tanks_and_equipments.config.HazelcastConfig;
+import com.glassait.tanks_and_equipments.shared.configs.HazelcastConfig;
 import com.glassait.tanks_and_equipments.tanks.details.mappers.TanksDetailMapper;
 import com.glassait.tanks_and_equipments.tanks.details.models.TankDetailModel;
 import com.glassait.tanks_and_equipments.tanks.details.reposirories.TankDetailRepository;

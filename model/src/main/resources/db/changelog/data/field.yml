@@ -1,11 +1,7 @@
 databaseChangeLog:
   - changeSet:
-      id: 1
+      id: field-1
       author: Glassait
-      preConditions:
-        - onFail: MARK_RAN
-        - tableExists:
-            tableName: field
       changes:
         - insert:
             tableName: field
