@@ -1,4 +1,4 @@
-package com.glassait.tanks_and_equipments.tanks.details.models;
+package com.glassait.tanks_and_equipments.tanks.details.models.base;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,24 +23,20 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "equipments")
-@Description("This table hold all the information for all World of Tanks equipments")
-public class EquipmentsModel {
+@Table(name = "crew_roles")
+@Description("This table hold all the information for all World of Tanks crew roles")
+public class RolesModel {
     @Id
     @Column(nullable = false)
-    @Description("The generated id of the equipment")
+    @Description("The generated id of the skill")
     @Positive(message = "Id must be positive")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false, unique = true)
-    @Description("The name of the equipment")
-    @NotBlank(message = "The equipment's name must be not blank")
-    @NotEmpty(message = "The equipment's name must be not empty")
-    @NotNull(message = "The equipment's name is mandatory")
-    private String wotName;
-
-    @NotNull(message = "IsModernized field is mandatory")
     @Column(nullable = false)
-    private Boolean isModernized = false;
+    @Description("The name of the skill")
+    @NotBlank(message = "The skill's name must be not blank")
+    @NotEmpty(message = "The skill's name must be not empty")
+    @NotNull(message = "The skill's name is mandatory")
+    private String wotName;
 }

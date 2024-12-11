@@ -71,7 +71,7 @@ databaseChangeLog:
                   valueNumeric: "9009"
               - column:
                   name: name
-                  value: B2-75
+                  value: BZ-75
               - column:
                   name: wot_name
                   value: Ch48_BZ_75

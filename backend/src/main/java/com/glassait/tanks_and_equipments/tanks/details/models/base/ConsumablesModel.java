@@ -1,4 +1,4 @@
-package com.glassait.tanks_and_equipments.tanks.details.models;
+package com.glassait.tanks_and_equipments.tanks.details.models.base;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,20 +23,20 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "skills")
-@Description("This table hold all the information for all World of Tanks crew skills")
-public class SkillsModel {
+@Table(name = "consumables")
+@Description("This table hold all the information for all World of Tanks consumables")
+public class ConsumablesModel {
     @Id
     @Column(nullable = false)
-    @Description("The generated id of the skill")
+    @Description("The generated id of the consumable")
     @Positive(message = "Id must be positive")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(nullable = false)
-    @Description("The name of the skill")
-    @NotBlank(message = "The skill's name must be not blank")
-    @NotEmpty(message = "The skill's name must be not empty")
-    @NotNull(message = "The skill's name is mandatory")
+    @Description("The name of the consumable")
+    @NotBlank(message = "The consumable's name must be not blank")
+    @NotEmpty(message = "The consumable's name must be not empty")
+    @NotNull(message = "The consumable's name is mandatory")
     private String wotName;
 }

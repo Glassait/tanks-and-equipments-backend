@@ -5,6 +5,7 @@ info:
     version: 1.1.0
 
 servers:
+    -   url: http://localhost:8080
     -   url: https://fold-backend-5e6c2cf7c25c.herokuapp.com
 
 paths:
@@ -35,6 +36,7 @@ paths:
                     in: path
                     description: The id of the tank
                     required: true
+                    example: 58369
                     schema:
                         type: integer
             responses:
@@ -53,13 +55,11 @@ paths:
 components:
     schemas:
         TanksOverview:
-            title: TanksOverviewDto
             description: The array of TankOverviewDto
             type: array
             items:
                 $ref: "#/components/schemas/TankOverview"
         TankOverview:
-            title: TankOverviewDto
             description: The object representing the overview of a tank
             type: object
             required:
@@ -140,7 +140,6 @@ components:
                     example: true
 
         TankDetail:
-            title: TankDetailDto
             description: The object representing the detail configuration of a tank
             type: object
             required:
@@ -153,7 +152,7 @@ components:
                     type: string
                     description: The tankopedia description of the tank
                     example: "Une version du char lourd Object 260. Les plans de conception ont été terminés en septembre 1945, mais aucun prototype n'a été fabriqué."
-                configuration:
+                configurations:
                     type: array
                     description: The list of equipments configuration
                     minItems: 1
@@ -166,24 +165,14 @@ components:
                     maxItems: 6
                     items:
                         $ref: "#/components/schemas/CrewMember"
-                fieldModification:
-                    type: object
-                    description: The object represent the field modification of the tank
-                    properties:
-                        level2:
-                            $ref: "#/components/schemas/FieldRow"
-                        level4:
-                            $ref: "#/components/schemas/FieldRow"
-                        level5:
-                            $ref: "#/components/schemas/FieldRow"
-                        level6:
-                            $ref: "#/components/schemas/FieldRow"
-                        level7:
-                            $ref: "#/components/schemas/FieldRow"
-                        level8:
-                            $ref: "#/components/schemas/FieldRow"
+                fieldsModification:
+                    type: array
+                    description: The array of field modification of the tank order by level
+                    minItems: 6
+                    maxItems: 6
+                    items:
+                        $ref: "#/components/schemas/FieldRow"
         Configuration:
-            title: ConfigurationDto
             description: The object representing one equipment configuration for a tank
             type: object
             properties:
@@ -211,7 +200,6 @@ components:
                         - secondaire
                         - alternatif
         Equipment:
-            title: EquipmentDto
             description: The representation of one equipment
             type: object
             required:
@@ -252,7 +240,6 @@ components:
                     description: Define if the equipment is a directive or not
                     example: false
         Consumable:
-            title: ConsumableDto
             description: The representation of one consumable
             type: object
             required:
@@ -277,7 +264,6 @@ components:
                         - largeRepairkit
                         - ration_china
         CrewMember:
-            title: CrewMemberDto
             description: The representation of a crew member
             type: object
             required:
@@ -329,7 +315,6 @@ components:
                             items:
                                 $ref: "#/components/schemas/Skill"
         Skill:
-            title: SkillDto
             description: The representation of one skill
             type: object
             required:
@@ -373,23 +358,33 @@ components:
                         - radioman_expert
                         - fireFighting
         FieldRow:
-            title: FieldRowDto
             description: The object represent a row of field modification
+            required:
+                - left
+                - right
+                - level
             properties:
                 left:
                     $ref: "#/components/schemas/Field"
                 right:
                     $ref: "#/components/schemas/Field"
+                level:
+                    type: integer
+                    description: "The level of the field row"
+                    minimum: 2
+                    maximum: 8
+                    example: 2
         Field:
-            title: FieldDto
             description: The representation of one field modification
             properties:
                 name:
                     type: string
                     description: The name of the field
-                wot_name:
+                    example: "Suspension tout-terrain"
+                wotName:
                     type: string
                     description: The wot name of the field
+                    example: additionalGrousers
                     enum:
                         - survivability
                         - additionalGrousers
