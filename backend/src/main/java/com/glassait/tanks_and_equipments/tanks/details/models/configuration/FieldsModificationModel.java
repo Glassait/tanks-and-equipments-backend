@@ -36,7 +36,7 @@ import java.util.List;
 public class FieldsModificationModel {
     @Id
     @Column(nullable = false)
-    @Description("The generated id of the consumable")
+    @Description("The generated id of the fields modification")
     @Positive(message = "Id must be positive")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

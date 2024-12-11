@@ -1,6 +1,7 @@
 package com.glassait.tanks_and_equipments.tanks.details.models;
 
 import com.glassait.tanks_and_equipments.tanks.details.models.configuration.FieldsModificationModel;
+import com.glassait.tanks_and_equipments.tanks.details.models.configuration.TanksCrewMemberModel;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,7 +9,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
@@ -47,8 +47,12 @@ public class TanksDetailModel {
     @NotNull(message = "The skill's description is mandatory")
     private String description;
 
+    @OneToMany(cascade = CascadeType.REMOVE, targetEntity = TanksCrewMemberModel.class)
+    @JoinColumn(name = "tank_id", referencedColumnName = "id", nullable = false)
+    private List<TanksCrewMemberModel> crew;
+
     @OneToMany(cascade = CascadeType.REMOVE, targetEntity = FieldsModificationModel.class)
-    @JoinColumn(name = "tank_id", referencedColumnName = "id")
+    @JoinColumn(name = "tank_id", referencedColumnName = "id", nullable = false)
     @OrderBy("level")
     private List<FieldsModificationModel> fieldsModification;
 }

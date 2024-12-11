@@ -160,7 +160,7 @@ components:
                         $ref: "#/components/schemas/Configuration"
                 crew:
                     type: array
-                    description: The object represent the crew of the tank
+                    description: The array of crew members of the tank
                     minItems: 2
                     maxItems: 6
                     items:
@@ -273,53 +273,32 @@ components:
                 name:
                     type: string
                     description: The name of the member
-                    example: Commandant
-                    pattern: '[\s\wé]+'
-                roles:
-                    type: object
-                    description: The roles the member can take
-                    properties:
-                        commander:
-                            type: array
-                            description: The skill of the commander
-                            minItems: 3
-                            maxItems: 6
-                            items:
-                                $ref: "#/components/schemas/Skill"
-                        gunner:
-                            type: array
-                            description: The skill of the gunner
-                            minItems: 3
-                            maxItems: 6
-                            items:
-                                $ref: "#/components/schemas/Skill"
-                        driver:
-                            type: array
-                            description: The skill of the driver
-                            minItems: 3
-                            maxItems: 6
-                            items:
-                                $ref: "#/components/schemas/Skill"
-                        radioman:
-                            type: array
-                            description: The skill of the radioman
-                            minItems: 3
-                            maxItems: 6
-                            items:
-                                $ref: "#/components/schemas/Skill"
-                        loader:
-                            type: array
-                            description: The skill of the radioman
-                            minItems: 3
-                            maxItems: 6
-                            items:
-                                $ref: "#/components/schemas/Skill"
+                    example: commander
+                    pattern: '[\w]+'
+                skills:
+                    type: array
+                    description: The list of skill of the crew member
+                    items:
+                        $ref: "#/components/schemas/Skill"
+                secondary_roles:
+                    type: array
+                    description: The other roles the member can take
+                    minItems: 0
+                    maxItems: 4
+                    items:
+                        $ref: "#/components/schemas/CrewMember"
         Skill:
             description: The representation of one skill
             type: object
             required:
                 - name
             properties:
+                level:
+                    type: integer
+                    description: The level of the skill
+                    example: 1
+                    minimum: 1
+                    maximum: 6
                 name:
                     type: string
                     description: The name of the skill

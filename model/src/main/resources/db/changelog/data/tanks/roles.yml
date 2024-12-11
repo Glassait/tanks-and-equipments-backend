@@ -8,190 +8,28 @@ databaseChangeLog:
             columns:
               - column:
                   name: wot_name
-                  value: brotherhood
+                  value: commander
         - insert:
             tableName: crew_roles
             columns:
               - column:
                   name: wot_name
-                  value: repair
+                  value: gunner
         - insert:
             tableName: crew_roles
             columns:
               - column:
                   name: wot_name
-                  value: camouflage
+                  value: driver
         - insert:
             tableName: crew_roles
             columns:
               - column:
                   name: wot_name
-                  value: commander_eagleEye
+                  value: loader
         - insert:
             tableName: crew_roles
             columns:
               - column:
                   name: wot_name
-                  value: commander_emergency
-        - insert:
-            tableName: crew_roles
-            columns:
-              - column:
-                  name: wot_name
-                  value: commander_tutor
-        - insert:
-            tableName: crew_roles
-            columns:
-              - column:
-                  name: wot_name
-                  value: commander_coordination
-        - insert:
-            tableName: crew_roles
-            columns:
-              - column:
-                  name: wot_name
-                  value: commander_enemyShotPredictor
-        - insert:
-            tableName: crew_roles
-            columns:
-              - column:
-                  name: wot_name
-                  value: commander_practical
-        - insert:
-            tableName: crew_roles
-            columns:
-              - column:
-                  name: wot_name
-                  value: gunner_smoothTurret
-        - insert:
-            tableName: crew_roles
-            columns:
-              - column:
-                  name: wot_name
-                  value: gunner_sniper
-        - insert:
-            tableName: crew_roles
-            columns:
-              - column:
-                  name: wot_name
-                  value: gunner_rancorous
-        - insert:
-            tableName: crew_roles
-            columns:
-              - column:
-                  name: wot_name
-                  value: gunner_quickAiming
-        - insert:
-            tableName: crew_roles
-            columns:
-              - column:
-                  name: wot_name
-                  value: gunner_armorer
-        - insert:
-            tableName: crew_roles
-            columns:
-              - column:
-                  name: wot_name
-                  value: driver_virtuoso
-        - insert:
-            tableName: crew_roles
-            columns:
-              - column:
-                  name: wot_name
-                  value: driver_smoothDriving
-        - insert:
-            tableName: crew_roles
-            columns:
-              - column:
-                  name: wot_name
-                  value: driver_badRoadsKing
-        - insert:
-            tableName: crew_roles
-            columns:
-              - column:
-                  name: wot_name
-                  value: driver_reliablePlacement
-        - insert:
-            tableName: crew_roles
-            columns:
-              - column:
-                  name: wot_name
-                  value: driver_rammingMaster
-        - insert:
-            tableName: crew_roles
-            columns:
-              - column:
-                  name: wot_name
-                  value: driver_motorExpert
-        - insert:
-            tableName: crew_roles
-            columns:
-              - column:
-                  name: wot_name
-                  value: loader_desperado
-        - insert:
-            tableName: crew_roles
-            columns:
-              - column:
-                  name: wot_name
-                  value: loader_pedant
-        - insert:
-            tableName: crew_roles
-            columns:
-              - column:
-                  name: wot_name
-                  value: loader_intuition
-        - insert:
-            tableName: crew_roles
-            columns:
-              - column:
-                  name: wot_name
-                  value: loader_perfectCharge
-        - insert:
-            tableName: crew_roles
-            columns:
-              - column:
-                  name: wot_name
-                  value: loader_melee
-        - insert:
-            tableName: crew_roles
-            columns:
-              - column:
-                  name: wot_name
-                  value: loader_ammunitionImprove
-        - insert:
-            tableName: crew_roles
-            columns:
-              - column:
-                  name: wot_name
-                  value: radioman_finder
-        - insert:
-            tableName: crew_roles
-            columns:
-              - column:
-                  name: wot_name
-                  value: radioman_sideBySide
-        - insert:
-            tableName: crew_roles
-            columns:
-              - column:
-                  name: wot_name
-                  value: radioman_interference
-        - insert:
-            tableName: crew_roles
-            columns:
-              - column:
-                  name: wot_name
-                  value: radioman_signalInterception
-        - insert:
-            tableName: crew_roles
-            columns:
-              - column:
-                  name: wot_name
-                  value: radioman_expert
-        - insert:
-            tableName: crew_roles
-            columns:
-              - column:
-                  name: wot_name
-                  value: fireFighting
+                  value: radioman
