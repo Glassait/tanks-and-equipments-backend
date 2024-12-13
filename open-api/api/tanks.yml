@@ -205,7 +205,6 @@ components:
             required:
                 - name
                 - isModernized
-                - isDirective
             properties:
                 name:
                     type: string
@@ -218,26 +217,23 @@ components:
                         - camouflageNet
                         - rammer
                         - modernizedAimDrivesAimingStabilizer
+                        - modernizedExtraHealthReserveAntifragmentationLining
                         - improvedRotationMechanism
                         - coatedOptics
                         - antifragmentationLining
                         - additionalInvisibilityDevice
                         - aimingStabilizer
                         - modernizedTurbochargerRotationMechanism
-                        - modernizedAimDrivesAimingStabilizer
                         - enhancedAimDrives
                         - commandersView
                         - stereoscope
                         - turbocharger
                         - improvedVentilation
                         - improvedSights
+                        - modernizedImprovedSightsEnhancedAimDrives
                 isModernized:
                     type: boolean
                     description: Define if the equipment is a modernized equipment or not
-                    example: false
-                isDirective:
-                    type: boolean
-                    description: Define if the equipment is a directive or not
                     example: false
         Consumable:
             description: The representation of one consumable

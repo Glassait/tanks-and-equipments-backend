@@ -1,6 +1,7 @@
 package com.glassait.tanks_and_equipments.tanks.details.models;
 
 import com.glassait.tanks_and_equipments.tanks.details.models.configuration.FieldsModificationModel;
+import com.glassait.tanks_and_equipments.tanks.details.models.configuration.TanksConfigurationModel;
 import com.glassait.tanks_and_equipments.tanks.details.models.configuration.TanksCrewMemberModel;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -55,4 +56,9 @@ public class TanksDetailModel {
     @JoinColumn(name = "tank_id", referencedColumnName = "id", nullable = false)
     @OrderBy("level")
     private List<FieldsModificationModel> fieldsModification;
+
+    @OneToMany(cascade = CascadeType.REMOVE, targetEntity = TanksConfigurationModel.class)
+    @JoinColumn(name = "tank_id", referencedColumnName = "id", nullable = false)
+    @OrderBy("priority desc")
+    private List<TanksConfigurationModel> configurations;
 }

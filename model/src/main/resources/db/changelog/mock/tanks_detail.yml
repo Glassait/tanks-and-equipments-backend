@@ -640,3 +640,183 @@ databaseChangeLog:
               - column:
                   name: active_side
                   value: "left"
+  - changeSet:
+      id: tanks-configuration-1
+      author: Glassait
+      changes:
+        - insert:
+            tableName: tanks_configuration
+            columns:
+              - column:
+                  name: tank_id
+                  valueNumeric: "58369"
+              - column:
+                  name: priority
+                  valueNumeric: "3"
+        - insert:
+            tableName: tanks_configuration
+            columns:
+              - column:
+                  name: tank_id
+                  valueNumeric: "58369"
+              - column:
+                  name: priority
+                  valueNumeric: "2"
+  - changeSet:
+      id: tanks-configuration-equipments-1
+      author: Glassait
+      changes:
+        - insert:
+            tableName: tanks_configurations_equipments
+            columns:
+              - column:
+                  name: tank_configuration_id
+                  valueNumeric: "1"
+              - column:
+                  name: equipment_id
+                  valueNumeric: "7"
+              - column:
+                  name: is_directive
+                  valueBoolean: "false"
+        - insert:
+            tableName: tanks_configurations_equipments
+            columns:
+              - column:
+                  name: tank_configuration_id
+                  valueNumeric: "1"
+              - column:
+                  name: equipment_id
+                  valueNumeric: "5"
+              - column:
+                  name: is_directive
+                  valueBoolean: "false"
+        - insert:
+            tableName: tanks_configurations_equipments
+            columns:
+              - column:
+                  name: tank_configuration_id
+                  valueNumeric: "1"
+              - column:
+                  name: equipment_id
+                  valueNumeric: "13"
+              - column:
+                  name: is_directive
+                  valueBoolean: "false"
+        - insert:
+            tableName: tanks_configurations_equipments
+            columns:
+              - column:
+                  name: tank_configuration_id
+                  valueNumeric: "1"
+              - column:
+                  name: equipment_id
+                  valueNumeric: "5"
+              - column:
+                  name: is_directive
+                  valueBoolean: "true"
+        - insert:
+            tableName: tanks_configurations_equipments
+            columns:
+              - column:
+                  name: tank_configuration_id
+                  valueNumeric: "2"
+              - column:
+                  name: equipment_id
+                  valueNumeric: "3"
+              - column:
+                  name: is_directive
+                  valueBoolean: "false"
+        - insert:
+            tableName: tanks_configurations_equipments
+            columns:
+              - column:
+                  name: tank_configuration_id
+                  valueNumeric: "2"
+              - column:
+                  name: equipment_id
+                  valueNumeric: "5"
+              - column:
+                  name: is_directive
+                  valueBoolean: "false"
+        - insert:
+            tableName: tanks_configurations_equipments
+            columns:
+              - column:
+                  name: tank_configuration_id
+                  valueNumeric: "2"
+              - column:
+                  name: equipment_id
+                  valueNumeric: "17"
+              - column:
+                  name: is_directive
+                  valueBoolean: "false"
+        - insert:
+            tableName: tanks_configurations_equipments
+            columns:
+              - column:
+                  name: tank_configuration_id
+                  valueNumeric: "2"
+              - column:
+                  name: equipment_id
+                  valueNumeric: "5"
+              - column:
+                  name: is_directive
+                  valueBoolean: "true"
+  - changeSet:
+      id: tanks-configuration-consumables-1
+      author: Glassait
+      changes:
+        - insert:
+            tableName: tanks_configurations_consumables
+            columns:
+              - column:
+                  name: tank_configuration_id
+                  valueNumeric: "1"
+              - column:
+                  name: consumable_id
+                  valueNumeric: "11"
+        - insert:
+            tableName: tanks_configurations_consumables
+            columns:
+              - column:
+                  name: tank_configuration_id
+                  valueNumeric: "1"
+              - column:
+                  name: consumable_id
+                  valueNumeric: "12"
+        - insert:
+            tableName: tanks_configurations_consumables
+            columns:
+              - column:
+                  name: tank_configuration_id
+                  valueNumeric: "1"
+              - column:
+                  name: consumable_id
+                  valueNumeric: "10"
+        - insert:
+            tableName: tanks_configurations_consumables
+            columns:
+              - column:
+                  name: tank_configuration_id
+                  valueNumeric: "2"
+              - column:
+                  name: consumable_id
+                  valueNumeric: "11"
+        - insert:
+            tableName: tanks_configurations_consumables
+            columns:
+              - column:
+                  name: tank_configuration_id
+                  valueNumeric: "2"
+              - column:
+                  name: consumable_id
+                  valueNumeric: "12"
+        - insert:
+            tableName: tanks_configurations_consumables
+            columns:
+              - column:
+                  name: tank_configuration_id
+                  valueNumeric: "2"
+              - column:
+                  name: consumable_id
+                  valueNumeric: "10"

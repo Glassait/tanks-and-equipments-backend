@@ -63,6 +63,15 @@ databaseChangeLog:
             columns:
               - column:
                   name: wot_name
+                  value: modernizedExtraHealthReserveAntifragmentationLining
+              - column:
+                  name: is_modernized
+                  valueBoolean: "true"
+        - insert:
+            tableName: equipments
+            columns:
+              - column:
+                  name: wot_name
                   value: improvedRotationMechanism
               - column:
                   name: is_modernized

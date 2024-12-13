@@ -19,7 +19,7 @@ public class TanksDetailService {
 
     private final TankDetailRepository tankDetailRepository;
 
-//    @Cacheable(HazelcastConfig.TANKS_DETAIL_CACHE_KEY)
+    @Cacheable(HazelcastConfig.TANKS_DETAIL_CACHE_KEY)
     public TankDetail getTankDetail(int tankId) {
         TanksDetailModel tanksDetailModelById = tankDetailRepository.getTankDetailModelById(tankId);
         log.info("{}", tanksDetailModelById.toString());
