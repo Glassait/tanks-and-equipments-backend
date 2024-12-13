@@ -15,14 +15,9 @@ import java.util.List;
 public interface TanksOverviewMapper {
     List<TankOverview> convertListTankModelToListTankOverview(List<TankModel> tankModels);
 
-    @Mapping(source = "name", target = "name")
-    @Mapping(source = "wotName", target = "wotName")
     @Mapping(source = "type", target = "type", qualifiedByName = "convertToTypeEnum")
-    @Mapping(source = "level", target = "level")
     @Mapping(source = "role", target = "role", qualifiedByName = "convertToRoleEnum")
-    @Mapping(source = "priority", target = "priority")
     @Mapping(source = "nation", target = "nation", qualifiedByName = "convertToNationEnum")
-    @Mapping(source = "isReward", target = "isReward")
     TankOverview convertTankModelToTankOverview(TankModel tankModel);
 
     @Named("convertToRoleEnum")

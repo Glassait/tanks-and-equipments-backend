@@ -2,7 +2,10 @@ openapi: 3.0.3
 info:
     title: Fold API
     description: All api related to the Fold clan
-    version: 1.0.0
+    version: 1.0.1
+
+servers:
+    -   url: https://fold-backend-5e6c2cf7c25c.herokuapp.com
 
 paths:
     /api/private/v1/fold/results:

@@ -1,0 +1,83 @@
+databaseChangeLog:
+  - changeSet:
+      id: consumables-1
+      author: Glassait
+      changes:
+        - insert:
+            tableName: consumables
+            columns:
+              - column:
+                  name: wot_name
+                  value: ration_sweden
+        - insert:
+            tableName: consumables
+            columns:
+              - column:
+                  name: wot_name
+                  value: hotCoffee
+        - insert:
+            tableName: consumables
+            columns:
+              - column:
+                  name: wot_name
+                  value: cocacola
+        - insert:
+            tableName: consumables
+            columns:
+              - column:
+                  name: wot_name
+                  value: chocolate
+        - insert:
+            tableName: consumables
+            columns:
+              - column:
+                  name: wot_name
+                  value: qualityFuel
+        - insert:
+            tableName: consumables
+            columns:
+              - column:
+                  name: wot_name
+                  value: excellentFuel
+        - insert:
+            tableName: consumables
+            columns:
+              - column:
+                  name: wot_name
+                  value: ration_uk
+        - insert:
+            tableName: consumables
+            columns:
+              - column:
+                  name: wot_name
+                  value: ration_poland
+        - insert:
+            tableName: consumables
+            columns:
+              - column:
+                  name: wot_name
+                  value: autoExtinguishers
+        - insert:
+            tableName: consumables
+            columns:
+              - column:
+                  name: wot_name
+                  value: ration_russia
+        - insert:
+            tableName: consumables
+            columns:
+              - column:
+                  name: wot_name
+                  value: largeMedkit
+        - insert:
+            tableName: consumables
+            columns:
+              - column:
+                  name: wot_name
+                  value: largeRepairkit
+        - insert:
+            tableName: consumables
+            columns:
+              - column:
+                  name: wot_name
+                  value: ration_china

@@ -2,14 +2,18 @@ openapi: 3.0.3
 info:
     title: Tanks API
     description: All apis related to the tanks
-    version: 1.0.1
+    version: 1.1.0
+
+servers:
+    -   url: http://localhost:8080
+    -   url: https://fold-backend-5e6c2cf7c25c.herokuapp.com
 
 paths:
     /api/private/v1/tanks/overview:
         get:
             tags:
                 - tanks-overview
-            description: Return the overview of all tank stored in the database who are meta
+            description: Return the overview of all tanks stored in the database who are meta
             operationId: tanks-overview
             responses:
                 200:
@@ -21,20 +25,45 @@ paths:
                 500:
                     description: Internal server error
             deprecated: false
+    /api/private/v1/tanks/detail/{tank_id}:
+        get:
+            tags:
+                - tanks-detail
+            description: Return the detail configuration of the tank stored in the database
+            operationId: tanks-detail
+            parameters:
+                -   name: tank_id
+                    in: path
+                    description: The id of the tank
+                    required: true
+                    example: 58369
+                    schema:
+                        type: integer
+            responses:
+                200:
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/TankDetail'
+                404:
+                    description: Not Found
+                500:
+                    description: Internal server error
+            deprecated: false
 
 components:
     schemas:
         TanksOverview:
-            title: TanksOverviewDto
             description: The array of TankOverviewDto
             type: array
             items:
                 $ref: "#/components/schemas/TankOverview"
         TankOverview:
-            title: TankOverviewDto
             description: The object representing the overview of a tank
             type: object
             required:
+                - id
                 - name
                 - wotName
                 - type
@@ -43,6 +72,10 @@ components:
                 - nation
                 - priority
             properties:
+                id:
+                    type: integer
+                    description: The wot id of the tank
+                    example: 58369
                 name:
                     type: string
                     description: The name of the tank
@@ -61,7 +94,7 @@ components:
                         - light
                         - medium
                         - heavy
-                        - anti-tank
+                        - tankDestroyer
                 level:
                     type: number
                     description: The level of the tank
@@ -74,7 +107,7 @@ components:
                     example: assault
                     enum:
                         - assault
-                        - heavy-push
+                        - heavyPush
                         - sniper
                         - supports
                         - versatile
@@ -82,7 +115,7 @@ components:
                 nation:
                     type: string
                     description: The nation of the tank
-                    example: URSS
+                    example: USSR
                     enum:
                         - China
                         - Italy
@@ -104,4 +137,254 @@ components:
                 is_reward:
                     type: boolean
                     description: If the tank is a reward tank
+                    example: true
+
+        TankDetail:
+            description: The object representing the detail configuration of a tank
+            type: object
+            required:
+                - description
+                - configuration
+                - crew
+                - fieldModification
+            properties:
+                description:
+                    type: string
+                    description: The tankopedia description of the tank
+                    example: "Une version du char lourd Object 260. Les plans de conception ont été terminés en septembre 1945, mais aucun prototype n'a été fabriqué."
+                configurations:
+                    type: array
+                    description: The list of equipments configuration
+                    minItems: 1
+                    items:
+                        $ref: "#/components/schemas/Configuration"
+                crew:
+                    type: array
+                    description: The array of crew members of the tank
+                    minItems: 2
+                    maxItems: 6
+                    items:
+                        $ref: "#/components/schemas/CrewMember"
+                fieldsModification:
+                    type: array
+                    description: The array of field modification of the tank order by level
+                    minItems: 6
+                    maxItems: 6
+                    items:
+                        $ref: "#/components/schemas/FieldRow"
+        Configuration:
+            description: The object representing one equipment configuration for a tank
+            type: object
+            properties:
+                equipments:
+                    type: array
+                    description: The list of equipment
+                    minItems: 3
+                    maxItems: 3
+                    items:
+                        $ref: "#/components/schemas/Equipment"
+                directive:
+                    $ref: "#/components/schemas/Equipment"
+                consumables:
+                    type: array
+                    description: The list of equipment
+                    minItems: 3
+                    maxItems: 3
+                    items:
+                        $ref: "#/components/schemas/Consumable"
+                priority:
+                    type: string
+                    description: The priority of the configuration
+                    enum:
+                        - principal
+                        - secondaire
+                        - alternatif
+        Equipment:
+            description: The representation of one equipment
+            type: object
+            required:
+                - name
+                - isModernized
+            properties:
+                name:
+                    type: string
+                    description: The name of the equipment
+                    example: improvedConfiguration
+                    enum:
+                        - improvedConfiguration
+                        - grousers
+                        - extraHealthReserve
+                        - camouflageNet
+                        - rammer
+                        - modernizedAimDrivesAimingStabilizer
+                        - modernizedExtraHealthReserveAntifragmentationLining
+                        - improvedRotationMechanism
+                        - coatedOptics
+                        - antifragmentationLining
+                        - additionalInvisibilityDevice
+                        - aimingStabilizer
+                        - modernizedTurbochargerRotationMechanism
+                        - enhancedAimDrives
+                        - commandersView
+                        - stereoscope
+                        - turbocharger
+                        - improvedVentilation
+                        - improvedSights
+                        - modernizedImprovedSightsEnhancedAimDrives
+                isModernized:
+                    type: boolean
+                    description: Define if the equipment is a modernized equipment or not
+                    example: false
+        Consumable:
+            description: The representation of one consumable
+            type: object
+            required:
+                - name
+            properties:
+                name:
+                    type: string
+                    description: The name of the consumable
+                    example: ration_sweden
+                    enum:
+                        - ration_sweden
+                        - hotCoffee
+                        - cocacola
+                        - chocolate
+                        - qualityFuel
+                        - excellentFuel
+                        - ration_uk
+                        - ration_poland
+                        - autoExtinguishers
+                        - ration_russia
+                        - largeMedkit
+                        - largeRepairkit
+                        - ration_china
+        CrewMember:
+            description: The representation of a crew member
+            type: object
+            required:
+                - name
+                - roles
+            properties:
+                name:
+                    type: string
+                    description: The name of the member
+                    example: commander
+                    pattern: '[\w]+'
+                skills:
+                    type: array
+                    description: The list of skill of the crew member
+                    items:
+                        $ref: "#/components/schemas/Skill"
+                secondary_roles:
+                    type: array
+                    description: The other roles the member can take
+                    minItems: 0
+                    maxItems: 4
+                    items:
+                        $ref: "#/components/schemas/CrewMember"
+        Skill:
+            description: The representation of one skill
+            type: object
+            required:
+                - name
+            properties:
+                level:
+                    type: integer
+                    description: The level of the skill
+                    example: 1
+                    minimum: 1
+                    maximum: 6
+                name:
+                    type: string
+                    description: The name of the skill
+                    example: brotherhood
+                    enum:
+                        - brotherhood
+                        - repair
+                        - camouflage
+                        - commander_eagleEye
+                        - commander_emergency
+                        - commander_tutor
+                        - commander_coordination
+                        - commander_enemyShotPredictor
+                        - commander_practical
+                        - gunner_smoothTurret
+                        - gunner_sniper
+                        - gunner_rancorous
+                        - gunner_quickAiming
+                        - gunner_armorer
+                        - driver_virtuoso
+                        - driver_smoothDriving
+                        - driver_badRoadsKing
+                        - driver_reliablePlacement
+                        - driver_rammingMaster
+                        - driver_motorExpert
+                        - loader_desperado
+                        - loader_pedant
+                        - loader_intuition
+                        - loader_perfectCharge
+                        - loader_melee
+                        - loader_ammunitionImprove
+                        - radioman_finder
+                        - radioman_sideBySide
+                        - radioman_interference
+                        - radioman_signalInterception
+                        - radioman_expert
+                        - fireFighting
+        FieldRow:
+            description: The object represent a row of field modification
+            required:
+                - left
+                - right
+                - level
+            properties:
+                left:
+                    $ref: "#/components/schemas/Field"
+                right:
+                    $ref: "#/components/schemas/Field"
+                level:
+                    type: integer
+                    description: "The level of the field row"
+                    minimum: 2
+                    maximum: 8
+                    example: 2
+        Field:
+            description: The representation of one field modification
+            properties:
+                name:
+                    type: string
+                    description: The name of the field
+                    example: "Suspension tout-terrain"
+                wotName:
+                    type: string
+                    description: The wot name of the field
+                    example: additionalGrousers
+                    enum:
+                        - survivability
+                        - additionalGrousers
+                        - betterFriction
+                        - firepower
+                        - improvedAimingHandling
+                        - improvedChassisStability
+                        - improvedEnginePower
+                        - improvedGunBreech
+                        - improvedLightFilters
+                        - improvedMuzzleBreak
+                        - improvedObservationDevice
+                        - improvedScope
+                        - improvedSelfRepairingTracks
+                        - improvedSelfRepairingWheels
+                        - improvedSpallingResistance
+                        - improvedSpeedIndicator
+                        - improvedSpeedIndicatorBackwards
+                        - improvedTurretTurningWheels
+                        - increasedSensitivityOptics
+                        - increasedThickness
+                        - mobility
+                        - reinforcedStructure
+                        - stealth
+                isActive:
+                    type: boolean
+                    description: If the field modification if active or not
                     example: true

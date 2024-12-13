@@ -32,5 +32,6 @@
     <modules>
         <module>open-api</module>
         <module>backend</module>
+        <module>model</module>
     </modules>
 </project>

@@ -1,7 +1,7 @@
 package com.glassait.tanks_and_equipments.wot.news.services;
 
 import com.glassait.tanks_and_equipments.api.model.WotNews;
-import com.glassait.tanks_and_equipments.config.HazelcastConfig;
+import com.glassait.tanks_and_equipments.shared.configs.HazelcastConfig;
 import com.glassait.tanks_and_equipments.wot.news.mappers.WotNewsMapper;
 import com.glassait.tanks_and_equipments.wot.news.repository.WotNewsRepository;
 import lombok.RequiredArgsConstructor;

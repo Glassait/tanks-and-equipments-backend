@@ -2,7 +2,10 @@ openapi: 3.0.3
 info:
     title: Wot API
     description: All api related to some World of tanks elements
-    version: 1.0.1
+    version: 1.0.2
+
+servers:
+    -   url: https://fold-backend-5e6c2cf7c25c.herokuapp.com
 
 paths:
     /api/private/v1/wot/news:

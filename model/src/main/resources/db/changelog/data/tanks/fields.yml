@@ -1,0 +1,143 @@
+databaseChangeLog:
+  - changeSet:
+      id: fields-1
+      author: Glassait
+      changes:
+        - insert:
+            tableName: fields
+            columns:
+              - column:
+                  name: wot_name
+                  value: survivability
+        - insert:
+            tableName: fields
+            columns:
+              - column:
+                  name: wot_name
+                  value: additionalGrousers
+        - insert:
+            tableName: fields
+            columns:
+              - column:
+                  name: wot_name
+                  value: betterFriction
+        - insert:
+            tableName: fields
+            columns:
+              - column:
+                  name: wot_name
+                  value: firepower
+        - insert:
+            tableName: fields
+            columns:
+              - column:
+                  name: wot_name
+                  value: improvedAimingHandling
+        - insert:
+            tableName: fields
+            columns:
+              - column:
+                  name: wot_name
+                  value: improvedChassisStability
+        - insert:
+            tableName: fields
+            columns:
+              - column:
+                  name: wot_name
+                  value: improvedEnginePower
+        - insert:
+            tableName: fields
+            columns:
+              - column:
+                  name: wot_name
+                  value: improvedGunBreech
+        - insert:
+            tableName: fields
+            columns:
+              - column:
+                  name: wot_name
+                  value: improvedLightFilters
+        - insert:
+            tableName: fields
+            columns:
+              - column:
+                  name: wot_name
+                  value: improvedMuzzleBreak
+        - insert:
+            tableName: fields
+            columns:
+              - column:
+                  name: wot_name
+                  value: improvedObservationDevice
+        - insert:
+            tableName: fields
+            columns:
+              - column:
+                  name: wot_name
+                  value: improvedScope
+        - insert:
+            tableName: fields
+            columns:
+              - column:
+                  name: wot_name
+                  value: improvedSelfRepairingTracks
+        - insert:
+            tableName: fields
+            columns:
+              - column:
+                  name: wot_name
+                  value: improvedSelfRepairingWheels
+        - insert:
+            tableName: fields
+            columns:
+              - column:
+                  name: wot_name
+                  value: improvedSpallingResistance
+        - insert:
+            tableName: fields
+            columns:
+              - column:
+                  name: wot_name
+                  value: improvedSpeedIndicator
+        - insert:
+            tableName: fields
+            columns:
+              - column:
+                  name: wot_name
+                  value: improvedSpeedIndicatorBackwards
+        - insert:
+            tableName: fields
+            columns:
+              - column:
+                  name: wot_name
+                  value: improvedTurretTurningWheels
+        - insert:
+            tableName: fields
+            columns:
+              - column:
+                  name: wot_name
+                  value: increasedSensitivityOptics
+        - insert:
+            tableName: fields
+            columns:
+              - column:
+                  name: wot_name
+                  value: increasedThickness
+        - insert:
+            tableName: fields
+            columns:
+              - column:
+                  name: wot_name
+                  value: mobility
+        - insert:
+            tableName: fields
+            columns:
+              - column:
+                  name: wot_name
+                  value: reinforcedStructure
+        - insert:
+            tableName: fields
+            columns:
+              - column:
+                  name: wot_name
+                  value: stealth

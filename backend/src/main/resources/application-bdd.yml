@@ -1,4 +1,7 @@
 spring:
+    liquibase:
+        enabled: true
+        change-log: "classpath:./db/changelog/db.changelog-decoy.yml" # Fake changelog, it's normal
     jpa:
         show-sql: true
         hibernate:

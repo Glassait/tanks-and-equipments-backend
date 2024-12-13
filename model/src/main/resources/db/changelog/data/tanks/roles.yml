@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: crew_roles-1
+      author: Glassait
+      changes:
+        - insert:
+            tableName: crew_roles
+            columns:
+              - column:
+                  name: wot_name
+                  value: commander
+        - insert:
+            tableName: crew_roles
+            columns:
+              - column:
+                  name: wot_name
+                  value: gunner
+        - insert:
+            tableName: crew_roles
+            columns:
+              - column:
+                  name: wot_name
+                  value: driver
+        - insert:
+            tableName: crew_roles
+            columns:
+              - column:
+                  name: wot_name
+                  value: loader
+        - insert:
+            tableName: crew_roles
+            columns:
+              - column:
+                  name: wot_name
+                  value: radioman

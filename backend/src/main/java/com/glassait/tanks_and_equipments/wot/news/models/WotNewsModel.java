@@ -1,6 +1,8 @@
 package com.glassait.tanks_and_equipments.wot.news.models;
 
+import com.glassait.tanks_and_equipments.shared.converters.JpaConverterList;
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,14 +14,21 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import jdk.jfr.Description;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+import java.util.List;
+
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "wot_news")
+@Description("This table is feed by a discord bot, it's contains the World of Tanks news scrap from a rss flux")
 public class WotNewsModel {
     @Id
     @Column(name = "id")
@@ -52,9 +61,10 @@ public class WotNewsModel {
     private String url;
 
     @Column(name = "tags", nullable = false)
+    @Convert(converter = JpaConverterList.class)
     @Description("The tags of the wot news")
     @NotBlank(message = "The wot news tags must be not blank")
     @NotEmpty(message = "The wot news tags must be not empty")
     @NotNull(message = "The wot news tags is mandatory")
-    private String tags;
+    private List<String> tags;
 }

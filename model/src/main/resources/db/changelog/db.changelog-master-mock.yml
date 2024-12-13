@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - includeAll:
+      path: db/changelog/data
+  - includeAll:
+      path: db/changelog/mock

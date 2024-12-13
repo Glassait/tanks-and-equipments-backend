@@ -1,7 +1,7 @@
 package com.glassait.tanks_and_equipments.fold.results.services;
 
 import com.glassait.tanks_and_equipments.api.model.FoldResult;
-import com.glassait.tanks_and_equipments.config.HazelcastConfig;
+import com.glassait.tanks_and_equipments.shared.configs.HazelcastConfig;
 import com.glassait.tanks_and_equipments.fold.results.mappers.FoldResultsMapper;
 import com.glassait.tanks_and_equipments.fold.results.repository.FoldResultsRepository;
 import lombok.RequiredArgsConstructor;

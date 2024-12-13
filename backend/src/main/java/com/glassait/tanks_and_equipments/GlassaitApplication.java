@@ -13,7 +13,15 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 @EnableCaching
 public class GlassaitApplication {
     public static void main(String[] args) {
-        SpringApplication.run(GlassaitApplication.class, args);
-        log.info("YAHOO, The application is running properly");
+        var env = SpringApplication.run(GlassaitApplication.class, args).getEnvironment();
+        String logString = """
+                \n|==================================================
+                |\tL'application '{}' à correctement démaré
+                |
+                |\tUrl : http://localhost:{}
+                |\tProfiles : {}
+                |==================================================
+                """;
+        log.info(logString, env.getProperty("spring.application.name"), env.getProperty("server.port"), env.getActiveProfiles());
     }
 }
