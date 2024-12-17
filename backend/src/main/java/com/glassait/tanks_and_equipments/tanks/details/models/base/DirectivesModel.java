@@ -23,27 +23,27 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "skills")
-@Description("This table hold all the information for all World of Tanks crew skills")
-public class SkillsModel {
+@Table(name = "directives")
+@Description("This table hold all the information for all World of Tanks directives")
+public class DirectivesModel {
     @Id
     @Column(nullable = false)
-    @Description("The generated id of the skill")
+    @Description("The generated id of the directive")
     @Positive(message = "Id must be positive")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false)
-    @Description("The World of Tanks name of the skill")
-    @NotBlank(message = "The skill's name must be not blank")
-    @NotEmpty(message = "The skill's name must be not empty")
-    @NotNull(message = "The skill's name is mandatory")
+    @Column(nullable = false, unique = true)
+    @Description("The World of Tanks name of the directive")
+    @NotBlank(message = "The directive's name must be not blank")
+    @NotEmpty(message = "The directive's name must be not empty")
+    @NotNull(message = "The directive's name is mandatory")
     private String wotName;
 
-    @Column(nullable = false)
-    @Description("The french name of the skill")
-    @NotBlank(message = "The skill's name must be not blank")
-    @NotEmpty(message = "The skill's name must be not empty")
-    @NotNull(message = "The skill's name is mandatory")
+    @Column(nullable = false, unique = true)
+    @Description("The french name of the directive")
+    @NotBlank(message = "The directive's name must be not blank")
+    @NotEmpty(message = "The directive's name must be not empty")
+    @NotNull(message = "The directive's name is mandatory")
     private String name;
 }

@@ -26,6 +26,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "tanks_configurations_consumables")
+@Description("This table hold the information about the consumable configuration for a tank")
 public class TanksConfigurationsConsumablesModel {
     @Id
     @Column(nullable = false)

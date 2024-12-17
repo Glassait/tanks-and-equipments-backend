@@ -34,9 +34,16 @@ public class ConsumablesModel {
     private int id;
 
     @Column(nullable = false)
-    @Description("The name of the consumable")
+    @Description("The World of Tanks name of the consumable")
     @NotBlank(message = "The consumable's name must be not blank")
     @NotEmpty(message = "The consumable's name must be not empty")
     @NotNull(message = "The consumable's name is mandatory")
     private String wotName;
+
+    @Column(nullable = false)
+    @Description("The french name of the consumable")
+    @NotBlank(message = "The consumable's name must be not blank")
+    @NotEmpty(message = "The consumable's name must be not empty")
+    @NotNull(message = "The consumable's name is mandatory")
+    private String name;
 }

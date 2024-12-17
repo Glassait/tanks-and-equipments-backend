@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
     title: Tanks API
     description: All apis related to the tanks
-    version: 1.1.0
+    version: 1.1.1
 
 servers:
     -   url: http://localhost:8080
@@ -184,7 +184,7 @@ components:
                     items:
                         $ref: "#/components/schemas/Equipment"
                 directive:
-                    $ref: "#/components/schemas/Equipment"
+                    $ref: "#/components/schemas/Directive"
                 consumables:
                     type: array
                     description: The list of equipment
@@ -204,9 +204,14 @@ components:
             type: object
             required:
                 - name
+                - wotName
                 - isModernized
             properties:
                 name:
+                    type: string
+                    description: The french name of the equipment
+                    example: Configuration modifiée
+                wotName:
                     type: string
                     description: The name of the equipment
                     example: improvedConfiguration
@@ -216,34 +221,71 @@ components:
                         - extraHealthReserve
                         - camouflageNet
                         - rammer
-                        - modernizedAimDrivesAimingStabilizer
-                        - modernizedExtraHealthReserveAntifragmentationLining
                         - improvedRotationMechanism
                         - coatedOptics
                         - antifragmentationLining
                         - additionalInvisibilityDevice
                         - aimingStabilizer
-                        - modernizedTurbochargerRotationMechanism
                         - enhancedAimDrives
                         - commandersView
                         - stereoscope
                         - turbocharger
                         - improvedVentilation
                         - improvedSights
+                        - modernizedAimDrivesAimingStabilizer
+                        - modernizedExtraHealthReserveAntifragmentationLining
+                        - modernizedTurbochargerRotationMechanism
                         - modernizedImprovedSightsEnhancedAimDrives
                 isModernized:
                     type: boolean
                     description: Define if the equipment is a modernized equipment or not
                     example: false
+        Directive:
+            description: The representation of one directive
+            type: object
+            required:
+                - name
+                - wotName
+            properties:
+                name:
+                    type: string
+                    description: The french name of the directive
+                    example: Remplacement du filtre à carburant
+                wotName:
+                    type: string
+                    description: The image name of the directive
+                    example: turbochargerBattleBooster
+                    enum:
+                        - enhancedAimDrivesBattleBooster
+                        - coatedOpticsBattleBooster
+                        - additInvisibilityDeviceBattleBooster
+                        - aimingStabilizerBattleBooster
+                        - improvedSightsBattleBooster
+                        - improvedConfigurationBattleBooster
+                        - improvedVentilationBattleBooster
+                        - rammerBattleBooster
+                        - turbochargerBattleBooster
+                        - camouflageBattleBooster
+                        - smoothTurretBattleBooster
+                        - virtuosoBattleBooster
+                        - smoothDrivingBattleBooster
+                        - fireFightingBattleBooster
+                        - rancorousBattleBooster
+                        - pedantBattleBooster
         Consumable:
             description: The representation of one consumable
             type: object
             required:
                 - name
+                - wotName
             properties:
                 name:
                     type: string
-                    description: The name of the consumable
+                    description: The french name of the consumable
+                    example: Café avec brioches à la cannelle
+                wotName:
+                    type: string
+                    description: The image name of the consumable
                     example: ration_sweden
                     enum:
                         - ration_sweden
@@ -254,11 +296,18 @@ components:
                         - excellentFuel
                         - ration_uk
                         - ration_poland
+                        - ration_czech
+                        - ration_japan
+                        - ration_italy
                         - autoExtinguishers
-                        - ration_russia
+                        - handExtinguishers
+                        - ration
                         - largeMedkit
+                        - smallMedkit
                         - largeRepairkit
+                        - smallRepairkit
                         - ration_china
+                        - OLD_removedRpmLimiter
         CrewMember:
             description: The representation of a crew member
             type: object
@@ -287,6 +336,8 @@ components:
             description: The representation of one skill
             type: object
             required:
+                - wotName
+                - level
                 - name
             properties:
                 level:
@@ -297,41 +348,46 @@ components:
                     maximum: 6
                 name:
                     type: string
+                    description: The french name of the skill
+                    example: Frères d'armes
+                wotName:
+                    type: string
                     description: The name of the skill
                     example: brotherhood
                     enum:
-                        - brotherhood
                         - repair
                         - camouflage
+                        - brotherhood
+                        - commander_tutor
+                        - commander_enemyShotPredictor
                         - commander_eagleEye
                         - commander_emergency
-                        - commander_tutor
                         - commander_coordination
-                        - commander_enemyShotPredictor
                         - commander_practical
-                        - gunner_smoothTurret
-                        - gunner_sniper
                         - gunner_rancorous
+                        - gunner_sniper
                         - gunner_quickAiming
+                        - gunner_focus
                         - gunner_armorer
-                        - driver_virtuoso
-                        - driver_smoothDriving
+                        - gunner_smoothTurret
                         - driver_badRoadsKing
-                        - driver_reliablePlacement
                         - driver_rammingMaster
+                        - driver_smoothDriving
                         - driver_motorExpert
-                        - loader_desperado
-                        - loader_pedant
+                        - driver_reliablePlacement
+                        - driver_virtuoso
+                        - loader_ammunitionImprove
                         - loader_intuition
                         - loader_perfectCharge
                         - loader_melee
-                        - loader_ammunitionImprove
+                        - loader_desperado
+                        - loader_pedant
                         - radioman_finder
-                        - radioman_sideBySide
+                        - fireFighting
                         - radioman_interference
                         - radioman_signalInterception
+                        - radioman_sideBySide
                         - radioman_expert
-                        - fireFighting
         FieldRow:
             description: The object represent a row of field modification
             required:
@@ -351,6 +407,10 @@ components:
                     example: 2
         Field:
             description: The representation of one field modification
+            required:
+                - name
+                - isActive
+                - wotName
             properties:
                 name:
                     type: string

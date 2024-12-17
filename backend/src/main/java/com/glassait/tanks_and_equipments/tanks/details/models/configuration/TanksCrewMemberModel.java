@@ -30,6 +30,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "tanks_crews")
+@Description("This table hold the information for each crew member of a tank")
 public class TanksCrewMemberModel {
     @Id
     @Column(nullable = false)

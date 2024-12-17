@@ -27,6 +27,7 @@ import org.hibernate.validator.constraints.Range;
 @Setter
 @Entity
 @Table(name = "tanks_crews_skills")
+@Description("This table hold the information of the skill selected for a crew member")
 public class TanksCrewsSkillsModel {
     @Id
     @Column(nullable = false)

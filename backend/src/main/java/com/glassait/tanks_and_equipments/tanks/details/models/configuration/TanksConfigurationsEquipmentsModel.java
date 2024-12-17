@@ -26,6 +26,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "tanks_configurations_equipments")
+@Description("This table hold the information about the equipment configuration of a tank")
 public class TanksConfigurationsEquipmentsModel {
     @Id
     @Column(nullable = false)
@@ -38,8 +39,4 @@ public class TanksConfigurationsEquipmentsModel {
     @JoinColumn(nullable = false, referencedColumnName = "id")
     @NotNull(message = "The configuration equipment cannot be null")
     private EquipmentsModel equipment;
-
-    @Column(nullable = false)
-    @NotNull(message = "The boolean cannot be null")
-    private Boolean isDirective;
 }

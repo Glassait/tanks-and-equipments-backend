@@ -30,6 +30,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "tanks_crews_secondary_roles")
+@Description("This table hold all secondary role taken by a crew member of a tank")
 public class TanksCrewSecondaryRolesModel {
     @Id
     @Column(nullable = false)
