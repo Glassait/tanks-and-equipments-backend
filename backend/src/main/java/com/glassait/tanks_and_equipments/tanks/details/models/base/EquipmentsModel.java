@@ -34,11 +34,18 @@ public class EquipmentsModel {
     private int id;
 
     @Column(nullable = false, unique = true)
-    @Description("The name of the equipment")
+    @Description("The World of Tanks name of the equipment")
     @NotBlank(message = "The equipment's name must be not blank")
     @NotEmpty(message = "The equipment's name must be not empty")
     @NotNull(message = "The equipment's name is mandatory")
     private String wotName;
+
+    @Column(nullable = false, unique = true)
+    @Description("The french name of the equipment")
+    @NotBlank(message = "The equipment's name must be not blank")
+    @NotEmpty(message = "The equipment's name must be not empty")
+    @NotNull(message = "The equipment's name is mandatory")
+    private String name;
 
     @NotNull(message = "IsModernized field is mandatory")
     @Column(nullable = false)

@@ -1,233 +1,197 @@
 databaseChangeLog:
   - changeSet:
-      id: consumables-1
+      id: directives-1
       author: Glassait
       changes:
         - insert:
-            tableName: consumables
+            tableName: directives
             columns:
               - column:
                   name: id
                   valueNumeric: "1"
               - column:
                   name: wot_name
-                  value: ration_czech
+                  value: improvedConfigurationBattleBooster
               - column:
                   name: name
-                  value: Buchty
+                  value: Maintenance d'avant-bataille
         - insert:
-            tableName: consumables
+            tableName: directives
             columns:
               - column:
                   name: id
                   valueNumeric: "2"
               - column:
                   name: wot_name
-                  value: ration_sweden
+                  value: rammerBattleBooster
               - column:
                   name: name
-                  value: Café avec brioches à la cannelle
+                  value: Râtelier de munitions en ordre
         - insert:
-            tableName: consumables
+            tableName: directives
             columns:
               - column:
                   name: id
                   valueNumeric: "3"
               - column:
                   name: wot_name
-                  value: hotCoffee
+                  value: coatedOpticsBattleBooster
               - column:
                   name: name
-                  value: Café fort
+                  value: Étalonnage optique
         - insert:
-            tableName: consumables
+            tableName: directives
             columns:
               - column:
                   name: id
                   valueNumeric: "4"
               - column:
                   name: wot_name
-                  value: cocacola
+                  value: additInvisibilityDeviceBattleBooster
               - column:
                   name: name
-                  value: Caisse de Cola
+                  value: Isolation d'échappement
         - insert:
-            tableName: consumables
+            tableName: directives
             columns:
               - column:
                   name: id
                   valueNumeric: "5"
               - column:
                   name: wot_name
-                  value: qualityFuel
+                  value: aimingStabilizerBattleBooster
               - column:
                   name: name
-                  value: Carburant de qualité
+                  value: Graissage du stabilisateur
         - insert:
-            tableName: consumables
+            tableName: directives
             columns:
               - column:
                   name: id
                   valueNumeric: "6"
               - column:
                   name: wot_name
-                  value: excellentFuel
+                  value: enhancedAimDrivesBattleBooster
               - column:
                   name: name
-                  value: Carburant excellent
+                  value: Ajustement de la visée
         - insert:
-            tableName: consumables
+            tableName: directives
             columns:
               - column:
                   name: id
                   valueNumeric: "7"
               - column:
                   name: wot_name
-                  value: chocolate
+                  value: turbochargerBattleBooster
               - column:
                   name: name
-                  value: Chocolat
+                  value: Remplacement du filtre à carburant
         - insert:
-            tableName: consumables
+            tableName: directives
             columns:
               - column:
                   name: id
                   valueNumeric: "8"
               - column:
                   name: wot_name
-                  value: autoExtinguishers
+                  value: improvedVentilationBattleBooster
               - column:
                   name: name
-                  value: Extincteur automatique
+                  value: Purge de la ventilation
         - insert:
-            tableName: consumables
+            tableName: directives
             columns:
               - column:
                   name: id
                   valueNumeric: "9"
               - column:
                   name: wot_name
-                  value: handExtinguishers
+                  value: improvedSightsBattleBooster
               - column:
                   name: name
-                  value: Extincteur manuel
+                  value: Lentille polie
         - insert:
-            tableName: consumables
+            tableName: directives
             columns:
               - column:
                   name: id
                   valueNumeric: "10"
               - column:
                   name: wot_name
-                  value: largeMedkit
+                  value: camouflageBattleBooster
               - column:
                   name: name
-                  value: Grande trousse de premiers secours
+                  value: Fondu dans le décor
         - insert:
-            tableName: consumables
+            tableName: directives
             columns:
               - column:
                   name: id
                   valueNumeric: "11"
               - column:
                   name: wot_name
-                  value: largeRepairkit
+                  value: smoothTurretBattleBooster
               - column:
                   name: name
-                  value: Grand kit de réparation
+                  value: Main assurée
         - insert:
-            tableName: consumables
+            tableName: directives
             columns:
               - column:
                   name: id
                   valueNumeric: "12"
               - column:
                   name: wot_name
-                  value: ration_japan
+                  value: virtuosoBattleBooster
               - column:
                   name: name
-                  value: Onigiri
+                  value: Formation au combat
         - insert:
-            tableName: consumables
+            tableName: directives
             columns:
               - column:
                   name: id
                   valueNumeric: "13"
               - column:
                   name: wot_name
-                  value: smallRepairkit
+                  value: smoothDrivingBattleBooster
               - column:
                   name: name
-                  value: Petit kit de réparation
+                  value: Boîte de vitesse complexe
         - insert:
-            tableName: consumables
+            tableName: directives
             columns:
               - column:
                   name: id
                   valueNumeric: "14"
               - column:
                   name: wot_name
-                  value: smallMedkit
+                  value: fireFightingBattleBooster
               - column:
                   name: name
-                  value: Petite trousse de premiers secours
+                  value: Pompier expérimenté
         - insert:
-            tableName: consumables
+            tableName: directives
             columns:
               - column:
                   name: id
                   valueNumeric: "15"
               - column:
                   name: wot_name
-                  value: ration_uk
+                  value: rancorousBattleBooster
               - column:
                   name: name
-                  value: Pudding et thé
+                  value: Concentration sur la cible
         - insert:
-            tableName: consumables
+            tableName: directives
             columns:
               - column:
                   name: id
                   valueNumeric: "16"
               - column:
                   name: wot_name
-                  value: ration
+                  value: pedantBattleBooster
               - column:
                   name: name
-                  value: Rations de combat supplémentaires
-        - insert:
-            tableName: consumables
-            columns:
-              - column:
-                  name: id
-                  valueNumeric: "17"
-              - column:
-                  name: wot_name
-                  value: ration_china
-              - column:
-                  name: name
-                  value: Rations de combat améliorées
-        - insert:
-            tableName: consumables
-            columns:
-              - column:
-                  name: id
-                  valueNumeric: "18"
-              - column:
-                  name: wot_name
-                  value: ration_italy
-              - column:
-                  name: name
-                  value: Spaghetti bolognaise
-        - insert:
-            tableName: consumables
-            columns:
-              - column:
-                  name: id
-                  valueNumeric: "19"
-              - column:
-                  name: wot_name
-                  value: ration_poland
-              - column:
-                  name: name
-                  value: Tartines de Smalec
+                  value: Organisateur d'obus

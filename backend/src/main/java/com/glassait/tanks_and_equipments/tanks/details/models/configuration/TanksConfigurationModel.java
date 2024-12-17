@@ -1,5 +1,6 @@
 package com.glassait.tanks_and_equipments.tanks.details.models.configuration;
 
+import com.glassait.tanks_and_equipments.tanks.details.models.base.DirectivesModel;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -7,8 +8,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -30,6 +31,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "tanks_configuration")
+@Description("This table hold the information about the equipment/consumable configuration for the tank")
 public class TanksConfigurationModel {
     @Id
     @Column(nullable = false)
@@ -47,11 +49,16 @@ public class TanksConfigurationModel {
 
     @OneToMany(cascade = CascadeType.REMOVE, targetEntity = TanksConfigurationsEquipmentsModel.class)
     @JoinColumn(name = "tank_configuration_id", referencedColumnName = "id", nullable = false)
-    @Description("The list of equipment of the configuration, the last one being the directive")
-    @Size(min = 4, max = 4, message = "The list need to contains exactly four items")
+    @Description("The list of equipment of the configuration")
+    @Size(min = 3, max = 3, message = "The list need to contains exactly three items")
     @NotNull(message = "The list cannot be null")
-    @OrderBy("isDirective")
     private List<TanksConfigurationsEquipmentsModel> equipments;
+
+    @ManyToOne(cascade = CascadeType.DETACH, targetEntity = DirectivesModel.class)
+    @JoinColumn(nullable = false, referencedColumnName = "id")
+    @Description("The directive of the configuration")
+    @NotNull(message = "The directive cannot be null")
+    private DirectivesModel directive;
 
     @OneToMany(cascade = CascadeType.REMOVE, targetEntity = TanksConfigurationsConsumablesModel.class)
     @JoinColumn(name = "tank_configuration_id", referencedColumnName = "id", nullable = false)

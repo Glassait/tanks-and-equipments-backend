@@ -2,6 +2,7 @@ package com.glassait.tanks_and_equipments.tanks.details.mappers;
 
 import com.glassait.tanks_and_equipments.api.model.Consumable;
 import com.glassait.tanks_and_equipments.api.model.CrewMember;
+import com.glassait.tanks_and_equipments.api.model.Directive;
 import com.glassait.tanks_and_equipments.api.model.Equipment;
 import com.glassait.tanks_and_equipments.api.model.Field;
 import com.glassait.tanks_and_equipments.api.model.FieldRow;
@@ -9,9 +10,8 @@ import com.glassait.tanks_and_equipments.api.model.ModelConfiguration;
 import com.glassait.tanks_and_equipments.api.model.Skill;
 import com.glassait.tanks_and_equipments.api.model.TankDetail;
 import com.glassait.tanks_and_equipments.tanks.details.models.TanksDetailModel;
-import com.glassait.tanks_and_equipments.tanks.details.models.base.ConsumablesModel;
+import com.glassait.tanks_and_equipments.tanks.details.models.base.DirectivesModel;
 import com.glassait.tanks_and_equipments.tanks.details.models.base.FieldsModel;
-import com.glassait.tanks_and_equipments.tanks.details.models.base.SkillsModel;
 import com.glassait.tanks_and_equipments.tanks.details.models.configuration.FieldsModificationModel;
 import com.glassait.tanks_and_equipments.tanks.details.models.configuration.TanksConfigurationModel;
 import com.glassait.tanks_and_equipments.tanks.details.models.configuration.TanksConfigurationsConsumablesModel;
@@ -33,27 +33,33 @@ public interface TanksDetailMapper {
     List<ModelConfiguration> convertListTanksConfigurationModelToListModelConfiguration(List<TanksConfigurationModel> tanksConfigurationModels);
 
     @Mapping(source = "priority", target = "priority", qualifiedByName = "convertToPriorityEnum")
-    @Mapping(target = "directive", expression = "java(tanksConfigurationsEquipmentsModelToEquipment(tanksConfigurationModel.getEquipments().removeLast()))")
-    @Mapping(target = "equipments", expression = "java(tanksConfigurationsEquipmentsModelListToEquipmentList( tanksConfigurationModel.getEquipments()))")
     ModelConfiguration convertTankConfigurationModelToModelConfiguration(TanksConfigurationModel tanksConfigurationModel);
 
-    List<Equipment> tanksConfigurationsEquipmentsModelListToEquipmentList(List<TanksConfigurationsEquipmentsModel> list);
-
-    @Mapping(source = "equipment.wotName", target = "name", qualifiedByName = "convertToEquipmentNameEnum")
+    @Mapping(source = "equipment.name", target = "name")
+    @Mapping(source = "equipment.wotName", target = "wotName", qualifiedByName = "convertToEquipmentWotNameEnum")
     @Mapping(source = "equipment.isModernized", target = "isModernized")
     Equipment tanksConfigurationsEquipmentsModelToEquipment(TanksConfigurationsEquipmentsModel tanksConfigurationsEquipmentsModel);
 
-    @Named("convertToEquipmentNameEnum")
-    default Equipment.NameEnum convertToEquipmentNameEnum(String name) {
-        return Equipment.NameEnum.fromValue(name);
+    @Mapping(source = "wotName", target = "wotName", qualifiedByName = "convertToDirectiveWotNameEnum")
+    Directive directivesModelToDirective(DirectivesModel directivesModel);
+
+    @Named("convertToDirectiveWotNameEnum")
+    default Directive.WotNameEnum convertToDirectiveWotNameEnum(String name) {
+        return Directive.WotNameEnum.fromValue(name);
     }
 
-    @Mapping(source = "consumable", target = "name", qualifiedByName = "convertToConsumableNameEnum")
+    @Named("convertToEquipmentWotNameEnum")
+    default Equipment.WotNameEnum convertToEquipmentWotNameEnum(String name) {
+        return Equipment.WotNameEnum.fromValue(name);
+    }
+
+    @Mapping(source = "consumable.name", target = "name")
+    @Mapping(source = "consumable.wotName", target = "wotName", qualifiedByName = "convertToConsumableWotNameEnum")
     Consumable tanksConfigurationsConsumablesModelToConsumable(TanksConfigurationsConsumablesModel tanksConfigurationsConsumablesModel);
 
-    @Named("convertToConsumableNameEnum")
-    default Consumable.NameEnum convertToConsumableNameEnum(ConsumablesModel consumable) {
-        return Consumable.NameEnum.fromValue(consumable.getWotName());
+    @Named("convertToConsumableWotNameEnum")
+    default Consumable.WotNameEnum convertToConsumableWotNameEnum(String name) {
+        return Consumable.WotNameEnum.fromValue(name);
     }
 
     @Named("convertToPriorityEnum")
@@ -73,12 +79,13 @@ public interface TanksDetailMapper {
     @Mapping(source = "role.wotName", target = "name")
     CrewMember tanksCrewSecondaryRolesModelToCrewMember(TanksCrewSecondaryRolesModel tanksCrewSecondaryRolesModel);
 
-    @Mapping(source = "skill", target = "name", qualifiedByName = "convertToSkillNameEnum")
+    @Mapping(source = "skill.name", target = "name")
+    @Mapping(source = "skill.wotName", target = "wotName", qualifiedByName = "convertToSkillNameEnum")
     Skill tanksCrewsSkillsModelToSkill(TanksCrewsSkillsModel tanksCrewsSkillsModel);
 
     @Named("convertToSkillNameEnum")
-    default Skill.NameEnum convertToSkillNameEnum(SkillsModel skill) {
-        return Skill.NameEnum.fromValue(skill.getWotName());
+    default Skill.WotNameEnum convertToSkillNameEnum(String skill) {
+        return Skill.WotNameEnum.fromValue(skill);
     }
 
     List<FieldRow> convertListFieldsModificationModelToListFieldRow(List<FieldsModificationModel> fieldsModificationModel);
