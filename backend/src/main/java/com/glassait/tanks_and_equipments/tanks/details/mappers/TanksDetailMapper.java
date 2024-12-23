@@ -6,8 +6,8 @@ import com.glassait.tanks_and_equipments.api.model.Directive;
 import com.glassait.tanks_and_equipments.api.model.Equipment;
 import com.glassait.tanks_and_equipments.api.model.Field;
 import com.glassait.tanks_and_equipments.api.model.FieldRow;
-import com.glassait.tanks_and_equipments.api.model.ModelConfiguration;
 import com.glassait.tanks_and_equipments.api.model.Skill;
+import com.glassait.tanks_and_equipments.api.model.TankConfiguration;
 import com.glassait.tanks_and_equipments.api.model.TankDetail;
 import com.glassait.tanks_and_equipments.tanks.details.models.TanksDetailModel;
 import com.glassait.tanks_and_equipments.tanks.details.models.base.DirectivesModel;
@@ -30,10 +30,10 @@ public interface TanksDetailMapper {
     @Mapping(source = "configurations", target = "configurations")
     TankDetail convertTankDetailModelToTankDetail(TanksDetailModel tanksDetailModel);
 
-    List<ModelConfiguration> convertListTanksConfigurationModelToListModelConfiguration(List<TanksConfigurationModel> tanksConfigurationModels);
+    List<TankConfiguration> convertListTanksConfigurationModelToListTankConfiguration(List<TanksConfigurationModel> tanksConfigurationModels);
 
     @Mapping(source = "priority", target = "priority", qualifiedByName = "convertToPriorityEnum")
-    ModelConfiguration convertTankConfigurationModelToModelConfiguration(TanksConfigurationModel tanksConfigurationModel);
+    TankConfiguration convertTankConfigurationModelToTankConfiguration(TanksConfigurationModel tanksConfigurationModel);
 
     @Mapping(source = "equipment.name", target = "name")
     @Mapping(source = "equipment.wotName", target = "wotName", qualifiedByName = "convertToEquipmentWotNameEnum")
@@ -63,14 +63,14 @@ public interface TanksDetailMapper {
     }
 
     @Named("convertToPriorityEnum")
-    default ModelConfiguration.PriorityEnum convertToPriorityEnum(int priority) {
+    default TankConfiguration.PriorityEnum convertToPriorityEnum(int priority) {
         if (priority == 3) {
-            return ModelConfiguration.PriorityEnum.PRINCIPAL;
+            return TankConfiguration.PriorityEnum.PRINCIPAL;
         } else if (priority == 2) {
-            return ModelConfiguration.PriorityEnum.SECONDAIRE;
+            return TankConfiguration.PriorityEnum.SECONDAIRE;
         }
 
-        return ModelConfiguration.PriorityEnum.ALTERNATIF;
+        return TankConfiguration.PriorityEnum.ALTERNATIF;
     }
 
     @Mapping(source = "role.wotName", target = "name")

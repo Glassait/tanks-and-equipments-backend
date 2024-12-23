@@ -157,7 +157,7 @@ components:
                     description: The list of equipments configuration
                     minItems: 1
                     items:
-                        $ref: "#/components/schemas/Configuration"
+                        $ref: "#/components/schemas/TankConfiguration"
                 crew:
                     type: array
                     description: The array of crew members of the tank
@@ -172,7 +172,7 @@ components:
                     maxItems: 6
                     items:
                         $ref: "#/components/schemas/FieldRow"
-        Configuration:
+        TankConfiguration:
             description: The object representing one equipment configuration for a tank
             type: object
             properties:
