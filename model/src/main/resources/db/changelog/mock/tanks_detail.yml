@@ -377,7 +377,7 @@ databaseChangeLog:
                   valueNumeric: "3"
               - column:
                   name: skill_id
-                  valueNumeric: "22"
+                  valueNumeric: "27"
               - column:
                   name: tanks_crews_id
                   valueNumeric: "4"
