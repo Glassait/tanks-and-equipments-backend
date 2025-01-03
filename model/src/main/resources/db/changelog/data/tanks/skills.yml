@@ -47,7 +47,7 @@ databaseChangeLog:
                   valueNumeric: "4"
               - column:
                   name: wot_name
-                  value: commander_tutor
+                  value: commanderTutor
               - column:
                   name: name
                   value: Mentor
@@ -59,7 +59,7 @@ databaseChangeLog:
                   valueNumeric: "5"
               - column:
                   name: wot_name
-                  value: commander_enemyShotPredictor
+                  value: commanderEnemyShotPredictor
               - column:
                   name: name
                   value: Détection sonore
@@ -71,7 +71,7 @@ databaseChangeLog:
                   valueNumeric: "6"
               - column:
                   name: wot_name
-                  value: commander_eagleEye
+                  value: commanderEagleEye
               - column:
                   name: name
                   value: Œil de lynx
@@ -83,7 +83,7 @@ databaseChangeLog:
                   valueNumeric: "7"
               - column:
                   name: wot_name
-                  value: commander_emergency
+                  value: commanderEmergency
               - column:
                   name: name
                   value: Urgence
@@ -95,7 +95,7 @@ databaseChangeLog:
                   valueNumeric: "8"
               - column:
                   name: wot_name
-                  value: commander_coordination
+                  value: commanderCoordination
               - column:
                   name: name
                   value: Coordination
@@ -107,7 +107,7 @@ databaseChangeLog:
                   valueNumeric: "9"
               - column:
                   name: wot_name
-                  value: commander_practical
+                  value: commanderPractical
               - column:
                   name: name
                   value: Praticité
@@ -119,7 +119,7 @@ databaseChangeLog:
                   valueNumeric: "10"
               - column:
                   name: wot_name
-                  value: gunner_rancorous
+                  value: gunnerRancorous
               - column:
                   name: name
                   value: Rancunier
@@ -131,7 +131,7 @@ databaseChangeLog:
                   valueNumeric: "11"
               - column:
                   name: wot_name
-                  value: gunner_sniper
+                  value: gunnerSniper
               - column:
                   name: name
                   value: Coup mortel
@@ -143,7 +143,7 @@ databaseChangeLog:
                   valueNumeric: "12"
               - column:
                   name: wot_name
-                  value: gunner_quickAiming
+                  value: gunnerQuickAiming
               - column:
                   name: name
                   value: Visée rapide
@@ -155,7 +155,7 @@ databaseChangeLog:
                   valueNumeric: "13"
               - column:
                   name: wot_name
-                  value: gunner_focus
+                  value: gunnerFocus
               - column:
                   name: name
                   value: Concentration
@@ -167,7 +167,7 @@ databaseChangeLog:
                   valueNumeric: "14"
               - column:
                   name: wot_name
-                  value: gunner_armorer
+                  value: gunnerArmorer
               - column:
                   name: name
                   value: Armurier
@@ -179,7 +179,7 @@ databaseChangeLog:
                   valueNumeric: "15"
               - column:
                   name: wot_name
-                  value: gunner_smoothTurret
+                  value: gunnerSmoothTurret
               - column:
                   name: name
                   value: Précision
@@ -191,7 +191,7 @@ databaseChangeLog:
                   valueNumeric: "16"
               - column:
                   name: wot_name
-                  value: driver_badRoadsKing
+                  value: driverBadRoadsKing
               - column:
                   name: name
                   value: Pilote tout-terrain
@@ -203,7 +203,7 @@ databaseChangeLog:
                   valueNumeric: "17"
               - column:
                   name: wot_name
-                  value: driver_rammingMaster
+                  value: driverRammingMaster
               - column:
                   name: name
                   value: Bélier
@@ -215,7 +215,7 @@ databaseChangeLog:
                   valueNumeric: "18"
               - column:
                   name: wot_name
-                  value: driver_smoothDriving
+                  value: driverSmoothDriving
               - column:
                   name: name
                   value: Conduite souple
@@ -227,7 +227,7 @@ databaseChangeLog:
                   valueNumeric: "19"
               - column:
                   name: wot_name
-                  value: driver_motorExpert
+                  value: driverMotorExpert
               - column:
                   name: name
                   value: Ingénieur
@@ -239,7 +239,7 @@ databaseChangeLog:
                   valueNumeric: "20"
               - column:
                   name: wot_name
-                  value: driver_reliablePlacement
+                  value: driverReliablePlacement
               - column:
                   name: name
                   value: Placement fiable
@@ -251,7 +251,7 @@ databaseChangeLog:
                   valueNumeric: "21"
               - column:
                   name: wot_name
-                  value: driver_virtuoso
+                  value: driverVirtuoso
               - column:
                   name: name
                   value: As du volant
@@ -263,7 +263,7 @@ databaseChangeLog:
                   valueNumeric: "22"
               - column:
                   name: wot_name
-                  value: loader_ammunitionImprove
+                  value: loaderAmmunitionImprove
               - column:
                   name: name
                   value: Réglage des munitions
@@ -275,7 +275,7 @@ databaseChangeLog:
                   valueNumeric: "23"
               - column:
                   name: wot_name
-                  value: loader_intuition
+                  value: loaderIntuition
               - column:
                   name: name
                   value: Intuition
@@ -287,7 +287,7 @@ databaseChangeLog:
                   valueNumeric: "24"
               - column:
                   name: wot_name
-                  value: loader_perfectCharge
+                  value: loaderPerfectCharge
               - column:
                   name: name
                   value: Charge parfaite
@@ -299,7 +299,7 @@ databaseChangeLog:
                   valueNumeric: "25"
               - column:
                   name: wot_name
-                  value: loader_melee
+                  value: loaderMelee
               - column:
                   name: name
                   value: Combat rapproché
@@ -311,7 +311,7 @@ databaseChangeLog:
                   valueNumeric: "26"
               - column:
                   name: wot_name
-                  value: loader_desperado
+                  value: loaderDesperado
               - column:
                   name: name
                   value: Poussée d'adrénaline
@@ -323,7 +323,7 @@ databaseChangeLog:
                   valueNumeric: "27"
               - column:
                   name: wot_name
-                  value: loader_pedant
+                  value: loaderPedant
               - column:
                   name: name
                   value: Râtelier sécurisé
@@ -335,7 +335,7 @@ databaseChangeLog:
                   valueNumeric: "28"
               - column:
                   name: wot_name
-                  value: radioman_finder
+                  value: radiomanFinder
               - column:
                   name: name
                   value: Longue-vue
@@ -359,7 +359,7 @@ databaseChangeLog:
                   valueNumeric: "30"
               - column:
                   name: wot_name
-                  value: radioman_interference
+                  value: radiomanInterference
               - column:
                   name: name
                   value: Brouillage
@@ -371,7 +371,7 @@ databaseChangeLog:
                   valueNumeric: "31"
               - column:
                   name: wot_name
-                  value: radioman_signalInterception
+                  value: radiomanSignalInterception
               - column:
                   name: name
                   value: Interception du signal
@@ -383,7 +383,7 @@ databaseChangeLog:
                   valueNumeric: "32"
               - column:
                   name: wot_name
-                  value: radioman_sideBySide
+                  value: radiomanSideBySide
               - column:
                   name: name
                   value: Côte à côte
@@ -395,7 +395,7 @@ databaseChangeLog:
                   valueNumeric: "33"
               - column:
                   name: wot_name
-                  value: radioman_expert
+                  value: radiomanExpert
               - column:
                   name: name
                   value: Expert en communications

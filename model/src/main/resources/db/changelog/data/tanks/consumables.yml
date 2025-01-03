@@ -11,7 +11,7 @@ databaseChangeLog:
                   valueNumeric: "1"
               - column:
                   name: wot_name
-                  value: ration_czech
+                  value: rationCzech
               - column:
                   name: name
                   value: Buchty
@@ -23,7 +23,7 @@ databaseChangeLog:
                   valueNumeric: "2"
               - column:
                   name: wot_name
-                  value: ration_sweden
+                  value: rationSweden
               - column:
                   name: name
                   value: Café avec brioches à la cannelle
@@ -143,7 +143,7 @@ databaseChangeLog:
                   valueNumeric: "12"
               - column:
                   name: wot_name
-                  value: ration_japan
+                  value: rationJapan
               - column:
                   name: name
                   value: Onigiri
@@ -179,7 +179,7 @@ databaseChangeLog:
                   valueNumeric: "15"
               - column:
                   name: wot_name
-                  value: ration_uk
+                  value: rationUK
               - column:
                   name: name
                   value: Pudding et thé
@@ -203,7 +203,7 @@ databaseChangeLog:
                   valueNumeric: "17"
               - column:
                   name: wot_name
-                  value: ration_china
+                  value: rationChina
               - column:
                   name: name
                   value: Rations de combat améliorées
@@ -215,7 +215,7 @@ databaseChangeLog:
                   valueNumeric: "18"
               - column:
                   name: wot_name
-                  value: ration_italy
+                  value: rationItaly
               - column:
                   name: name
                   value: Spaghetti bolognaise
@@ -227,7 +227,7 @@ databaseChangeLog:
                   valueNumeric: "19"
               - column:
                   name: wot_name
-                  value: ration_poland
+                  value: rationPoland
               - column:
                   name: name
                   value: Tartines de Smalec
